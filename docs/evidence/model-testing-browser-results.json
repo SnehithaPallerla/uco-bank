@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "checks": [
+    "20 additional portfolio samples",
+    "Free six-case test walkthrough",
+    "Controlled six-case live test with report",
+    "Downloadable model report",
+    "Report available after browser reload",
+    "390px test report layout"
+  ],
+  "pageErrors": [],
+  "limitations": "Controlled provider responses; genuine OCI model-quality results are reported separately."
+}

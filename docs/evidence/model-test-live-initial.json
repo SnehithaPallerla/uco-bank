@@ -1,0 +1,1371 @@
+{
+  "id": "EVAL-37b3d767-bfc9-4152-8fb7-1180efa15570",
+  "userId": "asha",
+  "mode": "Live OCI model test",
+  "status": "Completed",
+  "recordIds": [
+    "LAB-001",
+    "LAB-002",
+    "LAB-003",
+    "LAB-004",
+    "LAB-005",
+    "LAB-006"
+  ],
+  "repeats": 1,
+  "total": 6,
+  "createdAt": "2026-10-12T15:16:17.976Z",
+  "rows": [
+    {
+      "recordId": "LAB-001",
+      "borrower": "Eastern Freight Services",
+      "repeat": 1,
+      "expected": {
+        "recordId": "LAB-001",
+        "pack": "quick",
+        "ruleOutcome": "Review required",
+        "acceptableDispositions": [
+          "Review required",
+          "Evidence needed"
+        ],
+        "focus": "Explain repeated payments and request commercial support.",
+        "concepts": [
+          {
+            "name": "Commercial support",
+            "terms": [
+              "invoice",
+              "delivery",
+              "commercial",
+              "purchase order"
+            ]
+          }
+        ]
+      },
+      "ruleOutcome": "Review required",
+      "error": "The model returned an incomplete review."
+    },
+    {
+      "recordId": "LAB-002",
+      "borrower": "Harbour Distribution",
+      "repeat": 1,
+      "expected": {
+        "recordId": "LAB-002",
+        "pack": "quick",
+        "ruleOutcome": "Supported",
+        "acceptableDispositions": [
+          "Supported"
+        ],
+        "focus": "Recognise accepted invoices and delivery; avoid inventing a concern.",
+        "concepts": [
+          {
+            "name": "Accepted procurement",
+            "terms": [
+              "invoice",
+              "delivery",
+              "procurement",
+              "commercial"
+            ]
+          }
+        ]
+      },
+      "ruleOutcome": "Supported",
+      "result": {
+        "id": "OCI-5e824037-666f-4d72-a0f1-f12913d464ae",
+        "recordId": "LAB-002",
+        "mode": "Live OCI model",
+        "provider": "OCI Generative AI",
+        "model": "cohere.command-a-03-2025",
+        "region": "ap-hyderabad-1",
+        "promptVersion": "uco-validation-v1",
+        "createdAt": "2026-10-12T15:16:37.730Z",
+        "durationMs": 9483,
+        "inputDigest": "3aaa62cbbf7a6e9060acc0759e57edae08b6ac331d802030fd65071fee880a8f",
+        "responseDigest": "df8f415a96f1a408a7d328d951906f8ff913454df2d78fadd933da49178d4331",
+        "requestId": "E5A1AC91C64F-11F1-AD8D-3962046E7/29E00A6FD5929F621B02107E4B7EFCF2/155AE109215F20A8CF077BE14C1C55AC",
+        "ruleOutcome": "Supported",
+        "ruleReviewInr": 0,
+        "packet": {
+          "version": "uco-validation-v1",
+          "recordId": "LAB-002",
+          "asOf": "2026-09-25T12:00:00+05:30",
+          "borrower": "Harbour Distribution",
+          "facility": {
+            "loanType": "Term loan",
+            "purpose": "Warehouse expansion",
+            "sanctionClause": "Funds are permitted for warehouse expansion. Obtain transaction-specific commercial evidence; other uses require written approval.",
+            "allowedUseCategories": [
+              "building_materials"
+            ],
+            "restrictedPayeeIds": []
+          },
+          "policy": {
+            "version": 1,
+            "mode": "Evaluation policy · bank approval pending",
+            "minAmount": 100000,
+            "rapidAmount": 500000,
+            "rapidHours": 4,
+            "repeatHours": 168,
+            "repeatCount": 3,
+            "returnDebitCount": 2,
+            "reopenHours": 720,
+            "splitAmount": 500000,
+            "splitCount": 3,
+            "batchAmount": 4000000,
+            "batchCount": 8,
+            "batchMinutes": 60
+          },
+          "ruleResult": {
+            "outcome": "Supported",
+            "reviewInr": 0,
+            "findings": [],
+            "gaps": [],
+            "contexts": []
+          },
+          "transactions": [
+            {
+              "id": "LAB-002-TX01",
+              "from": "LAB-002-BOR",
+              "to": "LAB-002-PAYEE",
+              "amountInr": 1200000,
+              "postedAt": "2026-09-21T11:00:00+05:30",
+              "status": "posted",
+              "observed": true,
+              "activeLoanInr": 1200000,
+              "reversedInr": 0,
+              "fundingStatus": "Explicit reference · capped",
+              "evidenceId": "LAB-002-TX01-LEDGER"
+            },
+            {
+              "id": "LAB-002-TX02",
+              "from": "LAB-002-BOR",
+              "to": "LAB-002-PAYEE",
+              "amountInr": 1500000,
+              "postedAt": "2026-09-22T11:00:00+05:30",
+              "status": "posted",
+              "observed": true,
+              "activeLoanInr": 1500000,
+              "reversedInr": 0,
+              "fundingStatus": "Explicit reference · capped",
+              "evidenceId": "LAB-002-TX02-LEDGER"
+            },
+            {
+              "id": "LAB-002-TX03",
+              "from": "LAB-002-BOR",
+              "to": "LAB-002-PAYEE",
+              "amountInr": 1800000,
+              "postedAt": "2026-09-23T11:00:00+05:30",
+              "status": "posted",
+              "observed": true,
+              "activeLoanInr": 1800000,
+              "reversedInr": 0,
+              "fundingStatus": "Explicit reference · capped",
+              "evidenceId": "LAB-002-TX03-LEDGER"
+            }
+          ],
+          "recipients": [
+            {
+              "id": "LAB-002-BOR",
+              "name": "Harbour Distribution",
+              "type": "company",
+              "identityStatus": "verified_fixture"
+            },
+            {
+              "id": "LAB-002-PAYEE",
+              "name": "Narmada Materials",
+              "type": "company",
+              "identityStatus": "verified_fixture"
+            }
+          ],
+          "approvals": [],
+          "fixedDeposits": [],
+          "relationships": [],
+          "accountHistory": [],
+          "evidence": [
+            {
+              "id": "LAB-002-SAN",
+              "title": "SAN",
+              "kind": "sanction",
+              "status": "verified_fixture",
+              "source": "Prepared bank case records",
+              "capturedAt": "2026-09-25T12:00:00+05:30",
+              "payload": {
+                "clause": "Funds are permitted for warehouse expansion. Obtain transaction-specific commercial evidence; other uses require written approval.",
+                "allowedUseCategories": [
+                  "building_materials"
+                ]
+              }
+            },
+            {
+              "id": "LAB-002-PAYEE-IDENTITY",
+              "title": "PAYEE IDENTITY",
+              "kind": "bank_beneficiary_mapping",
+              "status": "verified_fixture",
+              "source": "Prepared bank case records",
+              "capturedAt": "2026-09-25T12:00:00+05:30",
+              "payload": {
+                "entityId": "LAB-002-PAYEE",
+                "legalName": "Narmada Materials",
+                "accountToken": "••••4821",
+                "basis": "Bank-held beneficiary record",
+                "registryReference": "KT-01"
+              }
+            },
+            {
+              "id": "LAB-002-PAYEE-HISTORY",
+              "title": "PAYEE HISTORY",
+              "kind": "payment_history",
+              "status": "verified_fixture",
+              "source": "Prepared bank case records",
+              "capturedAt": "2026-09-25T12:00:00+05:30",
+              "payload": {
+                "entityId": "LAB-002-PAYEE",
+                "count180d": 0,
+                "amountInr": 0,
+                "scope": "Recorded UCO transactions"
+              }
+            },
+            {
+              "id": "LAB-002-TX01-LEDGER",
+              "title": "TX01 LEDGER",
+              "kind": "bank_transaction",
+              "status": "verified_fixture",
+              "source": "Prepared bank case records",
+              "capturedAt": "2026-09-25T12:00:00+05:30",
+              "payload": {
+                "id": "LAB-002-TX01",
+                "version": 1,
+                "from": "LAB-002-BOR",
+                "to": "LAB-002-PAYEE",
+                "amountInr": 1200000,
+                "currency": "INR",
+                "postedAt": "2026-09-21T11:00:00+05:30",
+                "receivedAt": "2026-09-21T11:00:00+05:30",
+                "status": "posted",
+                "kind": "payment",
+                "channel": "NEFT",
+                "observed": true,
+                "drawdownReference": "LAB-002-DD",
+                "documentedUseCategory": null,
+                "narration": "Payment to Narmada Materials"
+              }
+            },
+            {
+              "id": "LAB-002-TX02-LEDGER",
+              "title": "TX02 LEDGER",
+              "kind": "bank_transaction",
+              "status": "verified_fixture",
+              "source": "Prepared bank case records",
+              "capturedAt": "2026-09-25T12:00:00+05:30",
+              "payload": {
+                "id": "LAB-002-TX02",
+                "version": 1,
+                "from": "LAB-002-BOR",
+                "to": "LAB-002-PAYEE",
+                "amountInr": 1500000,
+                "currency": "INR",
+                "postedAt": "2026-09-22T11:00:00+05:30",
+                "receivedAt": "2026-09-22T11:00:00+05:30",
+                "status": "posted",
+                "kind": "payment",
+                "channel": "NEFT",
+                "observed": true,
+                "drawdownReference": "LAB-002-DD",
+                "documentedUseCategory": null,
+                "narration": "Payment to Narmada Materials"
+              }
+            },
+            {
+              "id": "LAB-002-TX03-LEDGER",
+              "title": "TX03 LEDGER",
+              "kind": "bank_transaction",
+              "status": "verified_fixture",
+              "source": "Prepared bank case records",
+              "capturedAt": "2026-09-25T12:00:00+05:30",
+              "payload": {
+                "id": "LAB-002-TX03",
+                "version": 1,
+                "from": "LAB-002-BOR",
+                "to": "LAB-002-PAYEE",
+                "amountInr": 1800000,
+                "currency": "INR",
+                "postedAt": "2026-09-23T11:00:00+05:30",
+                "receivedAt": "2026-09-23T11:00:00+05:30",
+                "status": "posted",
+                "kind": "payment",
+                "channel": "NEFT",
+                "observed": true,
+                "drawdownReference": "LAB-002-DD",
+                "documentedUseCategory": null,
+                "narration": "Payment to Narmada Materials"
+              }
+            },
+            {
+              "id": "LAB-002-LAB-002-TX01-INVOICE",
+              "title": "MT BLUEFIN OK TX01 INVOICE",
+              "kind": "invoice",
+              "status": "verified_fixture",
+              "source": "Prepared bank case records",
+              "capturedAt": "2026-09-25T12:00:00+05:30",
+              "payload": {
+                "transactionId": "LAB-002-TX01",
+                "sellerEntityId": "LAB-002-PAYEE",
+                "project": "LAB-002-PROJECT",
+                "amountInr": 1200000,
+                "useCategory": "building_materials",
+                "items": [
+                  "Documented goods or services for the sanctioned purpose"
+                ]
+              }
+            },
+            {
+              "id": "LAB-002-LAB-002-TX01-DELIVERY",
+              "title": "MT BLUEFIN OK TX01 DELIVERY",
+              "kind": "goods_receipt",
+              "status": "verified_fixture",
+              "source": "Prepared bank case records",
+              "capturedAt": "2026-09-25T12:00:00+05:30",
+              "payload": {
+                "transactionId": "LAB-002-TX01",
+                "invoiceId": "LAB-002-LAB-002-TX01-INVOICE",
+                "project": "LAB-002-PROJECT",
+                "accepted": true
+              }
+            },
+            {
+              "id": "LAB-002-LAB-002-TX02-INVOICE",
+              "title": "MT BLUEFIN OK TX02 INVOICE",
+              "kind": "invoice",
+              "status": "verified_fixture",
+              "source": "Prepared bank case records",
+              "capturedAt": "2026-09-25T12:00:00+05:30",
+              "payload": {
+                "transactionId": "LAB-002-TX02",
+                "sellerEntityId": "LAB-002-PAYEE",
+                "project": "LAB-002-PROJECT",
+                "amountInr": 1500000,
+                "useCategory": "building_materials",
+                "items": [
+                  "Documented goods or services for the sanctioned purpose"
+                ]
+              }
+            },
+            {
+              "id": "LAB-002-LAB-002-TX02-DELIVERY",
+              "title": "MT BLUEFIN OK TX02 DELIVERY",
+              "kind": "goods_receipt",
+              "status": "verified_fixture",
+              "source": "Prepared bank case records",
+              "capturedAt": "2026-09-25T12:00:00+05:30",
+              "payload": {
+                "transactionId": "LAB-002-TX02",
+                "invoiceId": "LAB-002-LAB-002-TX02-INVOICE",
+                "project": "LAB-002-PROJECT",
+                "accepted": true
+              }
+            },
+            {
+              "id": "LAB-002-LAB-002-TX03-INVOICE",
+              "title": "MT BLUEFIN OK TX03 INVOICE",
+              "kind": "invoice",
+              "status": "verified_fixture",
+              "source": "Prepared bank case records",
+              "capturedAt": "2026-09-25T12:00:00+05:30",
+              "payload": {
+                "transactionId": "LAB-002-TX03",
+                "sellerEntityId": "LAB-002-PAYEE",
+                "project": "LAB-002-PROJECT",
+                "amountInr": 1800000,
+                "useCategory": "building_materials",
+                "items": [
+                  "Documented goods or services for the sanctioned purpose"
+                ]
+              }
+            },
+            {
+              "id": "LAB-002-LAB-002-TX03-DELIVERY",
+              "title": "MT BLUEFIN OK TX03 DELIVERY",
+              "kind": "goods_receipt",
+              "status": "verified_fixture",
+              "source": "Prepared bank case records",
+              "capturedAt": "2026-09-25T12:00:00+05:30",
+              "payload": {
+                "transactionId": "LAB-002-TX03",
+                "invoiceId": "LAB-002-LAB-002-TX03-INVOICE",
+                "project": "LAB-002-PROJECT",
+                "accepted": true
+              }
+            }
+          ]
+        },
+        "review": {
+          "disposition": "Supported",
+          "summary": "The loan transactions are supported by verified evidence, including invoices and delivery receipts, confirming the funds were used for the sanctioned purpose of warehouse expansion. All payments were made to the verified payee, Narmada Materials, for building materials.",
+          "claims": [
+            {
+              "text": "All transactions have corresponding invoices and delivery receipts for building materials.",
+              "evidenceIds": [
+                "LAB-002-LAB-002-TX01-INVOICE",
+                "LAB-002-LAB-002-TX01-DELIVERY",
+                "LAB-002-LAB-002-TX02-INVOICE",
+                "LAB-002-LAB-002-TX02-DELIVERY",
+                "LAB-002-LAB-002-TX03-INVOICE",
+                "LAB-002-LAB-002-TX03-DELIVERY"
+              ]
+            },
+            {
+              "text": "Payments were made to the verified payee, Narmada Materials.",
+              "evidenceIds": [
+                "LAB-002-PAYEE-IDENTITY",
+                "LAB-002-TX01-LEDGER",
+                "LAB-002-TX02-LEDGER",
+                "LAB-002-TX03-LEDGER"
+              ]
+            }
+          ],
+          "legitimateExplanation": "The transactions align with the sanctioned purpose of warehouse expansion, as evidenced by invoices and delivery receipts for building materials. The payee, Narmada Materials, is a verified entity, and all payments were made within the sanctioned framework.",
+          "missingEvidence": [],
+          "nextSteps": []
+        },
+        "limitations": "Advisory review only. Citation checks confirm that references exist, not that the explanation is correct. An officer must review the draft; detection rules, verified identities and case decisions are unchanged."
+      },
+      "checks": {
+        "dispositionAgrees": true,
+        "citationsValid": true,
+        "concepts": [
+          {
+            "name": "Accepted procurement",
+            "mentioned": true
+          }
+        ],
+        "checksPassed": true,
+        "limitations": "Authored synthetic test cases, not independent bank labels. Checks measure disposition agreement, citation validity and mention of expected topics. They do not verify source truth, detect all hallucinations or establish fraud accuracy. Review each answer yourself."
+      }
+    },
+    {
+      "recordId": "LAB-003",
+      "borrower": "Seabrook Engineering",
+      "repeat": 1,
+      "expected": {
+        "recordId": "LAB-003",
+        "pack": "quick",
+        "ruleOutcome": "Review required",
+        "acceptableDispositions": [
+          "Review required",
+          "Evidence needed"
+        ],
+        "focus": "Explain CC/OD investment-use concern without declaring fraud.",
+        "concepts": [
+          {
+            "name": "Investment use",
+            "terms": [
+              "investment",
+              "securities",
+              "capital market",
+              "broker"
+            ]
+          }
+        ]
+      },
+      "ruleOutcome": "Review required",
+      "error": "The model returned an incomplete review."
+    },
+    {
+      "recordId": "LAB-004",
+      "borrower": "Lotus Fabrication",
+      "repeat": 1,
+      "expected": {
+        "recordId": "LAB-004",
+        "pack": "quick",
+        "ruleOutcome": "Supported",
+        "acceptableDispositions": [
+          "Supported"
+        ],
+        "focus": "Respect the scoped margin-deposit approval.",
+        "concepts": [
+          {
+            "name": "Approval",
+            "terms": [
+              "approval",
+              "approved",
+              "margin"
+            ]
+          }
+        ]
+      },
+      "ruleOutcome": "Supported",
+      "result": {
+        "id": "OCI-9c6d61b6-5377-40dc-90cb-e4b94eb41e9e",
+        "recordId": "LAB-004",
+        "mode": "Live OCI model",
+        "provider": "OCI Generative AI",
+        "model": "cohere.command-a-03-2025",
+        "region": "ap-hyderabad-1",
+        "promptVersion": "uco-validation-v1",
+        "createdAt": "2026-10-12T15:16:55.027Z",
+        "durationMs": 8284,
+        "inputDigest": "4d7a25b618ab67ff3a37a030784434647293d14546eda52bbef69b6f149ea177",
+        "responseDigest": "e2716a3c789e89f122dbd0b327e9a833292cdef6200ecbdd2663a0ecc3f97284",
+        "requestId": "F0A865C1C64F-11F1-AD8D-3962046E7/AC22FA26914D800A3948D39A864FF6F7/5CC1AAF817C1D0DB11F3E82FC0DA3F3C",
+        "ruleOutcome": "Supported",
+        "ruleReviewInr": 0,
+        "packet": {
+          "version": "uco-validation-v1",
+          "recordId": "LAB-004",
+          "asOf": "2026-09-25T12:00:00+05:30",
+          "borrower": "Lotus Fabrication",
+          "facility": {
+            "loanType": "Term loan",
+            "purpose": "Warehouse expansion",
+            "sanctionClause": "Funds are permitted for warehouse expansion. Obtain transaction-specific commercial evidence; other uses require written approval.",
+            "allowedUseCategories": [
+              "building_materials"
+            ],
+            "restrictedPayeeIds": []
+          },
+          "policy": {
+            "version": 1,
+            "mode": "Evaluation policy · bank approval pending",
+            "minAmount": 100000,
+            "rapidAmount": 500000,
+            "rapidHours": 4,
+            "repeatHours": 168,
+            "repeatCount": 3,
+            "returnDebitCount": 2,
+            "reopenHours": 720,
+            "splitAmount": 500000,
+            "splitCount": 3,
+            "batchAmount": 4000000,
+            "batchCount": 8,
+            "batchMinutes": 60
+          },
+          "ruleResult": {
+            "outcome": "Supported",
+            "reviewInr": 0,
+            "findings": [],
+            "gaps": [],
+            "contexts": []
+          },
+          "transactions": [
+            {
+              "id": "LAB-004-TX01",
+              "from": "LAB-004-BOR",
+              "to": "LAB-004-FD",
+              "amountInr": 2500000,
+              "postedAt": "2026-09-22T12:00:00+05:30",
+              "status": "posted",
+              "observed": true,
+              "activeLoanInr": 2500000,
+              "reversedInr": 0,
+              "fundingStatus": "Explicit reference · capped",
+              "evidenceId": "LAB-004-TX01-LEDGER"
+            }
+          ],
+          "recipients": [
+            {
+              "id": "LAB-004-BOR",
+              "name": "Lotus Fabrication",
+              "type": "company",
+              "identityStatus": "verified_fixture"
+            },
+            {
+              "id": "LAB-004-FD",
+              "name": "UCO fixed deposit",
+              "type": "fixed_deposit",
+              "identityStatus": "verified_fixture"
+            }
+          ],
+          "approvals": [
+            {
+              "id": "LAB-004-APP",
+              "payeeId": "LAB-004-FD",
+              "project": "LAB-004-PROJECT",
+              "category": "fixed_deposit",
+              "maxAmountInr": 2500000,
+              "validFrom": "2026-09-21T09:30:00+05:30",
+              "validTo": "2026-09-25T12:00:00+05:30",
+              "status": "approved",
+              "evidenceId": "LAB-004-APP"
+            }
+          ],
+          "fixedDeposits": [
+            {
+              "id": "FD-MT-001",
+              "bank": "UCO",
+              "fundingTx": "LAB-004-TX01",
+              "amount": 2500000,
+              "evidenceId": "LAB-004-FD-LINK"
+            }
+          ],
+          "relationships": [],
+          "accountHistory": [],
+          "evidence": [
+            {
+              "id": "LAB-004-SAN",
+              "title": "SAN",
+              "kind": "sanction",
+              "status": "verified_fixture",
+              "source": "Prepared bank case records",
+              "capturedAt": "2026-09-25T12:00:00+05:30",
+              "payload": {
+                "clause": "Funds are permitted for warehouse expansion. Obtain transaction-specific commercial evidence; other uses require written approval.",
+                "allowedUseCategories": [
+                  "building_materials"
+                ]
+              }
+            },
+            {
+              "id": "LAB-004-FD-IDENTITY",
+              "title": "FD IDENTITY",
+              "kind": "bank_beneficiary_mapping",
+              "status": "verified_fixture",
+              "source": "Prepared bank case records",
+              "capturedAt": "2026-09-25T12:00:00+05:30",
+              "payload": {
+                "entityId": "LAB-004-FD",
+                "legalName": "UCO fixed deposit",
+                "accountToken": "••••7302",
+                "basis": "Bank-held beneficiary record",
+                "registryReference": null
+              }
+            },
+            {
+              "id": "LAB-004-FD-HISTORY",
+              "title": "FD HISTORY",
+              "kind": "payment_history",
+              "status": "verified_fixture",
+              "source": "Prepared bank case records",
+              "capturedAt": "2026-09-25T12:00:00+05:30",
+              "payload": {
+                "entityId": "LAB-004-FD",
+                "count180d": 0,
+                "amountInr": 0,
+                "scope": "Recorded UCO transactions"
+              }
+            },
+            {
+              "id": "LAB-004-TX01-LEDGER",
+              "title": "TX01 LEDGER",
+              "kind": "bank_transaction",
+              "status": "verified_fixture",
+              "source": "Prepared bank case records",
+              "capturedAt": "2026-09-25T12:00:00+05:30",
+              "payload": {
+                "id": "LAB-004-TX01",
+                "version": 1,
+                "from": "LAB-004-BOR",
+                "to": "LAB-004-FD",
+                "amountInr": 2500000,
+                "currency": "INR",
+                "postedAt": "2026-09-22T12:00:00+05:30",
+                "receivedAt": "2026-09-22T12:00:00+05:30",
+                "status": "posted",
+                "kind": "payment",
+                "channel": "NEFT",
+                "observed": true,
+                "drawdownReference": "LAB-004-DD",
+                "documentedUseCategory": "fixed_deposit",
+                "narration": "Payment to UCO fixed deposit"
+              }
+            },
+            {
+              "id": "LAB-004-TX1-INSTRUCTION",
+              "title": "TX1 INSTRUCTION",
+              "kind": "payment_instruction",
+              "status": "verified_fixture",
+              "source": "Prepared bank case records",
+              "capturedAt": "2026-09-25T12:00:00+05:30",
+              "payload": {
+                "transactionId": "LAB-004-TX01",
+                "useCategory": "fixed_deposit"
+              }
+            },
+            {
+              "id": "LAB-004-FD-LINK",
+              "title": "FD LINK",
+              "kind": "finacle_fd_linkage",
+              "status": "verified_fixture",
+              "source": "Prepared bank case records",
+              "capturedAt": "2026-09-25T12:00:00+05:30",
+              "payload": {
+                "id": "FD-MT-001",
+                "bank": "UCO",
+                "fundingTx": "LAB-004-TX01",
+                "amount": 2500000
+              }
+            },
+            {
+              "id": "LAB-004-LAB-004-TX01-INVOICE",
+              "title": "MT FD OK TX01 INVOICE",
+              "kind": "invoice",
+              "status": "verified_fixture",
+              "source": "Prepared bank case records",
+              "capturedAt": "2026-09-25T12:00:00+05:30",
+              "payload": {
+                "transactionId": "LAB-004-TX01",
+                "sellerEntityId": "LAB-004-FD",
+                "project": "LAB-004-PROJECT",
+                "amountInr": 2500000,
+                "useCategory": "fixed_deposit",
+                "items": [
+                  "Documented goods or services for the sanctioned purpose"
+                ]
+              }
+            },
+            {
+              "id": "LAB-004-LAB-004-TX01-DELIVERY",
+              "title": "MT FD OK TX01 DELIVERY",
+              "kind": "goods_receipt",
+              "status": "verified_fixture",
+              "source": "Prepared bank case records",
+              "capturedAt": "2026-09-25T12:00:00+05:30",
+              "payload": {
+                "transactionId": "LAB-004-TX01",
+                "invoiceId": "LAB-004-LAB-004-TX01-INVOICE",
+                "project": "LAB-004-PROJECT",
+                "accepted": true
+              }
+            },
+            {
+              "id": "LAB-004-APP",
+              "title": "APP",
+              "kind": "approval",
+              "status": "verified_fixture",
+              "source": "Prepared bank case records",
+              "capturedAt": "2026-09-25T12:00:00+05:30",
+              "payload": {
+                "transactionId": "LAB-004-TX01",
+                "reason": "Written project-specific margin FD approval and lien record"
+              }
+            }
+          ]
+        },
+        "review": {
+          "disposition": "Supported",
+          "summary": "The transaction of INR 2,500,000 from Lotus Fabrication to UCO fixed deposit is supported by verified evidence. The transaction aligns with the sanctioned purpose of warehouse expansion, as evidenced by the fixed deposit linkage and approved use category. All necessary evidence, including the sanction clause, transaction ledger, and approval, is verified and consistent with the loan terms.",
+          "claims": [
+            {
+              "text": "The transaction is explicitly linked to a fixed deposit with UCO Bank.",
+              "evidenceIds": [
+                "LAB-004-FD-LINK",
+                "LAB-004-TX01-LEDGER"
+              ]
+            },
+            {
+              "text": "The transaction amount of INR 2,500,000 is within the approved limit.",
+              "evidenceIds": [
+                "LAB-004-APP",
+                "LAB-004-TX01-LEDGER"
+              ]
+            },
+            {
+              "text": "The transaction is documented as a fixed deposit, consistent with the sanctioned purpose.",
+              "evidenceIds": [
+                "LAB-004-TX1-INSTRUCTION",
+                "LAB-004-LAB-004-TX01-INVOICE"
+              ]
+            }
+          ],
+          "legitimateExplanation": "The transaction is fully supported by verified evidence, including the fixed deposit linkage, approved use category, and transaction ledger. The amount and purpose align with the loan sanction and approval records.",
+          "missingEvidence": [],
+          "nextSteps": []
+        },
+        "limitations": "Advisory review only. Citation checks confirm that references exist, not that the explanation is correct. An officer must review the draft; detection rules, verified identities and case decisions are unchanged."
+      },
+      "checks": {
+        "dispositionAgrees": true,
+        "citationsValid": true,
+        "concepts": [
+          {
+            "name": "Approval",
+            "mentioned": true
+          }
+        ],
+        "checksPassed": true,
+        "limitations": "Authored synthetic test cases, not independent bank labels. Checks measure disposition agreement, citation validity and mention of expected topics. They do not verify source truth, detect all hallucinations or establish fraud accuracy. Review each answer yourself."
+      }
+    },
+    {
+      "recordId": "LAB-005",
+      "borrower": "Cedar Packaging",
+      "repeat": 1,
+      "expected": {
+        "recordId": "LAB-005",
+        "pack": "quick",
+        "ruleOutcome": "Evidence needed",
+        "acceptableDispositions": [
+          "Evidence needed",
+          "Inconclusive"
+        ],
+        "focus": "Do not force an identity match from similar names.",
+        "concepts": [
+          {
+            "name": "Identity uncertainty",
+            "terms": [
+              "identity",
+              "ambiguous",
+              "beneficiary",
+              "unresolved"
+            ]
+          }
+        ]
+      },
+      "ruleOutcome": "Evidence needed",
+      "result": {
+        "id": "OCI-4350b2e5-9194-45c6-b54f-55846a97150f",
+        "recordId": "LAB-005",
+        "mode": "Live OCI model",
+        "provider": "OCI Generative AI",
+        "model": "cohere.command-a-03-2025",
+        "region": "ap-hyderabad-1",
+        "promptVersion": "uco-validation-v1",
+        "createdAt": "2026-10-12T15:17:02.781Z",
+        "durationMs": 7688,
+        "inputDigest": "0e3e20c26a893420a6d6bbd17ef86eb61d30166af1279b272ee421e07f1ed191",
+        "responseDigest": "ddcdc4a43ce24089d9d2614dfc8dafa1b88954fb70032287003d5c3818298870",
+        "requestId": "F5A25A91C64F-11F1-AD8D-3962046E7/956ED6F358149C1F3E170598414AC418/F2E2142C693EDA6DCC14C0D909D00684",
+        "ruleOutcome": "Evidence needed",
+        "ruleReviewInr": 0,
+        "packet": {
+          "version": "uco-validation-v1",
+          "recordId": "LAB-005",
+          "asOf": "2026-09-22T10:00:00+05:30",
+          "borrower": "Cedar Packaging",
+          "facility": {
+            "loanType": "Housing self construction",
+            "purpose": "Build the sanctioned house",
+            "sanctionClause": "Clause 3: documented building materials and labour for the property are permitted.",
+            "allowedUseCategories": [
+              "building_materials",
+              "construction_labour"
+            ],
+            "restrictedPayeeIds": []
+          },
+          "policy": {
+            "version": 1,
+            "mode": "Evaluation policy · bank approval pending",
+            "minAmount": 100000,
+            "rapidAmount": 500000,
+            "rapidHours": 4,
+            "repeatHours": 168,
+            "repeatCount": 3,
+            "returnDebitCount": 2,
+            "reopenHours": 720,
+            "splitAmount": 500000,
+            "splitCount": 3,
+            "batchAmount": 4000000,
+            "batchCount": 8,
+            "batchMinutes": 60
+          },
+          "ruleResult": {
+            "outcome": "Evidence needed",
+            "reviewInr": 0,
+            "findings": [],
+            "gaps": [
+              {
+                "rule": "EU10",
+                "title": "Recipient identity unresolved",
+                "detail": "Name matches cannot establish who owns the recipient account.",
+                "transactionIds": [
+                  "LAB-005-TX01"
+                ],
+                "evidenceIds": [
+                  "LAB-005-SAN",
+                  "LAB-005-TX01-LEDGER"
+                ],
+                "amountInr": 500000
+              }
+            ],
+            "contexts": []
+          },
+          "transactions": [
+            {
+              "id": "LAB-005-TX01",
+              "from": "LAB-005-BOR",
+              "to": "LAB-005-UNKNOWN",
+              "amountInr": 500000,
+              "postedAt": "2026-09-21T11:00:00+05:30",
+              "status": "posted",
+              "observed": true,
+              "activeLoanInr": 500000,
+              "reversedInr": 0,
+              "fundingStatus": "Explicit reference · capped",
+              "evidenceId": "LAB-005-TX01-LEDGER"
+            }
+          ],
+          "recipients": [
+            {
+              "id": "LAB-005-BOR",
+              "name": "Cedar Packaging",
+              "type": "individual",
+              "identityStatus": "verified_fixture"
+            },
+            {
+              "id": "LAB-005-UNKNOWN",
+              "name": "A Kumar Traders Demo",
+              "type": "unknown",
+              "identityStatus": "unresolved"
+            }
+          ],
+          "approvals": [],
+          "fixedDeposits": [],
+          "relationships": [],
+          "accountHistory": [],
+          "evidence": [
+            {
+              "id": "LAB-005-SAN",
+              "title": "Approved sanction fixture",
+              "kind": "sanction",
+              "status": "verified_fixture",
+              "source": "Embedded demonstration fixture",
+              "capturedAt": "2026-09-20T10:00:00+05:30",
+              "payload": {
+                "clause": "Clause 3: documented building materials and labour for the property are permitted.",
+                "project": "SYN-PROJECT-HOME-D404",
+                "allowedUseCategories": [
+                  "building_materials",
+                  "construction_labour"
+                ],
+                "restrictedPayeeIds": []
+              }
+            },
+            {
+              "id": "LAB-005-KYC",
+              "title": "Borrower KYC fixture",
+              "kind": "bank_kyc",
+              "status": "verified_fixture",
+              "source": "Embedded demonstration fixture",
+              "capturedAt": "2026-09-20T10:00:00+05:30",
+              "payload": {
+                "entityId": "LAB-005-BOR",
+                "accountToken": "SYN-ACCT-LAB-005-BOR"
+              }
+            },
+            {
+              "id": "LAB-005-TX01-LEDGER",
+              "title": "Posted transaction fixture",
+              "kind": "bank_transaction",
+              "status": "verified_fixture",
+              "source": "Embedded demonstration fixture",
+              "capturedAt": "2026-09-21T11:01:00+05:30",
+              "payload": {
+                "transactionId": "LAB-005-TX01",
+                "amountInr": 500000,
+                "from": "LAB-005-BOR",
+                "to": "LAB-005-UNKNOWN",
+                "postedAt": "2026-09-21T11:00:00+05:30",
+                "reversalOf": null
+              }
+            },
+            {
+              "id": "LAB-005-CANDIDATES",
+              "title": "Ambiguous search results fixture",
+              "kind": "name_search",
+              "status": "inconclusive",
+              "source": "Embedded demonstration fixture",
+              "capturedAt": "2026-09-21T15:00:00+05:30",
+              "payload": {
+                "query": "A Kumar Traders Demo",
+                "candidates": [
+                  {
+                    "name": "A Kumar Building Traders Demo",
+                    "location": "City A",
+                    "business": "Building materials"
+                  },
+                  {
+                    "name": "A Kumar Device Traders Demo",
+                    "location": "City B",
+                    "business": "Electronics"
+                  }
+                ],
+                "accountOwnerEstablished": false
+              }
+            },
+            {
+              "id": "LAB-005-CHECK01-EVIDENCE",
+              "title": "Web search lookup fixture",
+              "kind": "external_research",
+              "status": "inconclusive",
+              "source": "Embedded demonstration fixture",
+              "capturedAt": "2026-09-21T15:00:00+05:30",
+              "payload": {
+                "entityId": "LAB-005-UNKNOWN",
+                "claim": "Two fictional name matches exist; neither is linked to the payment account.",
+                "limitations": "Does not establish delivery, invoice authenticity or actual use of funds."
+              }
+            },
+            {
+              "id": "LAB-005-UNKNOWN-HISTORY",
+              "title": "Prior payment history fixture",
+              "kind": "bank_history_aggregate",
+              "status": "verified_fixture",
+              "source": "Embedded demonstration fixture",
+              "capturedAt": "2026-09-21T09:59:00+05:30",
+              "payload": {
+                "borrowerId": "LAB-005-BOR",
+                "beneficiaryId": "LAB-005-UNKNOWN",
+                "windowDays": 180,
+                "windowEndsBefore": "2026-09-21T10:00:00+05:30",
+                "paymentCount": 0,
+                "basis": "Synthetic bank history aggregate; underlying historical transactions are not included."
+              }
+            }
+          ]
+        },
+        "review": {
+          "disposition": "Evidence needed",
+          "summary": "The transaction of INR 500,000 to 'A Kumar Traders Demo' requires further evidence to resolve the recipient's identity. While the transaction aligns with the loan purpose (building materials or labour), the recipient's identity remains unresolved. Evidence shows ambiguous search results and no prior payment history, necessitating additional verification.",
+          "claims": [
+            {
+              "text": "The recipient account owner's identity is unresolved.",
+              "evidenceIds": [
+                "LAB-005-TX01-LEDGER",
+                "LAB-005-CANDIDATES",
+                "LAB-005-CHECK01-EVIDENCE"
+              ]
+            },
+            {
+              "text": "No prior payment history exists between the borrower and the recipient.",
+              "evidenceIds": [
+                "LAB-005-UNKNOWN-HISTORY"
+              ]
+            }
+          ],
+          "legitimateExplanation": "The transaction aligns with the loan purpose (building materials or labour) as per Clause 3 of the sanction (LAB-005-SAN). However, the recipient's identity must be confirmed to ensure compliance.",
+          "missingEvidence": [
+            "Verified recipient identity documentation",
+            "Invoice or delivery proof linking the payment to permitted use categories"
+          ],
+          "nextSteps": [
+            "Request borrower to provide recipient identity verification documents",
+            "Obtain invoices or delivery proofs for the transaction"
+          ]
+        },
+        "limitations": "Advisory review only. Citation checks confirm that references exist, not that the explanation is correct. An officer must review the draft; detection rules, verified identities and case decisions are unchanged."
+      },
+      "checks": {
+        "dispositionAgrees": true,
+        "citationsValid": true,
+        "concepts": [
+          {
+            "name": "Identity uncertainty",
+            "mentioned": true
+          }
+        ],
+        "checksPassed": true,
+        "limitations": "Authored synthetic test cases, not independent bank labels. Checks measure disposition agreement, citation validity and mention of expected topics. They do not verify source truth, detect all hallucinations or establish fraud accuracy. Review each answer yourself."
+      }
+    },
+    {
+      "recordId": "LAB-006",
+      "borrower": "Riverbend Construction",
+      "repeat": 1,
+      "expected": {
+        "recordId": "LAB-006",
+        "pack": "quick",
+        "ruleOutcome": "Evidence needed",
+        "acceptableDispositions": [
+          "Evidence needed",
+          "Inconclusive"
+        ],
+        "focus": "An invoice does not establish accepted delivery.",
+        "concepts": [
+          {
+            "name": "Delivery gap",
+            "terms": [
+              "delivery",
+              "goods receipt",
+              "receipt",
+              "site evidence"
+            ]
+          }
+        ]
+      },
+      "ruleOutcome": "Evidence needed",
+      "result": {
+        "id": "OCI-a86c38bd-eb73-4c17-840c-497fa189fb93",
+        "recordId": "LAB-006",
+        "mode": "Live OCI model",
+        "provider": "OCI Generative AI",
+        "model": "cohere.command-a-03-2025",
+        "region": "ap-hyderabad-1",
+        "promptVersion": "uco-validation-v1",
+        "createdAt": "2026-10-12T15:17:10.390Z",
+        "durationMs": 7546,
+        "inputDigest": "3faa888998eab71c4f8945eba28d3f871fe2f59deb4f5cac262c6e0275f65a8b",
+        "responseDigest": "1c16dc1ee880b6d60d0eb7ab99532444db0415c4ae1911104b699a48bb14cc9a",
+        "requestId": "FA40C1E1C64F-11F1-AD8D-3962046E7/34DC1A86C2C6BBDAF3EBF95CCA699469/F58036FD5C5529F037781F9E7F4818B4",
+        "ruleOutcome": "Evidence needed",
+        "ruleReviewInr": 0,
+        "packet": {
+          "version": "uco-validation-v1",
+          "recordId": "LAB-006",
+          "asOf": "2026-09-22T10:00:00+05:30",
+          "borrower": "Riverbend Construction",
+          "facility": {
+            "loanType": "Housing self construction",
+            "purpose": "Build the sanctioned house",
+            "sanctionClause": "Clause 3: disbursements may fund verified building materials and labour for the sanctioned property.",
+            "allowedUseCategories": [
+              "building_materials",
+              "construction_labour"
+            ],
+            "restrictedPayeeIds": []
+          },
+          "policy": {
+            "version": 1,
+            "mode": "Evaluation policy · bank approval pending",
+            "minAmount": 100000,
+            "rapidAmount": 500000,
+            "rapidHours": 4,
+            "repeatHours": 168,
+            "repeatCount": 3,
+            "returnDebitCount": 2,
+            "reopenHours": 720,
+            "splitAmount": 500000,
+            "splitCount": 3,
+            "batchAmount": 4000000,
+            "batchCount": 8,
+            "batchMinutes": 60
+          },
+          "ruleResult": {
+            "outcome": "Evidence needed",
+            "reviewInr": 0,
+            "findings": [],
+            "gaps": [
+              {
+                "rule": "DOC02",
+                "title": "Delivery or commercial evidence incomplete",
+                "detail": "An invoice alone does not establish delivery; obtain accepted site evidence.",
+                "transactionIds": [
+                  "LAB-006-TX01"
+                ],
+                "evidenceIds": [
+                  "LAB-006-SAN",
+                  "LAB-006-TX01-LEDGER",
+                  "LAB-006-INV01"
+                ],
+                "amountInr": 800000
+              }
+            ],
+            "contexts": []
+          },
+          "transactions": [
+            {
+              "id": "LAB-006-TX01",
+              "from": "LAB-006-BOR",
+              "to": "LAB-006-SUPPLIER",
+              "amountInr": 800000,
+              "postedAt": "2026-09-21T13:00:00+05:30",
+              "status": "posted",
+              "observed": true,
+              "activeLoanInr": 800000,
+              "reversedInr": 0,
+              "fundingStatus": "Explicit reference · capped",
+              "evidenceId": "LAB-006-TX01-LEDGER"
+            }
+          ],
+          "recipients": [
+            {
+              "id": "LAB-006-BOR",
+              "name": "Riverbend Construction",
+              "type": "individual",
+              "identityStatus": "verified_fixture"
+            },
+            {
+              "id": "LAB-006-SUPPLIER",
+              "name": "Example Cement Trading Demo",
+              "type": "company",
+              "identityStatus": "verified_fixture"
+            }
+          ],
+          "approvals": [],
+          "fixedDeposits": [],
+          "relationships": [],
+          "accountHistory": [],
+          "evidence": [
+            {
+              "id": "LAB-006-SAN",
+              "title": "Approved sanction fixture",
+              "kind": "sanction",
+              "status": "verified_fixture",
+              "source": "Embedded demonstration fixture",
+              "capturedAt": "2026-09-20T10:00:00+05:30",
+              "payload": {
+                "clause": "Clause 3: disbursements may fund verified building materials and labour for the sanctioned property.",
+                "project": "SYN-PROJECT-HOME-B202",
+                "allowedUseCategories": [
+                  "building_materials",
+                  "construction_labour"
+                ],
+                "restrictedPayeeIds": []
+              }
+            },
+            {
+              "id": "LAB-006-KYC",
+              "title": "Borrower KYC fixture",
+              "kind": "bank_kyc",
+              "status": "verified_fixture",
+              "source": "Embedded demonstration fixture",
+              "capturedAt": "2026-09-20T10:00:00+05:30",
+              "payload": {
+                "entityId": "LAB-006-BOR",
+                "accountToken": "SYN-ACCT-LAB-006-BOR"
+              }
+            },
+            {
+              "id": "LAB-006-SUPPLIER-IDENTITY",
+              "title": "Recipient account ownership fixture",
+              "kind": "bank_beneficiary_mapping",
+              "status": "verified_fixture",
+              "source": "Embedded demonstration fixture",
+              "capturedAt": "2026-09-21T09:00:00+05:30",
+              "payload": {
+                "entityId": "LAB-006-SUPPLIER",
+                "accountToken": "SYN-ACCT-LAB-006-SUPPLIER",
+                "legalName": "Example Cement Trading Demo",
+                "registryToken": "SYN-GST-LAB-006-SUPPLIER"
+              }
+            },
+            {
+              "id": "LAB-006-INV01",
+              "title": "Invoice fixture",
+              "kind": "invoice",
+              "status": "verified_fixture",
+              "source": "Embedded demonstration fixture",
+              "capturedAt": "2026-09-21T15:00:00+05:30",
+              "payload": {
+                "sellerEntityId": "LAB-006-SUPPLIER",
+                "buyerEntityId": "LAB-006-BOR",
+                "amountInr": 800000,
+                "items": [
+                  "Cement and aggregate"
+                ],
+                "useCategory": "building_materials",
+                "project": "SYN-PROJECT-HOME-B202",
+                "invoiceNumber": "SYN-INVOICE-LAB-006-INV01",
+                "authenticity": "Fixture accepted for the scenario; production verification required."
+              }
+            },
+            {
+              "id": "LAB-006-INV01-DELIVERY",
+              "title": "Accepted delivery fixture",
+              "kind": "goods_receipt",
+              "status": "submitted",
+              "source": "Embedded demonstration fixture",
+              "capturedAt": "2026-09-21T15:00:00+05:30",
+              "payload": {
+                "invoiceId": "LAB-006-INV01",
+                "project": "SYN-PROJECT-HOME-B202",
+                "receivedItems": [
+                  "Cement and aggregate"
+                ],
+                "verifiedBy": "SYN-SITE-OFFICER"
+              }
+            },
+            {
+              "id": "LAB-006-TX01-LEDGER",
+              "title": "Posted transaction fixture",
+              "kind": "bank_transaction",
+              "status": "verified_fixture",
+              "source": "Embedded demonstration fixture",
+              "capturedAt": "2026-09-21T13:01:00+05:30",
+              "payload": {
+                "transactionId": "LAB-006-TX01",
+                "amountInr": 800000,
+                "from": "LAB-006-BOR",
+                "to": "LAB-006-SUPPLIER",
+                "postedAt": "2026-09-21T13:00:00+05:30",
+                "reversalOf": null
+              }
+            },
+            {
+              "id": "LAB-006-CHECK01-EVIDENCE",
+              "title": "GST lookup fixture",
+              "kind": "external_research",
+              "status": "verified_fixture",
+              "source": "Embedded demonstration fixture",
+              "capturedAt": "2026-09-21T15:00:00+05:30",
+              "payload": {
+                "entityId": "LAB-006-SUPPLIER",
+                "claim": "The fixture identifies the supplier as the same legal entity recorded by the bank.",
+                "limitations": "Does not establish delivery, invoice authenticity or actual use of funds."
+              }
+            },
+            {
+              "id": "LAB-006-SUPPLIER-HISTORY",
+              "title": "Prior payment history fixture",
+              "kind": "bank_history_aggregate",
+              "status": "verified_fixture",
+              "source": "Embedded demonstration fixture",
+              "capturedAt": "2026-09-21T09:59:00+05:30",
+              "payload": {
+                "borrowerId": "LAB-006-BOR",
+                "beneficiaryId": "LAB-006-SUPPLIER",
+                "windowDays": 180,
+                "windowEndsBefore": "2026-09-21T10:00:00+05:30",
+                "paymentCount": 0,
+                "basis": "Synthetic bank history aggregate; underlying historical transactions are not included."
+              }
+            }
+          ]
+        },
+        "review": {
+          "disposition": "Evidence needed",
+          "summary": "The transaction of INR 800,000 to Example Cement Trading Demo is supported by a verified invoice for building materials, but lacks accepted site evidence to confirm delivery as required by the sanction clause. The rule alert highlights the need for additional proof of delivery to comply with loan terms.",
+          "claims": [
+            {
+              "text": "The transaction is supported by a verified invoice for building materials.",
+              "evidenceIds": [
+                "LAB-006-INV01"
+              ]
+            },
+            {
+              "text": "The sanction clause requires verified building materials and labour for disbursements.",
+              "evidenceIds": [
+                "LAB-006-SAN"
+              ]
+            },
+            {
+              "text": "The delivery evidence is submitted but not yet accepted.",
+              "evidenceIds": [
+                "LAB-006-INV01-DELIVERY"
+              ]
+            }
+          ],
+          "legitimateExplanation": "The invoice and submitted delivery evidence align with the loan purpose and allowed use categories. However, the delivery evidence is not yet accepted, leaving a gap in compliance with the sanction clause.",
+          "missingEvidence": [
+            "Accepted site evidence confirming delivery of materials"
+          ],
+          "nextSteps": [
+            "Verify and accept the submitted delivery evidence (LAB-006-INV01-DELIVERY)",
+            "Ensure compliance with sanction clause requirements before further disbursements"
+          ]
+        },
+        "limitations": "Advisory review only. Citation checks confirm that references exist, not that the explanation is correct. An officer must review the draft; detection rules, verified identities and case decisions are unchanged."
+      },
+      "checks": {
+        "dispositionAgrees": true,
+        "citationsValid": true,
+        "concepts": [
+          {
+            "name": "Delivery gap",
+            "mentioned": true
+          }
+        ],
+        "checksPassed": true,
+        "limitations": "Authored synthetic test cases, not independent bank labels. Checks measure disposition agreement, citation validity and mention of expected topics. They do not verify source truth, detect all hallucinations or establish fraud accuracy. Review each answer yourself."
+      }
+    }
+  ],
+  "totals": {
+    "attempted": 6,
+    "completed": 4,
+    "errors": 2,
+    "checksPassed": 4,
+    "needsReview": 0,
+    "agreement": 1,
+    "unstableCases": []
+  },
+  "limitations": "Authored synthetic test cases, not independent bank labels. Checks measure disposition agreement, citation validity and mention of expected topics. They do not verify source truth, detect all hallucinations or establish fraud accuracy. Review each answer yourself.",
+  "currentRecordId": null,
+  "finishedAt": "2026-10-12T15:17:10.441Z"
+}

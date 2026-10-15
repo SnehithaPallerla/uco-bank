@@ -1,0 +1,809 @@
+{
+  "provenance": {
+    "environment": "Evaluation",
+    "records": "Generated acceptance records; no real UCO customer data",
+    "execution": "Local rules, graph traversal and keyword retrieval",
+    "oracleConnected": false,
+    "finacleConnected": false,
+    "liveModel": false
+  },
+  "policy": {
+    "version": 1,
+    "mode": "Evaluation policy · bank approval pending",
+    "minAmount": 100000,
+    "rapidAmount": 500000,
+    "rapidHours": 4,
+    "repeatHours": 168,
+    "repeatCount": 3,
+    "returnDebitCount": 2,
+    "reopenHours": 720,
+    "splitAmount": 500000,
+    "splitCount": 3,
+    "batchAmount": 4000000,
+    "batchCount": 8,
+    "batchMinutes": 60
+  },
+  "records": [
+    {
+      "id": "HL01",
+      "outcome": "Review required",
+      "reviewInr": 1200000,
+      "signals": [
+        "EU01",
+        "EU02"
+      ],
+      "uniqueTransactions": 1,
+      "receivedEvents": 1
+    },
+    {
+      "id": "HL02",
+      "outcome": "Supported",
+      "reviewInr": 0,
+      "signals": [],
+      "uniqueTransactions": 1,
+      "receivedEvents": 1
+    },
+    {
+      "id": "HL03",
+      "outcome": "Supported",
+      "reviewInr": 0,
+      "signals": [],
+      "uniqueTransactions": 1,
+      "receivedEvents": 1
+    },
+    {
+      "id": "CL01",
+      "outcome": "Supported",
+      "reviewInr": 0,
+      "signals": [],
+      "uniqueTransactions": 1,
+      "receivedEvents": 1
+    },
+    {
+      "id": "CL02",
+      "outcome": "Review required",
+      "reviewInr": 2500000,
+      "signals": [
+        "EU02"
+      ],
+      "uniqueTransactions": 1,
+      "receivedEvents": 1
+    },
+    {
+      "id": "CL03",
+      "outcome": "Review required",
+      "reviewInr": 3000000,
+      "signals": [
+        "EU04"
+      ],
+      "uniqueTransactions": 1,
+      "receivedEvents": 1
+    },
+    {
+      "id": "CL04",
+      "outcome": "Review required",
+      "reviewInr": 4800000,
+      "signals": [
+        "EU06"
+      ],
+      "uniqueTransactions": 10,
+      "receivedEvents": 10
+    },
+    {
+      "id": "CL05",
+      "outcome": "Review required",
+      "reviewInr": 2000000,
+      "signals": [
+        "EU07"
+      ],
+      "uniqueTransactions": 3,
+      "receivedEvents": 3
+    },
+    {
+      "id": "DU01",
+      "outcome": "Evidence needed",
+      "reviewInr": 0,
+      "signals": [
+        "EU10"
+      ],
+      "uniqueTransactions": 1,
+      "receivedEvents": 1
+    },
+    {
+      "id": "DU02",
+      "outcome": "Evidence needed",
+      "reviewInr": 0,
+      "signals": [
+        "EU11"
+      ],
+      "uniqueTransactions": 1,
+      "receivedEvents": 1
+    },
+    {
+      "id": "EX01",
+      "outcome": "Supported",
+      "reviewInr": 0,
+      "signals": [],
+      "uniqueTransactions": 1,
+      "receivedEvents": 1
+    },
+    {
+      "id": "OP01",
+      "outcome": "Supported",
+      "reviewInr": 0,
+      "signals": [],
+      "uniqueTransactions": 3,
+      "receivedEvents": 4
+    },
+    {
+      "id": "LEG-related",
+      "outcome": "Review required",
+      "reviewInr": 3000000,
+      "signals": [
+        "EU04",
+        "T08"
+      ],
+      "uniqueTransactions": 1,
+      "receivedEvents": 1
+    },
+    {
+      "id": "LEG-repeat",
+      "outcome": "Review required",
+      "reviewInr": 800000,
+      "signals": [
+        "EU04",
+        "EU04",
+        "EU04",
+        "EU04",
+        "T01",
+        "T09"
+      ],
+      "uniqueTransactions": 5,
+      "receivedEvents": 5
+    },
+    {
+      "id": "LEG-investment",
+      "outcome": "Review required",
+      "reviewInr": 1500000,
+      "signals": [
+        "EU02",
+        "T02",
+        "T08"
+      ],
+      "uniqueTransactions": 1,
+      "receivedEvents": 1
+    },
+    {
+      "id": "LEG-fd",
+      "outcome": "Review required",
+      "reviewInr": 2500000,
+      "signals": [
+        "EU02",
+        "T03",
+        "T08"
+      ],
+      "uniqueTransactions": 1,
+      "receivedEvents": 1
+    },
+    {
+      "id": "LEG-reopen",
+      "outcome": "Context review",
+      "reviewInr": 0,
+      "signals": [
+        "T04"
+      ],
+      "uniqueTransactions": 1,
+      "receivedEvents": 1
+    },
+    {
+      "id": "LEG-retail",
+      "outcome": "Review required",
+      "reviewInr": 2000000,
+      "signals": [
+        "EU01",
+        "EU04",
+        "T05",
+        "T08"
+      ],
+      "uniqueTransactions": 1,
+      "receivedEvents": 1
+    },
+    {
+      "id": "LEG-split",
+      "outcome": "Review required",
+      "reviewInr": 750000,
+      "signals": [
+        "EU04",
+        "EU04",
+        "EU04",
+        "EU04",
+        "EU04",
+        "T01",
+        "T09"
+      ],
+      "uniqueTransactions": 5,
+      "receivedEvents": 5
+    },
+    {
+      "id": "LEG-cycle",
+      "outcome": "Review required",
+      "reviewInr": 1500000,
+      "signals": [
+        "T08",
+        "EU07",
+        "T14"
+      ],
+      "uniqueTransactions": 3,
+      "receivedEvents": 3
+    },
+    {
+      "id": "LEG-own",
+      "outcome": "Review required",
+      "reviewInr": 2000000,
+      "signals": [
+        "T10",
+        "T08"
+      ],
+      "uniqueTransactions": 1,
+      "receivedEvents": 1
+    },
+    {
+      "id": "LEG-debt",
+      "outcome": "Review required",
+      "reviewInr": 2000000,
+      "signals": [
+        "EU02",
+        "T11",
+        "T08"
+      ],
+      "uniqueTransactions": 1,
+      "receivedEvents": 1
+    },
+    {
+      "id": "LEG-cash",
+      "outcome": "Review required",
+      "reviewInr": 900000,
+      "signals": [
+        "T12"
+      ],
+      "uniqueTransactions": 1,
+      "receivedEvents": 1
+    },
+    {
+      "id": "LEG-intermediary",
+      "outcome": "Review required",
+      "reviewInr": 2500000,
+      "signals": [
+        "T08",
+        "T14"
+      ],
+      "uniqueTransactions": 2,
+      "receivedEvents": 2
+    },
+    {
+      "id": "LEG-shortfall",
+      "outcome": "Review required",
+      "reviewInr": 1000000,
+      "signals": [
+        "T15"
+      ],
+      "uniqueTransactions": 1,
+      "receivedEvents": 1
+    },
+    {
+      "id": "LEG-invoice",
+      "outcome": "Review required",
+      "reviewInr": 1200000,
+      "signals": [
+        "T16"
+      ],
+      "uniqueTransactions": 1,
+      "receivedEvents": 1
+    },
+    {
+      "id": "LEG-approved",
+      "outcome": "Supported",
+      "reviewInr": 0,
+      "signals": [],
+      "uniqueTransactions": 1,
+      "receivedEvents": 1
+    },
+    {
+      "id": "LEG-margin",
+      "outcome": "Supported",
+      "reviewInr": 0,
+      "signals": [],
+      "uniqueTransactions": 1,
+      "receivedEvents": 1
+    },
+    {
+      "id": "LEG-dealer",
+      "outcome": "Supported",
+      "reviewInr": 0,
+      "signals": [],
+      "uniqueTransactions": 1,
+      "receivedEvents": 1
+    },
+    {
+      "id": "LEG-unlinked",
+      "outcome": "Supported",
+      "reviewInr": 0,
+      "signals": [],
+      "uniqueTransactions": 2,
+      "receivedEvents": 2
+    },
+    {
+      "id": "GOOD-repeat",
+      "outcome": "Supported",
+      "reviewInr": 0,
+      "signals": [],
+      "uniqueTransactions": 5,
+      "receivedEvents": 5
+    },
+    {
+      "id": "GOOD-investment",
+      "outcome": "Supported",
+      "reviewInr": 0,
+      "signals": [],
+      "uniqueTransactions": 1,
+      "receivedEvents": 1
+    },
+    {
+      "id": "GOOD-reopen",
+      "outcome": "Supported",
+      "reviewInr": 0,
+      "signals": [],
+      "uniqueTransactions": 1,
+      "receivedEvents": 1
+    },
+    {
+      "id": "GOOD-own",
+      "outcome": "Supported",
+      "reviewInr": 0,
+      "signals": [],
+      "uniqueTransactions": 1,
+      "receivedEvents": 1
+    },
+    {
+      "id": "GOOD-debt",
+      "outcome": "Supported",
+      "reviewInr": 0,
+      "signals": [],
+      "uniqueTransactions": 1,
+      "receivedEvents": 1
+    },
+    {
+      "id": "GOOD-cash",
+      "outcome": "Supported",
+      "reviewInr": 0,
+      "signals": [],
+      "uniqueTransactions": 1,
+      "receivedEvents": 1
+    },
+    {
+      "id": "GOOD-shortfall",
+      "outcome": "Supported",
+      "reviewInr": 0,
+      "signals": [],
+      "uniqueTransactions": 1,
+      "receivedEvents": 1
+    },
+    {
+      "id": "GOOD-invoice",
+      "outcome": "Supported",
+      "reviewInr": 0,
+      "signals": [],
+      "uniqueTransactions": 1,
+      "receivedEvents": 1
+    },
+    {
+      "id": "GOOD-intermediary",
+      "outcome": "Supported",
+      "reviewInr": 0,
+      "signals": [],
+      "uniqueTransactions": 2,
+      "receivedEvents": 2
+    },
+    {
+      "id": "GOOD-split",
+      "outcome": "Supported",
+      "reviewInr": 0,
+      "signals": [],
+      "uniqueTransactions": 5,
+      "receivedEvents": 5
+    },
+    {
+      "id": "GOOD-cycle",
+      "outcome": "Supported",
+      "reviewInr": 0,
+      "signals": [],
+      "uniqueTransactions": 3,
+      "receivedEvents": 3
+    },
+    {
+      "id": "GOOD-related",
+      "outcome": "Supported",
+      "reviewInr": 0,
+      "signals": [],
+      "uniqueTransactions": 1,
+      "receivedEvents": 1
+    },
+    {
+      "id": "EX10-REVIEW",
+      "outcome": "Review required",
+      "reviewInr": 3500000,
+      "signals": [
+        "T08"
+      ],
+      "uniqueTransactions": 1,
+      "receivedEvents": 1
+    },
+    {
+      "id": "EX10-OK",
+      "outcome": "Supported",
+      "reviewInr": 0,
+      "signals": [],
+      "uniqueTransactions": 1,
+      "receivedEvents": 1
+    },
+    {
+      "id": "GOOD-BATCH",
+      "outcome": "Supported",
+      "reviewInr": 0,
+      "signals": [],
+      "uniqueTransactions": 10,
+      "receivedEvents": 10
+    },
+    {
+      "id": "BOUND-PARTIAL",
+      "outcome": "Review required",
+      "reviewInr": 900000,
+      "signals": [
+        "EU02"
+      ],
+      "uniqueTransactions": 1,
+      "receivedEvents": 1
+    },
+    {
+      "id": "BOUND-EXHAUSTED",
+      "outcome": "Review required",
+      "reviewInr": 500000,
+      "signals": [
+        "EU02",
+        "DOC01",
+        "DOC01"
+      ],
+      "uniqueTransactions": 2,
+      "receivedEvents": 2
+    },
+    {
+      "id": "BOUND-EXPIRED",
+      "outcome": "Review required",
+      "reviewInr": 800000,
+      "signals": [
+        "EU02"
+      ],
+      "uniqueTransactions": 1,
+      "receivedEvents": 1
+    },
+    {
+      "id": "BOUND-WRONGPAYEE",
+      "outcome": "Review required",
+      "reviewInr": 800000,
+      "signals": [
+        "EU02"
+      ],
+      "uniqueTransactions": 1,
+      "receivedEvents": 1
+    },
+    {
+      "id": "BOUND-MIXED",
+      "outcome": "Review required",
+      "reviewInr": 1200000,
+      "signals": [
+        "EU01",
+        "EU02",
+        "DATA02"
+      ],
+      "uniqueTransactions": 1,
+      "receivedEvents": 1
+    },
+    {
+      "id": "BOUND-MULTIDRAW",
+      "outcome": "Review required",
+      "reviewInr": 1200000,
+      "signals": [
+        "EU01",
+        "EU02",
+        "EU01",
+        "EU02",
+        "DOC01"
+      ],
+      "uniqueTransactions": 2,
+      "receivedEvents": 2
+    },
+    {
+      "id": "BOUND-PARTIALRETURN",
+      "outcome": "Review required",
+      "reviewInr": 700000,
+      "signals": [
+        "EU01"
+      ],
+      "uniqueTransactions": 3,
+      "receivedEvents": 4
+    },
+    {
+      "id": "BOUND-CANCELLED",
+      "outcome": "Supported",
+      "reviewInr": 0,
+      "signals": [],
+      "uniqueTransactions": 1,
+      "receivedEvents": 1
+    },
+    {
+      "id": "BOUND-FAILED",
+      "outcome": "Supported",
+      "reviewInr": 0,
+      "signals": [],
+      "uniqueTransactions": 1,
+      "receivedEvents": 1
+    },
+    {
+      "id": "BOUND-UNLINKED",
+      "outcome": "Evidence needed",
+      "reviewInr": 0,
+      "signals": [
+        "DATA01"
+      ],
+      "uniqueTransactions": 1,
+      "receivedEvents": 1
+    },
+    {
+      "id": "BOUND-CORRECTED",
+      "outcome": "Review required",
+      "reviewInr": 400000,
+      "signals": [
+        "EU01",
+        "EU02",
+        "DOC01"
+      ],
+      "uniqueTransactions": 1,
+      "receivedEvents": 2
+    },
+    {
+      "id": "BOUND-RESTORED",
+      "outcome": "Supported",
+      "reviewInr": 0,
+      "signals": [],
+      "uniqueTransactions": 1,
+      "receivedEvents": 1
+    },
+    {
+      "id": "BOUND-CONFLICT",
+      "outcome": "Evidence needed",
+      "reviewInr": 0,
+      "signals": [
+        "EU11"
+      ],
+      "uniqueTransactions": 1,
+      "receivedEvents": 1
+    },
+    {
+      "id": "BOUND-DELAYED",
+      "outcome": "Evidence needed",
+      "reviewInr": 0,
+      "signals": [
+        "DOC02"
+      ],
+      "uniqueTransactions": 1,
+      "receivedEvents": 1
+    },
+    {
+      "id": "BOUND-DUPINVOICE",
+      "outcome": "Evidence needed",
+      "reviewInr": 0,
+      "signals": [
+        "DOC03"
+      ],
+      "uniqueTransactions": 1,
+      "receivedEvents": 1
+    },
+    {
+      "id": "BOUND-INFLATED",
+      "outcome": "Evidence needed",
+      "reviewInr": 0,
+      "signals": [
+        "DOC01",
+        "DOC02"
+      ],
+      "uniqueTransactions": 1,
+      "receivedEvents": 1
+    },
+    {
+      "id": "BOUND-INVALID",
+      "outcome": "Data quality review",
+      "reviewInr": 0,
+      "signals": [],
+      "uniqueTransactions": 0,
+      "receivedEvents": 1
+    },
+    {
+      "id": "BOUND-PARTIALREFUND",
+      "outcome": "Review required",
+      "reviewInr": 1200000,
+      "signals": [
+        "EU01",
+        "EU02"
+      ],
+      "uniqueTransactions": 2,
+      "receivedEvents": 2
+    },
+    {
+      "id": "BOUND-ASSIGNMENT",
+      "outcome": "Supported",
+      "reviewInr": 0,
+      "signals": [],
+      "uniqueTransactions": 1,
+      "receivedEvents": 1
+    },
+    {
+      "id": "BOUND-MIDNIGHT",
+      "outcome": "Review required",
+      "reviewInr": 4800000,
+      "signals": [
+        "EU06"
+      ],
+      "uniqueTransactions": 10,
+      "receivedEvents": 10
+    },
+    {
+      "id": "BOUND-EXACTWINDOW",
+      "outcome": "Review required",
+      "reviewInr": 4800000,
+      "signals": [
+        "EU06"
+      ],
+      "uniqueTransactions": 10,
+      "receivedEvents": 10
+    },
+    {
+      "id": "BOUND-OUTSIDEWINDOW",
+      "outcome": "Supported",
+      "reviewInr": 0,
+      "signals": [],
+      "uniqueTransactions": 10,
+      "receivedEvents": 10
+    },
+    {
+      "id": "BOUND-OUTOFORDER",
+      "outcome": "Review required",
+      "reviewInr": 4800000,
+      "signals": [
+        "EU06"
+      ],
+      "uniqueTransactions": 10,
+      "receivedEvents": 10
+    },
+    {
+      "id": "BOUND-EXACTAMOUNT",
+      "outcome": "Supported",
+      "reviewInr": 0,
+      "signals": [],
+      "uniqueTransactions": 1,
+      "receivedEvents": 1
+    },
+    {
+      "id": "MT-BLUEFIN",
+      "outcome": "Review required",
+      "reviewInr": 4500000,
+      "signals": [
+        "T01"
+      ],
+      "uniqueTransactions": 3,
+      "receivedEvents": 3
+    },
+    {
+      "id": "MT-BLUEFIN-OK",
+      "outcome": "Supported",
+      "reviewInr": 0,
+      "signals": [],
+      "uniqueTransactions": 3,
+      "receivedEvents": 3
+    },
+    {
+      "id": "MT-CAPITAL",
+      "outcome": "Review required",
+      "reviewInr": 1500000,
+      "signals": [
+        "EU02",
+        "T02"
+      ],
+      "uniqueTransactions": 1,
+      "receivedEvents": 1
+    },
+    {
+      "id": "MT-CAPITAL-OK",
+      "outcome": "Supported",
+      "reviewInr": 0,
+      "signals": [],
+      "uniqueTransactions": 1,
+      "receivedEvents": 1
+    },
+    {
+      "id": "MT-FD",
+      "outcome": "Review required",
+      "reviewInr": 2500000,
+      "signals": [
+        "EU02",
+        "T03"
+      ],
+      "uniqueTransactions": 1,
+      "receivedEvents": 1
+    },
+    {
+      "id": "MT-FD-OK",
+      "outcome": "Supported",
+      "reviewInr": 0,
+      "signals": [],
+      "uniqueTransactions": 1,
+      "receivedEvents": 1
+    },
+    {
+      "id": "MT-REOPEN",
+      "outcome": "Context review",
+      "reviewInr": 0,
+      "signals": [
+        "T04"
+      ],
+      "uniqueTransactions": 0,
+      "receivedEvents": 0
+    },
+    {
+      "id": "MT-REOPEN-OK",
+      "outcome": "Supported",
+      "reviewInr": 0,
+      "signals": [],
+      "uniqueTransactions": 0,
+      "receivedEvents": 0
+    },
+    {
+      "id": "MT-RETAIL",
+      "outcome": "Review required",
+      "reviewInr": 2000000,
+      "signals": [
+        "EU01",
+        "T05"
+      ],
+      "uniqueTransactions": 1,
+      "receivedEvents": 1
+    },
+    {
+      "id": "MT-RETAIL-OK",
+      "outcome": "Supported",
+      "reviewInr": 0,
+      "signals": [],
+      "uniqueTransactions": 1,
+      "receivedEvents": 1
+    },
+    {
+      "id": "MT-CREDITS",
+      "outcome": "Context review",
+      "reviewInr": 0,
+      "signals": [
+        "T01"
+      ],
+      "uniqueTransactions": 3,
+      "receivedEvents": 3
+    },
+    {
+      "id": "MT-CAPITAL-PATTERN",
+      "outcome": "Evidence needed",
+      "reviewInr": 0,
+      "signals": [
+        "T02"
+      ],
+      "uniqueTransactions": 1,
+      "receivedEvents": 1
+    }
+  ]
+}

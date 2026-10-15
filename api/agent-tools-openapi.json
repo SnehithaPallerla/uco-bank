@@ -1,0 +1,259 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "UCO approved read-only agent tools",
+    "version": "4.0.0",
+    "description": "Deployment contract only. OCI Agent tools require a configured HTTPS endpoint and bank service identity. The calling service must propagate and authorize the actual officer subject; never trust a model-supplied role or branch."
+  },
+  "servers": [
+    {
+      "url": "https://bank-approved-api.example.invalid"
+    }
+  ],
+  "paths": {
+    "/api/records/{recordId}": {
+      "get": {
+        "operationId": "read_loan_context",
+        "summary": "read loan context",
+        "security": [
+          {
+            "localSession": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Scoped result"
+          },
+          "401": {
+            "description": "Session missing or expired"
+          },
+          "403": {
+            "description": "Access denied"
+          },
+          "404": {
+            "description": "Record or tool unavailable"
+          }
+        },
+        "parameters": [
+          {
+            "name": "recordId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/records/{recordId}/graph": {
+      "get": {
+        "operationId": "trace_observed_payments",
+        "summary": "trace observed payments",
+        "security": [
+          {
+            "localSession": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Scoped result"
+          },
+          "401": {
+            "description": "Session missing or expired"
+          },
+          "403": {
+            "description": "Access denied"
+          },
+          "404": {
+            "description": "Record or tool unavailable"
+          }
+        },
+        "parameters": [
+          {
+            "name": "recordId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/records/{recordId}/evidence/{evidenceId}": {
+      "get": {
+        "operationId": "read_case_evidence",
+        "summary": "read case evidence",
+        "security": [
+          {
+            "localSession": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Scoped result"
+          },
+          "401": {
+            "description": "Session missing or expired"
+          },
+          "403": {
+            "description": "Access denied"
+          },
+          "404": {
+            "description": "Record or tool unavailable"
+          }
+        },
+        "parameters": [
+          {
+            "name": "recordId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "evidenceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/records/{recordId}/search": {
+      "get": {
+        "operationId": "retrieve_case_evidence",
+        "summary": "retrieve case evidence",
+        "security": [
+          {
+            "localSession": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Scoped result"
+          },
+          "401": {
+            "description": "Session missing or expired"
+          },
+          "403": {
+            "description": "Access denied"
+          },
+          "404": {
+            "description": "Record or tool unavailable"
+          }
+        },
+        "parameters": [
+          {
+            "name": "recordId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "maxLength": 2000
+            }
+          }
+        ]
+      }
+    },
+    "/api/verify": {
+      "post": {
+        "operationId": "verify_beneficiary_context",
+        "summary": "verify beneficiary context",
+        "security": [
+          {
+            "localSession": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Scoped result"
+          },
+          "401": {
+            "description": "Session missing or expired"
+          },
+          "403": {
+            "description": "Access denied"
+          },
+          "404": {
+            "description": "Record or tool unavailable"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "recordId",
+                  "provider"
+                ],
+                "properties": {
+                  "recordId": {
+                    "type": "string"
+                  },
+                  "provider": {
+                    "type": "string",
+                    "enum": [
+                      "GST",
+                      "MCA",
+                      "Search"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/providers/status": {
+      "get": {
+        "operationId": "read_provider_status",
+        "summary": "read provider status",
+        "security": [
+          {
+            "localSession": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Scoped result"
+          },
+          "401": {
+            "description": "Session missing or expired"
+          },
+          "403": {
+            "description": "Access denied"
+          },
+          "404": {
+            "description": "Record or tool unavailable"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "localSession": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "Bank service identity with delegated officer context"
+      }
+    }
+  }
+}

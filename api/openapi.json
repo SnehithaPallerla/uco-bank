@@ -1,0 +1,78 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "UCO Credit Demo — local research API",
+    "version": "3.0.0",
+    "description": "Institutional sources only. Local demo; not a bank production API."
+  },
+  "servers": [
+    {
+      "url": "http://localhost:4173"
+    }
+  ],
+  "paths": {
+    "/api/health": {
+      "get": {
+        "summary": "Local service readiness",
+        "responses": {
+          "200": {
+            "description": "Includes bankConnected:false and oracleConnected:false"
+          }
+        }
+      }
+    },
+    "/api/research": {
+      "post": {
+        "summary": "Capture an allowlisted public institutional source",
+        "description": "Same-origin JSON; no arbitrary URLs or customer fields. Does not match borrower identity.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "sourceId"
+                ],
+                "properties": {
+                  "sourceId": {
+                    "type": "string",
+                    "enum": [
+                      "uco",
+                      "oracle-agents",
+                      "oracle-rag"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Evidence with URL, timestamps, capture text, SHA-256 and no-borrower-match status"
+          },
+          "400": {
+            "description": "Invalid source ID or input"
+          },
+          "403": {
+            "description": "Origin/host rejected"
+          },
+          "413": {
+            "description": "Request too large"
+          },
+          "415": {
+            "description": "Unsupported content type"
+          },
+          "429": {
+            "description": "Local quota exceeded"
+          },
+          "502": {
+            "description": "Source unavailable, restricted, oversized or unsupported"
+          }
+        }
+      }
+    }
+  }
+}

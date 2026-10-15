@@ -1,0 +1,4545 @@
+[
+  {
+    "id": "HL01",
+    "title": "Housing payment to an unapproved company",
+    "mode": "Synthetic",
+    "asOf": "2026-09-22T10:00:00+05:30",
+    "borrower": {
+      "id": "HL01-BOR",
+      "name": "Aarav Sen Demo",
+      "entityType": "individual",
+      "cif": "SYN-CIF-HL01"
+    },
+    "facility": {
+      "id": "SYN-LOAN-HL01",
+      "loanType": "Housing purchase",
+      "sanctionedAmountInr": 4000000,
+      "drawdownAmountInr": 4000000,
+      "drawdownId": "SYN-DD-HL01",
+      "drawdownAt": "2026-09-21T10:00:00+05:30",
+      "currency": "INR",
+      "project": "SYN-PROJECT-HOME-A101",
+      "purpose": "Purchase Flat A101",
+      "allowedUseCategories": [
+        "builder_payment"
+      ],
+      "restrictedPayeeIds": [
+        "HL01-BUILDER"
+      ],
+      "sanctionClause": "Clause 4: release purchase consideration only to the named builder for Flat A101 unless a written payee exception is approved.",
+      "sanctionEvidenceId": "HL01-SAN",
+      "preDrawdownBalanceInr": 0,
+      "fundAttribution": "Dedicated synthetic account with explicit drawdown reference; this simplification must not be assumed for production."
+    },
+    "entities": [
+      {
+        "id": "HL01-BOR",
+        "name": "Aarav Sen Demo",
+        "type": "individual",
+        "bankScope": "UCO fixture",
+        "accountToken": "SYN-ACCT-HL01-BOR",
+        "identityStatus": "verified_fixture",
+        "identityEvidenceIds": [
+          "HL01-KYC"
+        ],
+        "activity": "Borrower",
+        "historyPaymentCount180d": 0,
+        "registryIdentifiers": []
+      },
+      {
+        "id": "HL01-BUILDER",
+        "name": "Example Homes Builder Demo",
+        "type": "company",
+        "activity": "Residential development",
+        "bankScope": "External bank fixture",
+        "accountToken": "SYN-ACCT-HL01-BUILDER",
+        "identityStatus": "verified_fixture",
+        "identityEvidenceIds": [
+          "HL01-BUILDER-IDENTITY"
+        ],
+        "historyPaymentCount180d": 0,
+        "registryIdentifiers": [
+          {
+            "type": "GSTIN",
+            "value": "SYN-GST-HL01-BUILDER",
+            "isValidIdentifier": false
+          },
+          {
+            "type": "CIN",
+            "value": "SYN-CIN-HL01-BUILDER",
+            "isValidIdentifier": false
+          }
+        ],
+        "historyEvidenceId": "HL01-BUILDER-HISTORY"
+      },
+      {
+        "id": "HL01-TRADER",
+        "name": "Example Consumer Trading Demo",
+        "type": "company",
+        "activity": "Consumer electronics wholesaling",
+        "bankScope": "External bank fixture",
+        "accountToken": "SYN-ACCT-HL01-TRADER",
+        "identityStatus": "verified_fixture",
+        "identityEvidenceIds": [
+          "HL01-TRADER-IDENTITY"
+        ],
+        "historyPaymentCount180d": 0,
+        "registryIdentifiers": [
+          {
+            "type": "GSTIN",
+            "value": "SYN-GST-HL01-TRADER",
+            "isValidIdentifier": false
+          },
+          {
+            "type": "CIN",
+            "value": "SYN-CIN-HL01-TRADER",
+            "isValidIdentifier": false
+          }
+        ],
+        "historyEvidenceId": "HL01-TRADER-HISTORY"
+      }
+    ],
+    "transactions": [
+      {
+        "id": "HL01-TX01",
+        "bankTransactionId": "SYN-FIN-HL01-TX01",
+        "paymentReference": "SYN-UTR-HL01-TX01",
+        "from": "HL01-BOR",
+        "to": "HL01-TRADER",
+        "amountInr": 1200000,
+        "currency": "INR",
+        "postedAt": "2026-09-21T12:00:00+05:30",
+        "receivedAt": "2026-09-21T12:01:00+05:30",
+        "status": "posted",
+        "kind": "payment",
+        "channel": "NEFT fixture",
+        "reversalOf": null,
+        "observed": true,
+        "recordSource": "Synthetic authorised bank record",
+        "drawdownReference": "SYN-DD-HL01",
+        "documentedUseCategory": "consumer_electronics_resale",
+        "useEvidenceId": "HL01-INV01",
+        "evidenceId": "HL01-TX01-LEDGER"
+      }
+    ],
+    "evidence": [
+      {
+        "id": "HL01-SAN",
+        "kind": "sanction",
+        "title": "Approved sanction fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-20T10:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "clause": "Clause 4: release purchase consideration only to the named builder for Flat A101 unless a written payee exception is approved.",
+          "project": "SYN-PROJECT-HOME-A101",
+          "allowedUseCategories": [
+            "builder_payment"
+          ],
+          "restrictedPayeeIds": [
+            "HL01-BUILDER"
+          ]
+        },
+        "contentSha256": "9e6a53f4f9dd82a29c1307264b2eaa84014d5b4098de2c9b270c9cdcc718ce2d"
+      },
+      {
+        "id": "HL01-KYC",
+        "kind": "bank_kyc",
+        "title": "Borrower KYC fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-20T10:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "entityId": "HL01-BOR",
+          "accountToken": "SYN-ACCT-HL01-BOR"
+        },
+        "contentSha256": "a5f551e06e0e8c56c70c4a5a245e4e35d091d30b26cfd0e29d7763d26e932a45"
+      },
+      {
+        "id": "HL01-BUILDER-IDENTITY",
+        "kind": "bank_beneficiary_mapping",
+        "title": "Recipient account ownership fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T09:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "entityId": "HL01-BUILDER",
+          "accountToken": "SYN-ACCT-HL01-BUILDER",
+          "legalName": "Example Homes Builder Demo",
+          "registryToken": "SYN-GST-HL01-BUILDER"
+        },
+        "contentSha256": "f8aa2a256dc80aaa32d6edf0a64bc43bae3e24f135c5792d700ae44d0c96984d"
+      },
+      {
+        "id": "HL01-TRADER-IDENTITY",
+        "kind": "bank_beneficiary_mapping",
+        "title": "Recipient account ownership fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T09:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "entityId": "HL01-TRADER",
+          "accountToken": "SYN-ACCT-HL01-TRADER",
+          "legalName": "Example Consumer Trading Demo",
+          "registryToken": "SYN-GST-HL01-TRADER"
+        },
+        "contentSha256": "b44ee32f2ac576e4095db90705b48866381bf452d7b99dbe55974c627bbb392e"
+      },
+      {
+        "id": "HL01-INV01",
+        "kind": "invoice",
+        "title": "Invoice fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T15:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "sellerEntityId": "HL01-TRADER",
+          "buyerEntityId": "HL01-BOR",
+          "amountInr": 1200000,
+          "items": [
+            "Televisions and home appliances for resale"
+          ],
+          "useCategory": "consumer_electronics_resale",
+          "project": "SYN-UNRELATED-STOCK",
+          "invoiceNumber": "SYN-INVOICE-HL01-INV01",
+          "authenticity": "Fixture accepted for the scenario; production verification required."
+        },
+        "contentSha256": "ac198a799536b11f9de3a41b82448b61957a7becf836bdd1dc0791fa269f3260"
+      },
+      {
+        "id": "HL01-TX01-LEDGER",
+        "kind": "bank_transaction",
+        "title": "Posted transaction fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T12:01:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "transactionId": "HL01-TX01",
+          "amountInr": 1200000,
+          "from": "HL01-BOR",
+          "to": "HL01-TRADER",
+          "postedAt": "2026-09-21T12:00:00+05:30",
+          "reversalOf": null
+        },
+        "contentSha256": "91c2813d05e9ea49b60565e323acddd515f5132197c02e1051ec89bc0c1a9053"
+      },
+      {
+        "id": "HL01-CHECK01-EVIDENCE",
+        "kind": "external_research",
+        "title": "GST lookup fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T15:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "entityId": "HL01-TRADER",
+          "claim": "Fictional legal entity and trade name match the bank beneficiary mapping.",
+          "limitations": "Does not establish delivery, invoice authenticity or actual use of funds."
+        },
+        "contentSha256": "99369855f995fd159c2431e27a18be614b65d164c7d1e681b1686e711f370429"
+      },
+      {
+        "id": "HL01-BUILDER-HISTORY",
+        "kind": "bank_history_aggregate",
+        "title": "Prior payment history fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T09:59:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "borrowerId": "HL01-BOR",
+          "beneficiaryId": "HL01-BUILDER",
+          "windowDays": 180,
+          "windowEndsBefore": "2026-09-21T10:00:00+05:30",
+          "paymentCount": 0,
+          "basis": "Synthetic bank history aggregate; underlying historical transactions are not included."
+        },
+        "contentSha256": "5789daee6591511d2cb48ef6cce0c9cdf4b93a60be4e024bd57b1768197daf7a"
+      },
+      {
+        "id": "HL01-TRADER-HISTORY",
+        "kind": "bank_history_aggregate",
+        "title": "Prior payment history fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T09:59:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "borrowerId": "HL01-BOR",
+          "beneficiaryId": "HL01-TRADER",
+          "windowDays": 180,
+          "windowEndsBefore": "2026-09-21T10:00:00+05:30",
+          "paymentCount": 0,
+          "basis": "Synthetic bank history aggregate; underlying historical transactions are not included."
+        },
+        "contentSha256": "a40e0c6057851bd3823ba87553fcf8f0422ff0b7ee5fcea5cf0de86ddca8984f"
+      }
+    ],
+    "externalChecks": [
+      {
+        "id": "HL01-CHECK01",
+        "provider": "GST",
+        "mode": "Synthetic",
+        "entityId": "HL01-TRADER",
+        "lookupKey": "SYN-GST-HL01-TRADER",
+        "status": "matched_fixture",
+        "matchedOn": "synthetic exact identifier",
+        "evidenceId": "HL01-CHECK01-EVIDENCE",
+        "claim": "Fictional legal entity and trade name match the bank beneficiary mapping.",
+        "retrievedAt": "2026-09-21T15:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "liveRequestMade": false
+      }
+    ],
+    "relationships": [],
+    "exceptions": [],
+    "events": [
+      {
+        "id": "HL01-TX01-EV1",
+        "transactionId": "HL01-TX01",
+        "receivedAt": "2026-09-21T12:01:00+05:30"
+      }
+    ],
+    "branch": "KOL",
+    "circle": "East",
+    "profile": "original",
+    "origin": "Scenario pack"
+  },
+  {
+    "id": "HL02",
+    "title": "Self construction payment to a cement trader",
+    "mode": "Synthetic",
+    "asOf": "2026-09-22T10:00:00+05:30",
+    "borrower": {
+      "id": "HL02-BOR",
+      "name": "Meera Das Demo",
+      "entityType": "individual",
+      "cif": "SYN-CIF-HL02"
+    },
+    "facility": {
+      "id": "SYN-LOAN-HL02",
+      "loanType": "Housing self construction",
+      "sanctionedAmountInr": 2500000,
+      "drawdownAmountInr": 2500000,
+      "drawdownId": "SYN-DD-HL02",
+      "drawdownAt": "2026-09-21T10:00:00+05:30",
+      "currency": "INR",
+      "project": "SYN-PROJECT-HOME-B202",
+      "purpose": "Build the sanctioned house",
+      "allowedUseCategories": [
+        "building_materials",
+        "construction_labour"
+      ],
+      "restrictedPayeeIds": [],
+      "sanctionClause": "Clause 3: disbursements may fund verified building materials and labour for the sanctioned property.",
+      "sanctionEvidenceId": "HL02-SAN",
+      "preDrawdownBalanceInr": 0,
+      "fundAttribution": "Dedicated synthetic account with explicit drawdown reference; this simplification must not be assumed for production."
+    },
+    "entities": [
+      {
+        "id": "HL02-BOR",
+        "name": "Meera Das Demo",
+        "type": "individual",
+        "bankScope": "UCO fixture",
+        "accountToken": "SYN-ACCT-HL02-BOR",
+        "identityStatus": "verified_fixture",
+        "identityEvidenceIds": [
+          "HL02-KYC"
+        ],
+        "activity": "Borrower",
+        "historyPaymentCount180d": 0,
+        "registryIdentifiers": []
+      },
+      {
+        "id": "HL02-SUPPLIER",
+        "name": "Example Cement Trading Demo",
+        "type": "company",
+        "activity": "Cement and aggregate wholesaling",
+        "bankScope": "External bank fixture",
+        "accountToken": "SYN-ACCT-HL02-SUPPLIER",
+        "identityStatus": "verified_fixture",
+        "identityEvidenceIds": [
+          "HL02-SUPPLIER-IDENTITY"
+        ],
+        "historyPaymentCount180d": 0,
+        "registryIdentifiers": [
+          {
+            "type": "GSTIN",
+            "value": "SYN-GST-HL02-SUPPLIER",
+            "isValidIdentifier": false
+          },
+          {
+            "type": "CIN",
+            "value": "SYN-CIN-HL02-SUPPLIER",
+            "isValidIdentifier": false
+          }
+        ],
+        "historyEvidenceId": "HL02-SUPPLIER-HISTORY"
+      }
+    ],
+    "transactions": [
+      {
+        "id": "HL02-TX01",
+        "bankTransactionId": "SYN-FIN-HL02-TX01",
+        "paymentReference": "SYN-UTR-HL02-TX01",
+        "from": "HL02-BOR",
+        "to": "HL02-SUPPLIER",
+        "amountInr": 800000,
+        "currency": "INR",
+        "postedAt": "2026-09-21T13:00:00+05:30",
+        "receivedAt": "2026-09-21T13:01:00+05:30",
+        "status": "posted",
+        "kind": "payment",
+        "channel": "NEFT fixture",
+        "reversalOf": null,
+        "observed": true,
+        "recordSource": "Synthetic authorised bank record",
+        "drawdownReference": "SYN-DD-HL02",
+        "documentedUseCategory": "building_materials",
+        "useEvidenceId": "HL02-INV01",
+        "evidenceId": "HL02-TX01-LEDGER"
+      }
+    ],
+    "evidence": [
+      {
+        "id": "HL02-SAN",
+        "kind": "sanction",
+        "title": "Approved sanction fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-20T10:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "clause": "Clause 3: disbursements may fund verified building materials and labour for the sanctioned property.",
+          "project": "SYN-PROJECT-HOME-B202",
+          "allowedUseCategories": [
+            "building_materials",
+            "construction_labour"
+          ],
+          "restrictedPayeeIds": []
+        },
+        "contentSha256": "87d506575be49a014857d478597dbfbc669f0548e7ed3d73e4df048fb9bbafc5"
+      },
+      {
+        "id": "HL02-KYC",
+        "kind": "bank_kyc",
+        "title": "Borrower KYC fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-20T10:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "entityId": "HL02-BOR",
+          "accountToken": "SYN-ACCT-HL02-BOR"
+        },
+        "contentSha256": "a859a487890046a4a9393838171d765af8b00f072852f4ad8e022bd039ad47d1"
+      },
+      {
+        "id": "HL02-SUPPLIER-IDENTITY",
+        "kind": "bank_beneficiary_mapping",
+        "title": "Recipient account ownership fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T09:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "entityId": "HL02-SUPPLIER",
+          "accountToken": "SYN-ACCT-HL02-SUPPLIER",
+          "legalName": "Example Cement Trading Demo",
+          "registryToken": "SYN-GST-HL02-SUPPLIER"
+        },
+        "contentSha256": "3b6b3e7ee08882d61b4af25f23688552fe2cf11d8fd8dcfdc69b3f40802c56d6"
+      },
+      {
+        "id": "HL02-INV01",
+        "kind": "invoice",
+        "title": "Invoice fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T15:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "sellerEntityId": "HL02-SUPPLIER",
+          "buyerEntityId": "HL02-BOR",
+          "amountInr": 800000,
+          "items": [
+            "Cement and aggregate"
+          ],
+          "useCategory": "building_materials",
+          "project": "SYN-PROJECT-HOME-B202",
+          "invoiceNumber": "SYN-INVOICE-HL02-INV01",
+          "authenticity": "Fixture accepted for the scenario; production verification required."
+        },
+        "contentSha256": "f3c5b492a05604e6ee56139d210754dc67806d6a38515301d2ea395050173a46"
+      },
+      {
+        "id": "HL02-INV01-DELIVERY",
+        "kind": "goods_receipt",
+        "title": "Accepted delivery fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T15:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "invoiceId": "HL02-INV01",
+          "project": "SYN-PROJECT-HOME-B202",
+          "receivedItems": [
+            "Cement and aggregate"
+          ],
+          "verifiedBy": "SYN-SITE-OFFICER"
+        },
+        "contentSha256": "9528d395afa7de04896d44184be0778f5a0b228c1a9e24756609300d628edb2c"
+      },
+      {
+        "id": "HL02-TX01-LEDGER",
+        "kind": "bank_transaction",
+        "title": "Posted transaction fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T13:01:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "transactionId": "HL02-TX01",
+          "amountInr": 800000,
+          "from": "HL02-BOR",
+          "to": "HL02-SUPPLIER",
+          "postedAt": "2026-09-21T13:00:00+05:30",
+          "reversalOf": null
+        },
+        "contentSha256": "56a9bc309721356f38832e14a44e65ac14f6c97cfe7dc4fcf0a3a31983d1e249"
+      },
+      {
+        "id": "HL02-CHECK01-EVIDENCE",
+        "kind": "external_research",
+        "title": "GST lookup fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T15:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "entityId": "HL02-SUPPLIER",
+          "claim": "The fixture identifies the supplier as the same legal entity recorded by the bank.",
+          "limitations": "Does not establish delivery, invoice authenticity or actual use of funds."
+        },
+        "contentSha256": "21d8f86a8ab5760b177b11a6518668ee4b13e7852d2fefb52833b39f4d966c4b"
+      },
+      {
+        "id": "HL02-SUPPLIER-HISTORY",
+        "kind": "bank_history_aggregate",
+        "title": "Prior payment history fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T09:59:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "borrowerId": "HL02-BOR",
+          "beneficiaryId": "HL02-SUPPLIER",
+          "windowDays": 180,
+          "windowEndsBefore": "2026-09-21T10:00:00+05:30",
+          "paymentCount": 0,
+          "basis": "Synthetic bank history aggregate; underlying historical transactions are not included."
+        },
+        "contentSha256": "b912b0e9620b15758ff2d1031701798a21ff9c0e27ecadf03e0cc9231656fd16"
+      }
+    ],
+    "externalChecks": [
+      {
+        "id": "HL02-CHECK01",
+        "provider": "GST",
+        "mode": "Synthetic",
+        "entityId": "HL02-SUPPLIER",
+        "lookupKey": "SYN-GST-HL02-SUPPLIER",
+        "status": "matched_fixture",
+        "matchedOn": "synthetic exact identifier",
+        "evidenceId": "HL02-CHECK01-EVIDENCE",
+        "claim": "The fixture identifies the supplier as the same legal entity recorded by the bank.",
+        "retrievedAt": "2026-09-21T15:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "liveRequestMade": false
+      }
+    ],
+    "relationships": [],
+    "exceptions": [],
+    "events": [
+      {
+        "id": "HL02-TX01-EV1",
+        "transactionId": "HL02-TX01",
+        "receivedAt": "2026-09-21T13:01:00+05:30"
+      }
+    ],
+    "branch": "KOL",
+    "circle": "East",
+    "profile": "original",
+    "origin": "Scenario pack"
+  },
+  {
+    "id": "HL03",
+    "title": "Individual name belongs to a legitimate proprietor",
+    "mode": "Synthetic",
+    "asOf": "2026-09-22T10:00:00+05:30",
+    "borrower": {
+      "id": "HL03-BOR",
+      "name": "Devika Rao Demo",
+      "entityType": "individual",
+      "cif": "SYN-CIF-HL03"
+    },
+    "facility": {
+      "id": "SYN-LOAN-HL03",
+      "loanType": "Housing self construction",
+      "sanctionedAmountInr": 2000000,
+      "drawdownAmountInr": 2000000,
+      "drawdownId": "SYN-DD-HL03",
+      "drawdownAt": "2026-09-21T10:00:00+05:30",
+      "currency": "INR",
+      "project": "SYN-PROJECT-HOME-C303",
+      "purpose": "Build the sanctioned house",
+      "allowedUseCategories": [
+        "building_materials",
+        "construction_labour"
+      ],
+      "restrictedPayeeIds": [],
+      "sanctionClause": "Clause 3: documented construction purchases for this property are permitted, including purchases from verified sole proprietors.",
+      "sanctionEvidenceId": "HL03-SAN",
+      "preDrawdownBalanceInr": 0,
+      "fundAttribution": "Dedicated synthetic account with explicit drawdown reference; this simplification must not be assumed for production."
+    },
+    "entities": [
+      {
+        "id": "HL03-BOR",
+        "name": "Devika Rao Demo",
+        "type": "individual",
+        "bankScope": "UCO fixture",
+        "accountToken": "SYN-ACCT-HL03-BOR",
+        "identityStatus": "verified_fixture",
+        "identityEvidenceIds": [
+          "HL03-KYC"
+        ],
+        "activity": "Borrower",
+        "historyPaymentCount180d": 0,
+        "registryIdentifiers": []
+      },
+      {
+        "id": "HL03-PROPRIETOR",
+        "name": "Rohan Das trading as Example Building Supplies Demo",
+        "type": "sole_proprietor",
+        "activity": "Building material supply",
+        "bankScope": "External bank fixture",
+        "accountToken": "SYN-ACCT-HL03-PROPRIETOR",
+        "identityStatus": "verified_fixture",
+        "identityEvidenceIds": [
+          "HL03-PROPRIETOR-IDENTITY"
+        ],
+        "historyPaymentCount180d": 0,
+        "registryIdentifiers": [
+          {
+            "type": "GSTIN",
+            "value": "SYN-GST-HL03-PROPRIETOR",
+            "isValidIdentifier": false
+          }
+        ],
+        "historyEvidenceId": "HL03-PROPRIETOR-HISTORY"
+      }
+    ],
+    "transactions": [
+      {
+        "id": "HL03-TX01",
+        "bankTransactionId": "SYN-FIN-HL03-TX01",
+        "paymentReference": "SYN-UTR-HL03-TX01",
+        "from": "HL03-BOR",
+        "to": "HL03-PROPRIETOR",
+        "amountInr": 600000,
+        "currency": "INR",
+        "postedAt": "2026-09-21T11:30:00+05:30",
+        "receivedAt": "2026-09-21T11:31:00+05:30",
+        "status": "posted",
+        "kind": "payment",
+        "channel": "NEFT fixture",
+        "reversalOf": null,
+        "observed": true,
+        "recordSource": "Synthetic authorised bank record",
+        "drawdownReference": "SYN-DD-HL03",
+        "documentedUseCategory": "building_materials",
+        "useEvidenceId": "HL03-INV01",
+        "evidenceId": "HL03-TX01-LEDGER"
+      }
+    ],
+    "evidence": [
+      {
+        "id": "HL03-SAN",
+        "kind": "sanction",
+        "title": "Approved sanction fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-20T10:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "clause": "Clause 3: documented construction purchases for this property are permitted, including purchases from verified sole proprietors.",
+          "project": "SYN-PROJECT-HOME-C303",
+          "allowedUseCategories": [
+            "building_materials",
+            "construction_labour"
+          ],
+          "restrictedPayeeIds": []
+        },
+        "contentSha256": "31e2c5d75973fbf25c8dcef7f166b81148e4b61e44788a36421c80e3c0f2d297"
+      },
+      {
+        "id": "HL03-KYC",
+        "kind": "bank_kyc",
+        "title": "Borrower KYC fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-20T10:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "entityId": "HL03-BOR",
+          "accountToken": "SYN-ACCT-HL03-BOR"
+        },
+        "contentSha256": "99ce1abaa21de093d61057a6e59cd0a33df85e32a2acb8e737c52305040478bb"
+      },
+      {
+        "id": "HL03-PROPRIETOR-IDENTITY",
+        "kind": "bank_beneficiary_mapping",
+        "title": "Recipient account ownership fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T09:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "entityId": "HL03-PROPRIETOR",
+          "accountToken": "SYN-ACCT-HL03-PROPRIETOR",
+          "legalName": "Rohan Das trading as Example Building Supplies Demo",
+          "registryToken": "SYN-GST-HL03-PROPRIETOR"
+        },
+        "contentSha256": "f698d0dcec08eeef4a2b55ee9b15bab574230fe54166252ed42e7b41ae3d5c79"
+      },
+      {
+        "id": "HL03-INV01",
+        "kind": "invoice",
+        "title": "Invoice fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T15:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "sellerEntityId": "HL03-PROPRIETOR",
+          "buyerEntityId": "HL03-BOR",
+          "amountInr": 600000,
+          "items": [
+            "Bricks and reinforcement steel"
+          ],
+          "useCategory": "building_materials",
+          "project": "SYN-PROJECT-HOME-C303",
+          "invoiceNumber": "SYN-INVOICE-HL03-INV01",
+          "authenticity": "Fixture accepted for the scenario; production verification required."
+        },
+        "contentSha256": "8a4404245ee64c3297e9221aeb4d6ab13cae7657d45d0dbce134b51c31ad505e"
+      },
+      {
+        "id": "HL03-INV01-DELIVERY",
+        "kind": "goods_receipt",
+        "title": "Accepted delivery fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T15:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "invoiceId": "HL03-INV01",
+          "project": "SYN-PROJECT-HOME-C303",
+          "receivedItems": [
+            "Bricks and reinforcement steel"
+          ],
+          "verifiedBy": "SYN-SITE-OFFICER"
+        },
+        "contentSha256": "248178fb677803766c8f8fca4ef8e4f226aeb9794e1d62d5acf6474aac906205"
+      },
+      {
+        "id": "HL03-TX01-LEDGER",
+        "kind": "bank_transaction",
+        "title": "Posted transaction fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T11:31:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "transactionId": "HL03-TX01",
+          "amountInr": 600000,
+          "from": "HL03-BOR",
+          "to": "HL03-PROPRIETOR",
+          "postedAt": "2026-09-21T11:30:00+05:30",
+          "reversalOf": null
+        },
+        "contentSha256": "3d4afa6add936f17cf7b9722cca35fecad717bb60a2fcdc7ca1fbd163b68b3ef"
+      },
+      {
+        "id": "HL03-CHECK01-EVIDENCE",
+        "kind": "external_research",
+        "title": "GST lookup fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T15:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "entityId": "HL03-PROPRIETOR",
+          "claim": "Fixture links proprietor legal name and trade name; account ownership is supported separately by bank evidence.",
+          "limitations": "Does not establish delivery, invoice authenticity or actual use of funds."
+        },
+        "contentSha256": "5d4ed53c23f29258717ed22538c63af2c7b42b8ba754c8030742fa7d59aa7fce"
+      },
+      {
+        "id": "HL03-PROPRIETOR-HISTORY",
+        "kind": "bank_history_aggregate",
+        "title": "Prior payment history fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T09:59:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "borrowerId": "HL03-BOR",
+          "beneficiaryId": "HL03-PROPRIETOR",
+          "windowDays": 180,
+          "windowEndsBefore": "2026-09-21T10:00:00+05:30",
+          "paymentCount": 0,
+          "basis": "Synthetic bank history aggregate; underlying historical transactions are not included."
+        },
+        "contentSha256": "72d6125788737f3cec8cc1c1e71da8de9749d59b2b56b223a311f3a3152ee59c"
+      }
+    ],
+    "externalChecks": [
+      {
+        "id": "HL03-CHECK01",
+        "provider": "GST",
+        "mode": "Synthetic",
+        "entityId": "HL03-PROPRIETOR",
+        "lookupKey": "SYN-GST-HL03-PROPRIETOR",
+        "status": "matched_fixture",
+        "matchedOn": "synthetic exact identifier",
+        "evidenceId": "HL03-CHECK01-EVIDENCE",
+        "claim": "Fixture links proprietor legal name and trade name; account ownership is supported separately by bank evidence.",
+        "retrievedAt": "2026-09-21T15:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "liveRequestMade": false
+      }
+    ],
+    "relationships": [],
+    "exceptions": [],
+    "events": [
+      {
+        "id": "HL03-TX01-EV1",
+        "transactionId": "HL03-TX01",
+        "receivedAt": "2026-09-21T11:31:00+05:30"
+      }
+    ],
+    "branch": "KOL",
+    "circle": "East",
+    "profile": "original",
+    "origin": "Scenario pack"
+  },
+  {
+    "id": "CL01",
+    "title": "Construction company buys steel from a trader",
+    "mode": "Synthetic",
+    "asOf": "2026-09-22T10:00:00+05:30",
+    "borrower": {
+      "id": "CL01-BOR",
+      "name": "Example Siteworks Demo",
+      "entityType": "company",
+      "cif": "SYN-CIF-CL01"
+    },
+    "facility": {
+      "id": "SYN-LOAN-CL01",
+      "loanType": "Construction term loan",
+      "sanctionedAmountInr": 20000000,
+      "drawdownAmountInr": 20000000,
+      "drawdownId": "SYN-DD-CL01",
+      "drawdownAt": "2026-09-21T10:00:00+05:30",
+      "currency": "INR",
+      "project": "SYN-PROJECT-DELTA",
+      "purpose": "Build the sanctioned project",
+      "allowedUseCategories": [
+        "building_materials",
+        "construction_labour",
+        "approved_equipment"
+      ],
+      "restrictedPayeeIds": [],
+      "sanctionClause": "Clause 5: fund materials, labour and approved equipment for Project Delta with supporting procurement and site records.",
+      "sanctionEvidenceId": "CL01-SAN",
+      "preDrawdownBalanceInr": 0,
+      "fundAttribution": "Dedicated synthetic account with explicit drawdown reference; this simplification must not be assumed for production."
+    },
+    "entities": [
+      {
+        "id": "CL01-BOR",
+        "name": "Example Siteworks Demo",
+        "type": "company",
+        "bankScope": "UCO fixture",
+        "accountToken": "SYN-ACCT-CL01-BOR",
+        "identityStatus": "verified_fixture",
+        "identityEvidenceIds": [
+          "CL01-KYC"
+        ],
+        "activity": "Borrower",
+        "historyPaymentCount180d": 0,
+        "registryIdentifiers": []
+      },
+      {
+        "id": "CL01-SUPPLIER",
+        "name": "Example Steel Trading Demo",
+        "type": "company",
+        "activity": "Steel wholesaling",
+        "bankScope": "External bank fixture",
+        "accountToken": "SYN-ACCT-CL01-SUPPLIER",
+        "identityStatus": "verified_fixture",
+        "identityEvidenceIds": [
+          "CL01-SUPPLIER-IDENTITY"
+        ],
+        "historyPaymentCount180d": 14,
+        "registryIdentifiers": [
+          {
+            "type": "GSTIN",
+            "value": "SYN-GST-CL01-SUPPLIER",
+            "isValidIdentifier": false
+          },
+          {
+            "type": "CIN",
+            "value": "SYN-CIN-CL01-SUPPLIER",
+            "isValidIdentifier": false
+          }
+        ],
+        "historyEvidenceId": "CL01-SUPPLIER-HISTORY"
+      }
+    ],
+    "transactions": [
+      {
+        "id": "CL01-TX01",
+        "bankTransactionId": "SYN-FIN-CL01-TX01",
+        "paymentReference": "SYN-UTR-CL01-TX01",
+        "from": "CL01-BOR",
+        "to": "CL01-SUPPLIER",
+        "amountInr": 3500000,
+        "currency": "INR",
+        "postedAt": "2026-09-21T13:30:00+05:30",
+        "receivedAt": "2026-09-21T13:31:00+05:30",
+        "status": "posted",
+        "kind": "payment",
+        "channel": "NEFT fixture",
+        "reversalOf": null,
+        "observed": true,
+        "recordSource": "Synthetic authorised bank record",
+        "drawdownReference": "SYN-DD-CL01",
+        "documentedUseCategory": "building_materials",
+        "useEvidenceId": "CL01-INV01",
+        "evidenceId": "CL01-TX01-LEDGER"
+      }
+    ],
+    "evidence": [
+      {
+        "id": "CL01-SAN",
+        "kind": "sanction",
+        "title": "Approved sanction fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-20T10:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "clause": "Clause 5: fund materials, labour and approved equipment for Project Delta with supporting procurement and site records.",
+          "project": "SYN-PROJECT-DELTA",
+          "allowedUseCategories": [
+            "building_materials",
+            "construction_labour",
+            "approved_equipment"
+          ],
+          "restrictedPayeeIds": []
+        },
+        "contentSha256": "12cf7b615e91bb6a073728029257d9a098cfec623634e5f825af7411a8ca8125"
+      },
+      {
+        "id": "CL01-KYC",
+        "kind": "bank_kyc",
+        "title": "Borrower KYC fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-20T10:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "entityId": "CL01-BOR",
+          "accountToken": "SYN-ACCT-CL01-BOR"
+        },
+        "contentSha256": "372cde520c99f0006dd743c19edf4631ad1a521d797e38e52771110813607899"
+      },
+      {
+        "id": "CL01-SUPPLIER-IDENTITY",
+        "kind": "bank_beneficiary_mapping",
+        "title": "Recipient account ownership fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T09:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "entityId": "CL01-SUPPLIER",
+          "accountToken": "SYN-ACCT-CL01-SUPPLIER",
+          "legalName": "Example Steel Trading Demo",
+          "registryToken": "SYN-GST-CL01-SUPPLIER"
+        },
+        "contentSha256": "ae5ed339c015aa179396c7238f37c9c7d190179ae453b2e872652d3dfc962163"
+      },
+      {
+        "id": "CL01-INV01",
+        "kind": "invoice",
+        "title": "Invoice fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T15:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "sellerEntityId": "CL01-SUPPLIER",
+          "buyerEntityId": "CL01-BOR",
+          "amountInr": 3500000,
+          "items": [
+            "Reinforcement steel"
+          ],
+          "useCategory": "building_materials",
+          "project": "SYN-PROJECT-DELTA",
+          "invoiceNumber": "SYN-INVOICE-CL01-INV01",
+          "authenticity": "Fixture accepted for the scenario; production verification required."
+        },
+        "contentSha256": "4d362d574f37389975fbbd9a3b57c694b98700d227155ca35de52adf13dba652"
+      },
+      {
+        "id": "CL01-INV01-DELIVERY",
+        "kind": "goods_receipt",
+        "title": "Accepted delivery fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T15:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "invoiceId": "CL01-INV01",
+          "project": "SYN-PROJECT-DELTA",
+          "receivedItems": [
+            "Reinforcement steel"
+          ],
+          "verifiedBy": "SYN-SITE-OFFICER"
+        },
+        "contentSha256": "3bb6f1e0ed3ca0c6cfe127ab17cf8cc921b802e9880815b89c5975a85019494e"
+      },
+      {
+        "id": "CL01-PO",
+        "kind": "purchase_order",
+        "title": "Approved purchase order fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T15:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "supplier": "CL01-SUPPLIER",
+          "invoiceId": "CL01-INV01",
+          "project": "SYN-PROJECT-DELTA",
+          "amountInr": 3500000
+        },
+        "contentSha256": "03cc49b4002c912b9487e5fb162f2d1517c4a3bd6ec06fc5d533b9300980d18b"
+      },
+      {
+        "id": "CL01-TX01-LEDGER",
+        "kind": "bank_transaction",
+        "title": "Posted transaction fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T13:31:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "transactionId": "CL01-TX01",
+          "amountInr": 3500000,
+          "from": "CL01-BOR",
+          "to": "CL01-SUPPLIER",
+          "postedAt": "2026-09-21T13:30:00+05:30",
+          "reversalOf": null
+        },
+        "contentSha256": "d180c6cc33fbe4dc4f1587bce2617c316bbe67209afc97fb6db758b68ed3dbec"
+      },
+      {
+        "id": "CL01-CHECK01-EVIDENCE",
+        "kind": "external_research",
+        "title": "GST lookup fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T15:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "entityId": "CL01-SUPPLIER",
+          "claim": "The current fixture profile matches the existing supplier identity.",
+          "limitations": "Does not establish delivery, invoice authenticity or actual use of funds."
+        },
+        "contentSha256": "ffb067744f058e3d19422ea9d1709051ff2784bbb990c1366ff812daf1b49bd5"
+      },
+      {
+        "id": "CL01-SUPPLIER-HISTORY",
+        "kind": "bank_history_aggregate",
+        "title": "Prior payment history fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T09:59:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "borrowerId": "CL01-BOR",
+          "beneficiaryId": "CL01-SUPPLIER",
+          "windowDays": 180,
+          "windowEndsBefore": "2026-09-21T10:00:00+05:30",
+          "paymentCount": 14,
+          "basis": "Synthetic bank history aggregate; underlying historical transactions are not included."
+        },
+        "contentSha256": "7ecdbd4d13945863edf779b59b85879138c2faf127b51e2a968bc0b4f49f2831"
+      }
+    ],
+    "externalChecks": [
+      {
+        "id": "CL01-CHECK01",
+        "provider": "GST",
+        "mode": "Synthetic",
+        "entityId": "CL01-SUPPLIER",
+        "lookupKey": "SYN-GST-CL01-SUPPLIER",
+        "status": "matched_fixture",
+        "matchedOn": "synthetic exact identifier",
+        "evidenceId": "CL01-CHECK01-EVIDENCE",
+        "claim": "The current fixture profile matches the existing supplier identity.",
+        "retrievedAt": "2026-09-21T15:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "liveRequestMade": false
+      }
+    ],
+    "relationships": [],
+    "exceptions": [],
+    "events": [
+      {
+        "id": "CL01-TX01-EV1",
+        "transactionId": "CL01-TX01",
+        "receivedAt": "2026-09-21T13:31:00+05:30"
+      }
+    ],
+    "branch": "KOL",
+    "circle": "East",
+    "profile": "original",
+    "origin": "Scenario pack"
+  },
+  {
+    "id": "CL02",
+    "title": "Construction loan pays for unrelated resale inventory",
+    "mode": "Synthetic",
+    "asOf": "2026-09-22T10:00:00+05:30",
+    "borrower": {
+      "id": "CL02-BOR",
+      "name": "Example Urban Construction Demo",
+      "entityType": "company",
+      "cif": "SYN-CIF-CL02"
+    },
+    "facility": {
+      "id": "SYN-LOAN-CL02",
+      "loanType": "Construction term loan",
+      "sanctionedAmountInr": 10000000,
+      "drawdownAmountInr": 10000000,
+      "drawdownId": "SYN-DD-CL02",
+      "drawdownAt": "2026-09-21T10:00:00+05:30",
+      "currency": "INR",
+      "project": "SYN-PROJECT-ECHO",
+      "purpose": "Construct residential blocks",
+      "allowedUseCategories": [
+        "building_materials",
+        "construction_labour"
+      ],
+      "restrictedPayeeIds": [],
+      "sanctionClause": "Clause 5: proceeds are restricted to materials and labour for the sanctioned residential blocks; unrelated inventory purchases are excluded.",
+      "sanctionEvidenceId": "CL02-SAN",
+      "preDrawdownBalanceInr": 0,
+      "fundAttribution": "Dedicated synthetic account with explicit drawdown reference; this simplification must not be assumed for production."
+    },
+    "entities": [
+      {
+        "id": "CL02-BOR",
+        "name": "Example Urban Construction Demo",
+        "type": "company",
+        "bankScope": "UCO fixture",
+        "accountToken": "SYN-ACCT-CL02-BOR",
+        "identityStatus": "verified_fixture",
+        "identityEvidenceIds": [
+          "CL02-KYC"
+        ],
+        "activity": "Borrower",
+        "historyPaymentCount180d": 0,
+        "registryIdentifiers": []
+      },
+      {
+        "id": "CL02-TRADER",
+        "name": "Example Device Trading Demo",
+        "type": "company",
+        "activity": "Mobile phone wholesaling",
+        "bankScope": "External bank fixture",
+        "accountToken": "SYN-ACCT-CL02-TRADER",
+        "identityStatus": "verified_fixture",
+        "identityEvidenceIds": [
+          "CL02-TRADER-IDENTITY"
+        ],
+        "historyPaymentCount180d": 3,
+        "registryIdentifiers": [
+          {
+            "type": "GSTIN",
+            "value": "SYN-GST-CL02-TRADER",
+            "isValidIdentifier": false
+          },
+          {
+            "type": "CIN",
+            "value": "SYN-CIN-CL02-TRADER",
+            "isValidIdentifier": false
+          }
+        ],
+        "historyEvidenceId": "CL02-TRADER-HISTORY"
+      }
+    ],
+    "transactions": [
+      {
+        "id": "CL02-TX01",
+        "bankTransactionId": "SYN-FIN-CL02-TX01",
+        "paymentReference": "SYN-UTR-CL02-TX01",
+        "from": "CL02-BOR",
+        "to": "CL02-TRADER",
+        "amountInr": 2500000,
+        "currency": "INR",
+        "postedAt": "2026-09-21T10:45:00+05:30",
+        "receivedAt": "2026-09-21T10:46:00+05:30",
+        "status": "posted",
+        "kind": "payment",
+        "channel": "NEFT fixture",
+        "reversalOf": null,
+        "observed": true,
+        "recordSource": "Synthetic authorised bank record",
+        "drawdownReference": "SYN-DD-CL02",
+        "documentedUseCategory": "consumer_electronics_resale",
+        "useEvidenceId": "CL02-INV01",
+        "evidenceId": "CL02-TX01-LEDGER"
+      }
+    ],
+    "evidence": [
+      {
+        "id": "CL02-SAN",
+        "kind": "sanction",
+        "title": "Approved sanction fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-20T10:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "clause": "Clause 5: proceeds are restricted to materials and labour for the sanctioned residential blocks; unrelated inventory purchases are excluded.",
+          "project": "SYN-PROJECT-ECHO",
+          "allowedUseCategories": [
+            "building_materials",
+            "construction_labour"
+          ],
+          "restrictedPayeeIds": []
+        },
+        "contentSha256": "c76ffd18bf4d7f86637a15be053fcd5fd6f8b911e4d460ef9993b0b98a4e1d6d"
+      },
+      {
+        "id": "CL02-KYC",
+        "kind": "bank_kyc",
+        "title": "Borrower KYC fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-20T10:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "entityId": "CL02-BOR",
+          "accountToken": "SYN-ACCT-CL02-BOR"
+        },
+        "contentSha256": "12827c6e5b657afbf31291898ce052069f2d9abf743ad215a0dd0172ada726a8"
+      },
+      {
+        "id": "CL02-TRADER-IDENTITY",
+        "kind": "bank_beneficiary_mapping",
+        "title": "Recipient account ownership fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T09:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "entityId": "CL02-TRADER",
+          "accountToken": "SYN-ACCT-CL02-TRADER",
+          "legalName": "Example Device Trading Demo",
+          "registryToken": "SYN-GST-CL02-TRADER"
+        },
+        "contentSha256": "a4f232b3e4866b71af3afef5466ddf2eb9a05d6df5120e9c51d9659c144fe714"
+      },
+      {
+        "id": "CL02-INV01",
+        "kind": "invoice",
+        "title": "Invoice fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T15:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "sellerEntityId": "CL02-TRADER",
+          "buyerEntityId": "CL02-BOR",
+          "amountInr": 2500000,
+          "items": [
+            "Mobile phones for resale"
+          ],
+          "useCategory": "consumer_electronics_resale",
+          "project": "SYN-UNRELATED-STOCK",
+          "invoiceNumber": "SYN-INVOICE-CL02-INV01",
+          "authenticity": "Fixture accepted for the scenario; production verification required."
+        },
+        "contentSha256": "cad531bcbbd725553f099ae5bf37d329c689d99f468351c33401bae8d73ff458"
+      },
+      {
+        "id": "CL02-TX01-LEDGER",
+        "kind": "bank_transaction",
+        "title": "Posted transaction fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T10:46:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "transactionId": "CL02-TX01",
+          "amountInr": 2500000,
+          "from": "CL02-BOR",
+          "to": "CL02-TRADER",
+          "postedAt": "2026-09-21T10:45:00+05:30",
+          "reversalOf": null
+        },
+        "contentSha256": "a0b03f992c3e0caf1bc833accbfbcf7739a2b9b71ff51010698fdc9a54b2640d"
+      },
+      {
+        "id": "CL02-CHECK01-EVIDENCE",
+        "kind": "external_research",
+        "title": "GST lookup fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T15:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "entityId": "CL02-TRADER",
+          "claim": "The exact synthetic identifier resolves to the invoicing legal entity.",
+          "limitations": "Does not establish delivery, invoice authenticity or actual use of funds."
+        },
+        "contentSha256": "1cc1d758f4506f4a23f58ba1340c34aadcb6a351fa2a8154595a668fe6b24e1f"
+      },
+      {
+        "id": "CL02-TRADER-HISTORY",
+        "kind": "bank_history_aggregate",
+        "title": "Prior payment history fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T09:59:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "borrowerId": "CL02-BOR",
+          "beneficiaryId": "CL02-TRADER",
+          "windowDays": 180,
+          "windowEndsBefore": "2026-09-21T10:00:00+05:30",
+          "paymentCount": 3,
+          "basis": "Synthetic bank history aggregate; underlying historical transactions are not included."
+        },
+        "contentSha256": "aaed97b384b8a6150351f2982572b797f15aadc1b25c9b00ac99790c0ab7d890"
+      }
+    ],
+    "externalChecks": [
+      {
+        "id": "CL02-CHECK01",
+        "provider": "GST",
+        "mode": "Synthetic",
+        "entityId": "CL02-TRADER",
+        "lookupKey": "SYN-GST-CL02-TRADER",
+        "status": "matched_fixture",
+        "matchedOn": "synthetic exact identifier",
+        "evidenceId": "CL02-CHECK01-EVIDENCE",
+        "claim": "The exact synthetic identifier resolves to the invoicing legal entity.",
+        "retrievedAt": "2026-09-21T15:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "liveRequestMade": false
+      }
+    ],
+    "relationships": [],
+    "exceptions": [],
+    "events": [
+      {
+        "id": "CL02-TX01-EV1",
+        "transactionId": "CL02-TX01",
+        "receivedAt": "2026-09-21T10:46:00+05:30"
+      }
+    ],
+    "branch": "KOL",
+    "circle": "East",
+    "profile": "original",
+    "origin": "Scenario pack"
+  },
+  {
+    "id": "CL03",
+    "title": "Related trading company with missing commercial evidence",
+    "mode": "Synthetic",
+    "asOf": "2026-09-22T10:00:00+05:30",
+    "borrower": {
+      "id": "CL03-BOR",
+      "name": "Example River Construction Demo",
+      "entityType": "company",
+      "cif": "SYN-CIF-CL03"
+    },
+    "facility": {
+      "id": "SYN-LOAN-CL03",
+      "loanType": "Construction term loan",
+      "sanctionedAmountInr": 12000000,
+      "drawdownAmountInr": 12000000,
+      "drawdownId": "SYN-DD-CL03",
+      "drawdownAt": "2026-09-21T10:00:00+05:30",
+      "currency": "INR",
+      "project": "SYN-PROJECT-RIVER",
+      "purpose": "Construct the sanctioned site",
+      "allowedUseCategories": [
+        "building_materials",
+        "construction_labour"
+      ],
+      "restrictedPayeeIds": [],
+      "sanctionClause": "Clause 5: project expenditure requires commercial evidence; related-party purchases require the specified bank approval.",
+      "sanctionEvidenceId": "CL03-SAN",
+      "preDrawdownBalanceInr": 0,
+      "fundAttribution": "Dedicated synthetic account with explicit drawdown reference; this simplification must not be assumed for production."
+    },
+    "entities": [
+      {
+        "id": "CL03-BOR",
+        "name": "Example River Construction Demo",
+        "type": "company",
+        "bankScope": "UCO fixture",
+        "accountToken": "SYN-ACCT-CL03-BOR",
+        "identityStatus": "verified_fixture",
+        "identityEvidenceIds": [
+          "CL03-KYC"
+        ],
+        "activity": "Borrower",
+        "historyPaymentCount180d": 0,
+        "registryIdentifiers": []
+      },
+      {
+        "id": "CL03-RELATED",
+        "name": "Example Allied Trading Demo",
+        "type": "company",
+        "activity": "General wholesaling",
+        "bankScope": "External bank fixture",
+        "accountToken": "SYN-ACCT-CL03-RELATED",
+        "identityStatus": "verified_fixture",
+        "identityEvidenceIds": [
+          "CL03-RELATED-IDENTITY"
+        ],
+        "historyPaymentCount180d": 0,
+        "registryIdentifiers": [
+          {
+            "type": "GSTIN",
+            "value": "SYN-GST-CL03-RELATED",
+            "isValidIdentifier": false
+          },
+          {
+            "type": "CIN",
+            "value": "SYN-CIN-CL03-RELATED",
+            "isValidIdentifier": false
+          }
+        ],
+        "historyEvidenceId": "CL03-RELATED-HISTORY"
+      }
+    ],
+    "transactions": [
+      {
+        "id": "CL03-TX01",
+        "bankTransactionId": "SYN-FIN-CL03-TX01",
+        "paymentReference": "SYN-UTR-CL03-TX01",
+        "from": "CL03-BOR",
+        "to": "CL03-RELATED",
+        "amountInr": 3000000,
+        "currency": "INR",
+        "postedAt": "2026-09-21T10:30:00+05:30",
+        "receivedAt": "2026-09-21T10:31:00+05:30",
+        "status": "posted",
+        "kind": "payment",
+        "channel": "NEFT fixture",
+        "reversalOf": null,
+        "observed": true,
+        "recordSource": "Synthetic authorised bank record",
+        "drawdownReference": "SYN-DD-CL03",
+        "documentedUseCategory": "unknown",
+        "useEvidenceId": null,
+        "evidenceId": "CL03-TX01-LEDGER"
+      }
+    ],
+    "evidence": [
+      {
+        "id": "CL03-SAN",
+        "kind": "sanction",
+        "title": "Approved sanction fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-20T10:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "clause": "Clause 5: project expenditure requires commercial evidence; related-party purchases require the specified bank approval.",
+          "project": "SYN-PROJECT-RIVER",
+          "allowedUseCategories": [
+            "building_materials",
+            "construction_labour"
+          ],
+          "restrictedPayeeIds": []
+        },
+        "contentSha256": "a0dd9e82f34be9cde27b196dd0291abcbbc8d7b0aa66195ff292e507233727fe"
+      },
+      {
+        "id": "CL03-KYC",
+        "kind": "bank_kyc",
+        "title": "Borrower KYC fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-20T10:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "entityId": "CL03-BOR",
+          "accountToken": "SYN-ACCT-CL03-BOR"
+        },
+        "contentSha256": "c4f137db16115f86ae17e3ad7692de80012902e12bd5744d72ff6b2c8a0804c2"
+      },
+      {
+        "id": "CL03-RELATED-IDENTITY",
+        "kind": "bank_beneficiary_mapping",
+        "title": "Recipient account ownership fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T09:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "entityId": "CL03-RELATED",
+          "accountToken": "SYN-ACCT-CL03-RELATED",
+          "legalName": "Example Allied Trading Demo",
+          "registryToken": "SYN-GST-CL03-RELATED"
+        },
+        "contentSha256": "4c875029dd51900498cbac45bb0f5b0811df4eec42838655887ac1b1857cb075"
+      },
+      {
+        "id": "CL03-TX01-LEDGER",
+        "kind": "bank_transaction",
+        "title": "Posted transaction fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T10:31:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "transactionId": "CL03-TX01",
+          "amountInr": 3000000,
+          "from": "CL03-BOR",
+          "to": "CL03-RELATED",
+          "postedAt": "2026-09-21T10:30:00+05:30",
+          "reversalOf": null
+        },
+        "contentSha256": "4fb6fdc3e89b4b35fe42b01a0756e08c76dc6d5cc38498b3e5dfba1791ab9ffb"
+      },
+      {
+        "id": "CL03-REL",
+        "kind": "verified_relationship",
+        "title": "Common director fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T15:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "from": "CL03-BOR",
+          "to": "CL03-RELATED",
+          "type": "common_director",
+          "directorToken": "SYN-DIN-DIRECTOR-01",
+          "effectiveOnTransactionDate": true
+        },
+        "contentSha256": "b2e790c56d88f4c53e050fc717cb68bf3917175cf3545345b856286da4727058"
+      },
+      {
+        "id": "CL03-CHECK01-EVIDENCE",
+        "kind": "external_research",
+        "title": "MCA lookup fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T15:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "entityId": "CL03-RELATED",
+          "claim": "Fixture records the same synthetic director identifier in both companies at the transaction date.",
+          "limitations": "Does not establish delivery, invoice authenticity or actual use of funds."
+        },
+        "contentSha256": "570927966901fcaac9126d9d57b44c9a1b3946ee6e40f716812a41f7bcc6f15c"
+      },
+      {
+        "id": "CL03-RELATED-HISTORY",
+        "kind": "bank_history_aggregate",
+        "title": "Prior payment history fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T09:59:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "borrowerId": "CL03-BOR",
+          "beneficiaryId": "CL03-RELATED",
+          "windowDays": 180,
+          "windowEndsBefore": "2026-09-21T10:00:00+05:30",
+          "paymentCount": 0,
+          "basis": "Synthetic bank history aggregate; underlying historical transactions are not included."
+        },
+        "contentSha256": "a32cef57032f174ad7583562bc2e55f9068fd7bd5b45aaf32dad656c60c9cb26"
+      }
+    ],
+    "externalChecks": [
+      {
+        "id": "CL03-CHECK01",
+        "provider": "MCA",
+        "mode": "Synthetic",
+        "entityId": "CL03-RELATED",
+        "lookupKey": "SYN-CIN-CL03-RELATED",
+        "status": "matched_fixture",
+        "matchedOn": "synthetic exact identifier",
+        "evidenceId": "CL03-CHECK01-EVIDENCE",
+        "claim": "Fixture records the same synthetic director identifier in both companies at the transaction date.",
+        "retrievedAt": "2026-09-21T15:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "liveRequestMade": false
+      }
+    ],
+    "relationships": [
+      {
+        "from": "CL03-BOR",
+        "to": "CL03-RELATED",
+        "type": "common_director",
+        "verified": true,
+        "evidenceId": "CL03-REL"
+      }
+    ],
+    "exceptions": [],
+    "events": [
+      {
+        "id": "CL03-TX01-EV1",
+        "transactionId": "CL03-TX01",
+        "receivedAt": "2026-09-21T10:31:00+05:30"
+      }
+    ],
+    "branch": "KOL",
+    "circle": "East",
+    "profile": "original",
+    "origin": "Scenario pack"
+  },
+  {
+    "id": "CL04",
+    "title": "Loan proceeds sent to ten new accounts",
+    "mode": "Synthetic",
+    "asOf": "2026-09-22T10:00:00+05:30",
+    "borrower": {
+      "id": "CL04-BOR",
+      "name": "Example Horizon Construction Demo",
+      "entityType": "company",
+      "cif": "SYN-CIF-CL04"
+    },
+    "facility": {
+      "id": "SYN-LOAN-CL04",
+      "loanType": "Construction term loan",
+      "sanctionedAmountInr": 10000000,
+      "drawdownAmountInr": 10000000,
+      "drawdownId": "SYN-DD-CL04",
+      "drawdownAt": "2026-09-21T10:00:00+05:30",
+      "currency": "INR",
+      "project": "SYN-PROJECT-HORIZON",
+      "purpose": "Construct the sanctioned site",
+      "allowedUseCategories": [
+        "building_materials",
+        "construction_labour"
+      ],
+      "restrictedPayeeIds": [],
+      "sanctionClause": "Clause 5: payments must relate to project procurement or labour with supporting records.",
+      "sanctionEvidenceId": "CL04-SAN",
+      "preDrawdownBalanceInr": 0,
+      "fundAttribution": "Dedicated synthetic account with explicit drawdown reference; this simplification must not be assumed for production."
+    },
+    "entities": [
+      {
+        "id": "CL04-BOR",
+        "name": "Example Horizon Construction Demo",
+        "type": "company",
+        "bankScope": "UCO fixture",
+        "accountToken": "SYN-ACCT-CL04-BOR",
+        "identityStatus": "verified_fixture",
+        "identityEvidenceIds": [
+          "CL04-KYC"
+        ],
+        "activity": "Borrower",
+        "historyPaymentCount180d": 0,
+        "registryIdentifiers": []
+      },
+      {
+        "id": "CL04-PAYEE01",
+        "name": "Example New Supplier 01 Demo",
+        "type": "company",
+        "activity": "Activity not yet established",
+        "bankScope": "External bank fixture",
+        "accountToken": "SYN-ACCT-CL04-PAYEE01",
+        "identityStatus": "verified_fixture",
+        "identityEvidenceIds": [
+          "CL04-PAYEE01-IDENTITY"
+        ],
+        "historyPaymentCount180d": 0,
+        "registryIdentifiers": [
+          {
+            "type": "GSTIN",
+            "value": "SYN-GST-CL04-PAYEE01",
+            "isValidIdentifier": false
+          },
+          {
+            "type": "CIN",
+            "value": "SYN-CIN-CL04-PAYEE01",
+            "isValidIdentifier": false
+          }
+        ],
+        "historyEvidenceId": "CL04-PAYEE01-HISTORY"
+      },
+      {
+        "id": "CL04-PAYEE02",
+        "name": "Example New Supplier 02 Demo",
+        "type": "company",
+        "activity": "Activity not yet established",
+        "bankScope": "External bank fixture",
+        "accountToken": "SYN-ACCT-CL04-PAYEE02",
+        "identityStatus": "verified_fixture",
+        "identityEvidenceIds": [
+          "CL04-PAYEE02-IDENTITY"
+        ],
+        "historyPaymentCount180d": 0,
+        "registryIdentifiers": [
+          {
+            "type": "GSTIN",
+            "value": "SYN-GST-CL04-PAYEE02",
+            "isValidIdentifier": false
+          },
+          {
+            "type": "CIN",
+            "value": "SYN-CIN-CL04-PAYEE02",
+            "isValidIdentifier": false
+          }
+        ],
+        "historyEvidenceId": "CL04-PAYEE02-HISTORY"
+      },
+      {
+        "id": "CL04-PAYEE03",
+        "name": "Example New Supplier 03 Demo",
+        "type": "company",
+        "activity": "Activity not yet established",
+        "bankScope": "External bank fixture",
+        "accountToken": "SYN-ACCT-CL04-PAYEE03",
+        "identityStatus": "verified_fixture",
+        "identityEvidenceIds": [
+          "CL04-PAYEE03-IDENTITY"
+        ],
+        "historyPaymentCount180d": 0,
+        "registryIdentifiers": [
+          {
+            "type": "GSTIN",
+            "value": "SYN-GST-CL04-PAYEE03",
+            "isValidIdentifier": false
+          },
+          {
+            "type": "CIN",
+            "value": "SYN-CIN-CL04-PAYEE03",
+            "isValidIdentifier": false
+          }
+        ],
+        "historyEvidenceId": "CL04-PAYEE03-HISTORY"
+      },
+      {
+        "id": "CL04-PAYEE04",
+        "name": "Example New Supplier 04 Demo",
+        "type": "company",
+        "activity": "Activity not yet established",
+        "bankScope": "External bank fixture",
+        "accountToken": "SYN-ACCT-CL04-PAYEE04",
+        "identityStatus": "verified_fixture",
+        "identityEvidenceIds": [
+          "CL04-PAYEE04-IDENTITY"
+        ],
+        "historyPaymentCount180d": 0,
+        "registryIdentifiers": [
+          {
+            "type": "GSTIN",
+            "value": "SYN-GST-CL04-PAYEE04",
+            "isValidIdentifier": false
+          },
+          {
+            "type": "CIN",
+            "value": "SYN-CIN-CL04-PAYEE04",
+            "isValidIdentifier": false
+          }
+        ],
+        "historyEvidenceId": "CL04-PAYEE04-HISTORY"
+      },
+      {
+        "id": "CL04-PAYEE05",
+        "name": "Example New Supplier 05 Demo",
+        "type": "company",
+        "activity": "Activity not yet established",
+        "bankScope": "External bank fixture",
+        "accountToken": "SYN-ACCT-CL04-PAYEE05",
+        "identityStatus": "verified_fixture",
+        "identityEvidenceIds": [
+          "CL04-PAYEE05-IDENTITY"
+        ],
+        "historyPaymentCount180d": 0,
+        "registryIdentifiers": [
+          {
+            "type": "GSTIN",
+            "value": "SYN-GST-CL04-PAYEE05",
+            "isValidIdentifier": false
+          },
+          {
+            "type": "CIN",
+            "value": "SYN-CIN-CL04-PAYEE05",
+            "isValidIdentifier": false
+          }
+        ],
+        "historyEvidenceId": "CL04-PAYEE05-HISTORY"
+      },
+      {
+        "id": "CL04-PAYEE06",
+        "name": "Example New Supplier 06 Demo",
+        "type": "company",
+        "activity": "Activity not yet established",
+        "bankScope": "External bank fixture",
+        "accountToken": "SYN-ACCT-CL04-PAYEE06",
+        "identityStatus": "verified_fixture",
+        "identityEvidenceIds": [
+          "CL04-PAYEE06-IDENTITY"
+        ],
+        "historyPaymentCount180d": 0,
+        "registryIdentifiers": [
+          {
+            "type": "GSTIN",
+            "value": "SYN-GST-CL04-PAYEE06",
+            "isValidIdentifier": false
+          },
+          {
+            "type": "CIN",
+            "value": "SYN-CIN-CL04-PAYEE06",
+            "isValidIdentifier": false
+          }
+        ],
+        "historyEvidenceId": "CL04-PAYEE06-HISTORY"
+      },
+      {
+        "id": "CL04-PAYEE07",
+        "name": "Example New Supplier 07 Demo",
+        "type": "company",
+        "activity": "Activity not yet established",
+        "bankScope": "External bank fixture",
+        "accountToken": "SYN-ACCT-CL04-PAYEE07",
+        "identityStatus": "verified_fixture",
+        "identityEvidenceIds": [
+          "CL04-PAYEE07-IDENTITY"
+        ],
+        "historyPaymentCount180d": 0,
+        "registryIdentifiers": [
+          {
+            "type": "GSTIN",
+            "value": "SYN-GST-CL04-PAYEE07",
+            "isValidIdentifier": false
+          },
+          {
+            "type": "CIN",
+            "value": "SYN-CIN-CL04-PAYEE07",
+            "isValidIdentifier": false
+          }
+        ],
+        "historyEvidenceId": "CL04-PAYEE07-HISTORY"
+      },
+      {
+        "id": "CL04-PAYEE08",
+        "name": "Example New Supplier 08 Demo",
+        "type": "company",
+        "activity": "Activity not yet established",
+        "bankScope": "External bank fixture",
+        "accountToken": "SYN-ACCT-CL04-PAYEE08",
+        "identityStatus": "verified_fixture",
+        "identityEvidenceIds": [
+          "CL04-PAYEE08-IDENTITY"
+        ],
+        "historyPaymentCount180d": 0,
+        "registryIdentifiers": [
+          {
+            "type": "GSTIN",
+            "value": "SYN-GST-CL04-PAYEE08",
+            "isValidIdentifier": false
+          },
+          {
+            "type": "CIN",
+            "value": "SYN-CIN-CL04-PAYEE08",
+            "isValidIdentifier": false
+          }
+        ],
+        "historyEvidenceId": "CL04-PAYEE08-HISTORY"
+      },
+      {
+        "id": "CL04-PAYEE09",
+        "name": "Example New Supplier 09 Demo",
+        "type": "company",
+        "activity": "Activity not yet established",
+        "bankScope": "External bank fixture",
+        "accountToken": "SYN-ACCT-CL04-PAYEE09",
+        "identityStatus": "verified_fixture",
+        "identityEvidenceIds": [
+          "CL04-PAYEE09-IDENTITY"
+        ],
+        "historyPaymentCount180d": 0,
+        "registryIdentifiers": [
+          {
+            "type": "GSTIN",
+            "value": "SYN-GST-CL04-PAYEE09",
+            "isValidIdentifier": false
+          },
+          {
+            "type": "CIN",
+            "value": "SYN-CIN-CL04-PAYEE09",
+            "isValidIdentifier": false
+          }
+        ],
+        "historyEvidenceId": "CL04-PAYEE09-HISTORY"
+      },
+      {
+        "id": "CL04-PAYEE10",
+        "name": "Example New Supplier 10 Demo",
+        "type": "company",
+        "activity": "Activity not yet established",
+        "bankScope": "External bank fixture",
+        "accountToken": "SYN-ACCT-CL04-PAYEE10",
+        "identityStatus": "verified_fixture",
+        "identityEvidenceIds": [
+          "CL04-PAYEE10-IDENTITY"
+        ],
+        "historyPaymentCount180d": 0,
+        "registryIdentifiers": [
+          {
+            "type": "GSTIN",
+            "value": "SYN-GST-CL04-PAYEE10",
+            "isValidIdentifier": false
+          },
+          {
+            "type": "CIN",
+            "value": "SYN-CIN-CL04-PAYEE10",
+            "isValidIdentifier": false
+          }
+        ],
+        "historyEvidenceId": "CL04-PAYEE10-HISTORY"
+      }
+    ],
+    "transactions": [
+      {
+        "id": "CL04-TX01",
+        "bankTransactionId": "SYN-FIN-CL04-TX01",
+        "paymentReference": "SYN-UTR-CL04-TX01",
+        "from": "CL04-BOR",
+        "to": "CL04-PAYEE01",
+        "amountInr": 480000,
+        "currency": "INR",
+        "postedAt": "2026-09-21T10:20:00+05:30",
+        "receivedAt": "2026-09-21T10:21:00+05:30",
+        "status": "posted",
+        "kind": "payment",
+        "channel": "NEFT fixture",
+        "reversalOf": null,
+        "observed": true,
+        "recordSource": "Synthetic authorised bank record",
+        "drawdownReference": "SYN-DD-CL04",
+        "documentedUseCategory": "unknown",
+        "useEvidenceId": null,
+        "evidenceId": "CL04-TX01-LEDGER"
+      },
+      {
+        "id": "CL04-TX02",
+        "bankTransactionId": "SYN-FIN-CL04-TX02",
+        "paymentReference": "SYN-UTR-CL04-TX02",
+        "from": "CL04-BOR",
+        "to": "CL04-PAYEE02",
+        "amountInr": 480000,
+        "currency": "INR",
+        "postedAt": "2026-09-21T10:25:00+05:30",
+        "receivedAt": "2026-09-21T10:26:00+05:30",
+        "status": "posted",
+        "kind": "payment",
+        "channel": "NEFT fixture",
+        "reversalOf": null,
+        "observed": true,
+        "recordSource": "Synthetic authorised bank record",
+        "drawdownReference": "SYN-DD-CL04",
+        "documentedUseCategory": "unknown",
+        "useEvidenceId": null,
+        "evidenceId": "CL04-TX02-LEDGER"
+      },
+      {
+        "id": "CL04-TX03",
+        "bankTransactionId": "SYN-FIN-CL04-TX03",
+        "paymentReference": "SYN-UTR-CL04-TX03",
+        "from": "CL04-BOR",
+        "to": "CL04-PAYEE03",
+        "amountInr": 480000,
+        "currency": "INR",
+        "postedAt": "2026-09-21T10:30:00+05:30",
+        "receivedAt": "2026-09-21T10:31:00+05:30",
+        "status": "posted",
+        "kind": "payment",
+        "channel": "NEFT fixture",
+        "reversalOf": null,
+        "observed": true,
+        "recordSource": "Synthetic authorised bank record",
+        "drawdownReference": "SYN-DD-CL04",
+        "documentedUseCategory": "unknown",
+        "useEvidenceId": null,
+        "evidenceId": "CL04-TX03-LEDGER"
+      },
+      {
+        "id": "CL04-TX04",
+        "bankTransactionId": "SYN-FIN-CL04-TX04",
+        "paymentReference": "SYN-UTR-CL04-TX04",
+        "from": "CL04-BOR",
+        "to": "CL04-PAYEE04",
+        "amountInr": 480000,
+        "currency": "INR",
+        "postedAt": "2026-09-21T10:35:00+05:30",
+        "receivedAt": "2026-09-21T10:36:00+05:30",
+        "status": "posted",
+        "kind": "payment",
+        "channel": "NEFT fixture",
+        "reversalOf": null,
+        "observed": true,
+        "recordSource": "Synthetic authorised bank record",
+        "drawdownReference": "SYN-DD-CL04",
+        "documentedUseCategory": "unknown",
+        "useEvidenceId": null,
+        "evidenceId": "CL04-TX04-LEDGER"
+      },
+      {
+        "id": "CL04-TX05",
+        "bankTransactionId": "SYN-FIN-CL04-TX05",
+        "paymentReference": "SYN-UTR-CL04-TX05",
+        "from": "CL04-BOR",
+        "to": "CL04-PAYEE05",
+        "amountInr": 480000,
+        "currency": "INR",
+        "postedAt": "2026-09-21T10:40:00+05:30",
+        "receivedAt": "2026-09-21T10:41:00+05:30",
+        "status": "posted",
+        "kind": "payment",
+        "channel": "NEFT fixture",
+        "reversalOf": null,
+        "observed": true,
+        "recordSource": "Synthetic authorised bank record",
+        "drawdownReference": "SYN-DD-CL04",
+        "documentedUseCategory": "unknown",
+        "useEvidenceId": null,
+        "evidenceId": "CL04-TX05-LEDGER"
+      },
+      {
+        "id": "CL04-TX06",
+        "bankTransactionId": "SYN-FIN-CL04-TX06",
+        "paymentReference": "SYN-UTR-CL04-TX06",
+        "from": "CL04-BOR",
+        "to": "CL04-PAYEE06",
+        "amountInr": 480000,
+        "currency": "INR",
+        "postedAt": "2026-09-21T10:45:00+05:30",
+        "receivedAt": "2026-09-21T10:46:00+05:30",
+        "status": "posted",
+        "kind": "payment",
+        "channel": "NEFT fixture",
+        "reversalOf": null,
+        "observed": true,
+        "recordSource": "Synthetic authorised bank record",
+        "drawdownReference": "SYN-DD-CL04",
+        "documentedUseCategory": "unknown",
+        "useEvidenceId": null,
+        "evidenceId": "CL04-TX06-LEDGER"
+      },
+      {
+        "id": "CL04-TX07",
+        "bankTransactionId": "SYN-FIN-CL04-TX07",
+        "paymentReference": "SYN-UTR-CL04-TX07",
+        "from": "CL04-BOR",
+        "to": "CL04-PAYEE07",
+        "amountInr": 480000,
+        "currency": "INR",
+        "postedAt": "2026-09-21T10:50:00+05:30",
+        "receivedAt": "2026-09-21T10:51:00+05:30",
+        "status": "posted",
+        "kind": "payment",
+        "channel": "NEFT fixture",
+        "reversalOf": null,
+        "observed": true,
+        "recordSource": "Synthetic authorised bank record",
+        "drawdownReference": "SYN-DD-CL04",
+        "documentedUseCategory": "unknown",
+        "useEvidenceId": null,
+        "evidenceId": "CL04-TX07-LEDGER"
+      },
+      {
+        "id": "CL04-TX08",
+        "bankTransactionId": "SYN-FIN-CL04-TX08",
+        "paymentReference": "SYN-UTR-CL04-TX08",
+        "from": "CL04-BOR",
+        "to": "CL04-PAYEE08",
+        "amountInr": 480000,
+        "currency": "INR",
+        "postedAt": "2026-09-21T10:55:00+05:30",
+        "receivedAt": "2026-09-21T10:56:00+05:30",
+        "status": "posted",
+        "kind": "payment",
+        "channel": "NEFT fixture",
+        "reversalOf": null,
+        "observed": true,
+        "recordSource": "Synthetic authorised bank record",
+        "drawdownReference": "SYN-DD-CL04",
+        "documentedUseCategory": "unknown",
+        "useEvidenceId": null,
+        "evidenceId": "CL04-TX08-LEDGER"
+      },
+      {
+        "id": "CL04-TX09",
+        "bankTransactionId": "SYN-FIN-CL04-TX09",
+        "paymentReference": "SYN-UTR-CL04-TX09",
+        "from": "CL04-BOR",
+        "to": "CL04-PAYEE09",
+        "amountInr": 480000,
+        "currency": "INR",
+        "postedAt": "2026-09-21T11:00:00+05:30",
+        "receivedAt": "2026-09-21T11:01:00+05:30",
+        "status": "posted",
+        "kind": "payment",
+        "channel": "NEFT fixture",
+        "reversalOf": null,
+        "observed": true,
+        "recordSource": "Synthetic authorised bank record",
+        "drawdownReference": "SYN-DD-CL04",
+        "documentedUseCategory": "unknown",
+        "useEvidenceId": null,
+        "evidenceId": "CL04-TX09-LEDGER"
+      },
+      {
+        "id": "CL04-TX10",
+        "bankTransactionId": "SYN-FIN-CL04-TX10",
+        "paymentReference": "SYN-UTR-CL04-TX10",
+        "from": "CL04-BOR",
+        "to": "CL04-PAYEE10",
+        "amountInr": 480000,
+        "currency": "INR",
+        "postedAt": "2026-09-21T11:05:00+05:30",
+        "receivedAt": "2026-09-21T11:06:00+05:30",
+        "status": "posted",
+        "kind": "payment",
+        "channel": "NEFT fixture",
+        "reversalOf": null,
+        "observed": true,
+        "recordSource": "Synthetic authorised bank record",
+        "drawdownReference": "SYN-DD-CL04",
+        "documentedUseCategory": "unknown",
+        "useEvidenceId": null,
+        "evidenceId": "CL04-TX10-LEDGER"
+      }
+    ],
+    "evidence": [
+      {
+        "id": "CL04-SAN",
+        "kind": "sanction",
+        "title": "Approved sanction fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-20T10:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "clause": "Clause 5: payments must relate to project procurement or labour with supporting records.",
+          "project": "SYN-PROJECT-HORIZON",
+          "allowedUseCategories": [
+            "building_materials",
+            "construction_labour"
+          ],
+          "restrictedPayeeIds": []
+        },
+        "contentSha256": "9337da8350d3e81065c05e4b1e5b952dccd7fef433d9ddbe9d61d4fc69a326f9"
+      },
+      {
+        "id": "CL04-KYC",
+        "kind": "bank_kyc",
+        "title": "Borrower KYC fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-20T10:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "entityId": "CL04-BOR",
+          "accountToken": "SYN-ACCT-CL04-BOR"
+        },
+        "contentSha256": "0159a805cf8b7d516ae4ae76df5f4b151f47c0ef28793d63ee642930d83df890"
+      },
+      {
+        "id": "CL04-PAYEE01-IDENTITY",
+        "kind": "bank_beneficiary_mapping",
+        "title": "Recipient account ownership fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T09:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "entityId": "CL04-PAYEE01",
+          "accountToken": "SYN-ACCT-CL04-PAYEE01",
+          "legalName": "Example New Supplier 01 Demo",
+          "registryToken": "SYN-GST-CL04-PAYEE01"
+        },
+        "contentSha256": "2cc2cad193568c2fbcf0e8b56cb020b6e97093b7b582f4f8077e14666c9fc74c"
+      },
+      {
+        "id": "CL04-TX01-LEDGER",
+        "kind": "bank_transaction",
+        "title": "Posted transaction fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T10:21:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "transactionId": "CL04-TX01",
+          "amountInr": 480000,
+          "from": "CL04-BOR",
+          "to": "CL04-PAYEE01",
+          "postedAt": "2026-09-21T10:20:00+05:30",
+          "reversalOf": null
+        },
+        "contentSha256": "b2c035240568694f5e640b42a1fe6e7a9498e8351d9bc26607ce346b6ab6a28e"
+      },
+      {
+        "id": "CL04-PAYEE02-IDENTITY",
+        "kind": "bank_beneficiary_mapping",
+        "title": "Recipient account ownership fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T09:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "entityId": "CL04-PAYEE02",
+          "accountToken": "SYN-ACCT-CL04-PAYEE02",
+          "legalName": "Example New Supplier 02 Demo",
+          "registryToken": "SYN-GST-CL04-PAYEE02"
+        },
+        "contentSha256": "d0bdc8b29fb68831f29bab80c6c5663a73495497a8dfb4a099e758b83f4756de"
+      },
+      {
+        "id": "CL04-TX02-LEDGER",
+        "kind": "bank_transaction",
+        "title": "Posted transaction fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T10:26:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "transactionId": "CL04-TX02",
+          "amountInr": 480000,
+          "from": "CL04-BOR",
+          "to": "CL04-PAYEE02",
+          "postedAt": "2026-09-21T10:25:00+05:30",
+          "reversalOf": null
+        },
+        "contentSha256": "67ae2ec48d1ac8aa51d649e521c7a767d88fc5605f7dc1c5557c6ec4722627ab"
+      },
+      {
+        "id": "CL04-PAYEE03-IDENTITY",
+        "kind": "bank_beneficiary_mapping",
+        "title": "Recipient account ownership fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T09:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "entityId": "CL04-PAYEE03",
+          "accountToken": "SYN-ACCT-CL04-PAYEE03",
+          "legalName": "Example New Supplier 03 Demo",
+          "registryToken": "SYN-GST-CL04-PAYEE03"
+        },
+        "contentSha256": "f263918954979d9a7380117edff0de0bf009b0b35f1128f50e063e478c981a40"
+      },
+      {
+        "id": "CL04-TX03-LEDGER",
+        "kind": "bank_transaction",
+        "title": "Posted transaction fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T10:31:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "transactionId": "CL04-TX03",
+          "amountInr": 480000,
+          "from": "CL04-BOR",
+          "to": "CL04-PAYEE03",
+          "postedAt": "2026-09-21T10:30:00+05:30",
+          "reversalOf": null
+        },
+        "contentSha256": "2608159f45edf9a1b16cdaa44bd15d3b31fe78b6c21fe3a8fb575d6a037a7172"
+      },
+      {
+        "id": "CL04-PAYEE04-IDENTITY",
+        "kind": "bank_beneficiary_mapping",
+        "title": "Recipient account ownership fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T09:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "entityId": "CL04-PAYEE04",
+          "accountToken": "SYN-ACCT-CL04-PAYEE04",
+          "legalName": "Example New Supplier 04 Demo",
+          "registryToken": "SYN-GST-CL04-PAYEE04"
+        },
+        "contentSha256": "45cc97a09768c9a3b42ae445bf581ad332d493c72e84d99943a6b8177a7d1d92"
+      },
+      {
+        "id": "CL04-TX04-LEDGER",
+        "kind": "bank_transaction",
+        "title": "Posted transaction fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T10:36:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "transactionId": "CL04-TX04",
+          "amountInr": 480000,
+          "from": "CL04-BOR",
+          "to": "CL04-PAYEE04",
+          "postedAt": "2026-09-21T10:35:00+05:30",
+          "reversalOf": null
+        },
+        "contentSha256": "6d7cf8d9b7a0b2b6dd04b614f3d214dfff1a7ca287ae6b5949eba30397c9a06b"
+      },
+      {
+        "id": "CL04-PAYEE05-IDENTITY",
+        "kind": "bank_beneficiary_mapping",
+        "title": "Recipient account ownership fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T09:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "entityId": "CL04-PAYEE05",
+          "accountToken": "SYN-ACCT-CL04-PAYEE05",
+          "legalName": "Example New Supplier 05 Demo",
+          "registryToken": "SYN-GST-CL04-PAYEE05"
+        },
+        "contentSha256": "c35ffb62f823f09073ae8d4f51ce98741fd968712ff5c0a0a230411feab656b5"
+      },
+      {
+        "id": "CL04-TX05-LEDGER",
+        "kind": "bank_transaction",
+        "title": "Posted transaction fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T10:41:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "transactionId": "CL04-TX05",
+          "amountInr": 480000,
+          "from": "CL04-BOR",
+          "to": "CL04-PAYEE05",
+          "postedAt": "2026-09-21T10:40:00+05:30",
+          "reversalOf": null
+        },
+        "contentSha256": "abeeeafde7b9efed9a1da40e8d62e989c2064f841fcacd9b773d6a3e8a1a798a"
+      },
+      {
+        "id": "CL04-PAYEE06-IDENTITY",
+        "kind": "bank_beneficiary_mapping",
+        "title": "Recipient account ownership fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T09:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "entityId": "CL04-PAYEE06",
+          "accountToken": "SYN-ACCT-CL04-PAYEE06",
+          "legalName": "Example New Supplier 06 Demo",
+          "registryToken": "SYN-GST-CL04-PAYEE06"
+        },
+        "contentSha256": "5212ae213cd62df9dac7200814962ae4c432aa3233c1e2cb6b9afcd5145881f4"
+      },
+      {
+        "id": "CL04-TX06-LEDGER",
+        "kind": "bank_transaction",
+        "title": "Posted transaction fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T10:46:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "transactionId": "CL04-TX06",
+          "amountInr": 480000,
+          "from": "CL04-BOR",
+          "to": "CL04-PAYEE06",
+          "postedAt": "2026-09-21T10:45:00+05:30",
+          "reversalOf": null
+        },
+        "contentSha256": "04f5dd5caa46afc67b6aea037ac119a57a8ebea9953ea2f764eb6659cec7e456"
+      },
+      {
+        "id": "CL04-PAYEE07-IDENTITY",
+        "kind": "bank_beneficiary_mapping",
+        "title": "Recipient account ownership fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T09:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "entityId": "CL04-PAYEE07",
+          "accountToken": "SYN-ACCT-CL04-PAYEE07",
+          "legalName": "Example New Supplier 07 Demo",
+          "registryToken": "SYN-GST-CL04-PAYEE07"
+        },
+        "contentSha256": "3152d276b947c92a2cb55d03e249d2de9470774188b1a8c4ad06abaa7495f7cf"
+      },
+      {
+        "id": "CL04-TX07-LEDGER",
+        "kind": "bank_transaction",
+        "title": "Posted transaction fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T10:51:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "transactionId": "CL04-TX07",
+          "amountInr": 480000,
+          "from": "CL04-BOR",
+          "to": "CL04-PAYEE07",
+          "postedAt": "2026-09-21T10:50:00+05:30",
+          "reversalOf": null
+        },
+        "contentSha256": "2ecd5a5df4729e4a3455a886601336512e2a1e1a93dc511654567511b6e42b47"
+      },
+      {
+        "id": "CL04-PAYEE08-IDENTITY",
+        "kind": "bank_beneficiary_mapping",
+        "title": "Recipient account ownership fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T09:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "entityId": "CL04-PAYEE08",
+          "accountToken": "SYN-ACCT-CL04-PAYEE08",
+          "legalName": "Example New Supplier 08 Demo",
+          "registryToken": "SYN-GST-CL04-PAYEE08"
+        },
+        "contentSha256": "4ecbe7987c6d3b05ecb6d2673dc026757d8901bfd29cd716576b0e2f969a7804"
+      },
+      {
+        "id": "CL04-TX08-LEDGER",
+        "kind": "bank_transaction",
+        "title": "Posted transaction fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T10:56:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "transactionId": "CL04-TX08",
+          "amountInr": 480000,
+          "from": "CL04-BOR",
+          "to": "CL04-PAYEE08",
+          "postedAt": "2026-09-21T10:55:00+05:30",
+          "reversalOf": null
+        },
+        "contentSha256": "22ec778ae0f7dfdafd6b97d9e22e4939e86dd2c0dd2e72d2c5a1d147a09c815e"
+      },
+      {
+        "id": "CL04-PAYEE09-IDENTITY",
+        "kind": "bank_beneficiary_mapping",
+        "title": "Recipient account ownership fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T09:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "entityId": "CL04-PAYEE09",
+          "accountToken": "SYN-ACCT-CL04-PAYEE09",
+          "legalName": "Example New Supplier 09 Demo",
+          "registryToken": "SYN-GST-CL04-PAYEE09"
+        },
+        "contentSha256": "6a57a1e1eec7d561c4d3c5dac076cc70c6f7559e909162f2eeb49388f13c6697"
+      },
+      {
+        "id": "CL04-TX09-LEDGER",
+        "kind": "bank_transaction",
+        "title": "Posted transaction fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T11:01:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "transactionId": "CL04-TX09",
+          "amountInr": 480000,
+          "from": "CL04-BOR",
+          "to": "CL04-PAYEE09",
+          "postedAt": "2026-09-21T11:00:00+05:30",
+          "reversalOf": null
+        },
+        "contentSha256": "106080459a485f7981011fd937e07c1787b2559d49984a613b1bb2479f518413"
+      },
+      {
+        "id": "CL04-PAYEE10-IDENTITY",
+        "kind": "bank_beneficiary_mapping",
+        "title": "Recipient account ownership fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T09:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "entityId": "CL04-PAYEE10",
+          "accountToken": "SYN-ACCT-CL04-PAYEE10",
+          "legalName": "Example New Supplier 10 Demo",
+          "registryToken": "SYN-GST-CL04-PAYEE10"
+        },
+        "contentSha256": "19294d18fae948b4cc7d05ecc1ea94302bf36ab3c1fe056db96ba1b809b57267"
+      },
+      {
+        "id": "CL04-TX10-LEDGER",
+        "kind": "bank_transaction",
+        "title": "Posted transaction fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T11:06:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "transactionId": "CL04-TX10",
+          "amountInr": 480000,
+          "from": "CL04-BOR",
+          "to": "CL04-PAYEE10",
+          "postedAt": "2026-09-21T11:05:00+05:30",
+          "reversalOf": null
+        },
+        "contentSha256": "a9a9f5484d2995ee67653d0e7ebb482a0cbb26acc47c55e7287f118902a1046a"
+      },
+      {
+        "id": "CL04-PAYEE01-HISTORY",
+        "kind": "bank_history_aggregate",
+        "title": "Prior payment history fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T09:59:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "borrowerId": "CL04-BOR",
+          "beneficiaryId": "CL04-PAYEE01",
+          "windowDays": 180,
+          "windowEndsBefore": "2026-09-21T10:00:00+05:30",
+          "paymentCount": 0,
+          "basis": "Synthetic bank history aggregate; underlying historical transactions are not included."
+        },
+        "contentSha256": "75392fdd9ce4e6a7058ebfea70dba637c9002d99671617f6b9c35020142da99e"
+      },
+      {
+        "id": "CL04-PAYEE02-HISTORY",
+        "kind": "bank_history_aggregate",
+        "title": "Prior payment history fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T09:59:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "borrowerId": "CL04-BOR",
+          "beneficiaryId": "CL04-PAYEE02",
+          "windowDays": 180,
+          "windowEndsBefore": "2026-09-21T10:00:00+05:30",
+          "paymentCount": 0,
+          "basis": "Synthetic bank history aggregate; underlying historical transactions are not included."
+        },
+        "contentSha256": "58abb421896a578d6feb187d83b536b2604734770244895458fd4ea7be478a2f"
+      },
+      {
+        "id": "CL04-PAYEE03-HISTORY",
+        "kind": "bank_history_aggregate",
+        "title": "Prior payment history fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T09:59:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "borrowerId": "CL04-BOR",
+          "beneficiaryId": "CL04-PAYEE03",
+          "windowDays": 180,
+          "windowEndsBefore": "2026-09-21T10:00:00+05:30",
+          "paymentCount": 0,
+          "basis": "Synthetic bank history aggregate; underlying historical transactions are not included."
+        },
+        "contentSha256": "55d1e302afefc9b0b2374aa5977bd8b81e75722829d3fa507ac10e7556bb1e49"
+      },
+      {
+        "id": "CL04-PAYEE04-HISTORY",
+        "kind": "bank_history_aggregate",
+        "title": "Prior payment history fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T09:59:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "borrowerId": "CL04-BOR",
+          "beneficiaryId": "CL04-PAYEE04",
+          "windowDays": 180,
+          "windowEndsBefore": "2026-09-21T10:00:00+05:30",
+          "paymentCount": 0,
+          "basis": "Synthetic bank history aggregate; underlying historical transactions are not included."
+        },
+        "contentSha256": "2606bdfa5b6aec77db072c1cc97bd58d0047fb917aee47a63596a10b8a4ac3d7"
+      },
+      {
+        "id": "CL04-PAYEE05-HISTORY",
+        "kind": "bank_history_aggregate",
+        "title": "Prior payment history fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T09:59:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "borrowerId": "CL04-BOR",
+          "beneficiaryId": "CL04-PAYEE05",
+          "windowDays": 180,
+          "windowEndsBefore": "2026-09-21T10:00:00+05:30",
+          "paymentCount": 0,
+          "basis": "Synthetic bank history aggregate; underlying historical transactions are not included."
+        },
+        "contentSha256": "10137ec3f3d9569b2d62e944a908c0dbbdf5f87076905a4385223f787b8b16c9"
+      },
+      {
+        "id": "CL04-PAYEE06-HISTORY",
+        "kind": "bank_history_aggregate",
+        "title": "Prior payment history fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T09:59:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "borrowerId": "CL04-BOR",
+          "beneficiaryId": "CL04-PAYEE06",
+          "windowDays": 180,
+          "windowEndsBefore": "2026-09-21T10:00:00+05:30",
+          "paymentCount": 0,
+          "basis": "Synthetic bank history aggregate; underlying historical transactions are not included."
+        },
+        "contentSha256": "8a55822efea01779fc3cfc0da31f5a86d526d8d7ce2dc3028423a07ac90fb71d"
+      },
+      {
+        "id": "CL04-PAYEE07-HISTORY",
+        "kind": "bank_history_aggregate",
+        "title": "Prior payment history fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T09:59:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "borrowerId": "CL04-BOR",
+          "beneficiaryId": "CL04-PAYEE07",
+          "windowDays": 180,
+          "windowEndsBefore": "2026-09-21T10:00:00+05:30",
+          "paymentCount": 0,
+          "basis": "Synthetic bank history aggregate; underlying historical transactions are not included."
+        },
+        "contentSha256": "c9cd222cd74ef80bd383955026870e19d9acab06b68f964b2778c5807f479df5"
+      },
+      {
+        "id": "CL04-PAYEE08-HISTORY",
+        "kind": "bank_history_aggregate",
+        "title": "Prior payment history fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T09:59:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "borrowerId": "CL04-BOR",
+          "beneficiaryId": "CL04-PAYEE08",
+          "windowDays": 180,
+          "windowEndsBefore": "2026-09-21T10:00:00+05:30",
+          "paymentCount": 0,
+          "basis": "Synthetic bank history aggregate; underlying historical transactions are not included."
+        },
+        "contentSha256": "a628484e639c37aa0ac6166dbf17c1590af463de70dce8deed090f78f7967d26"
+      },
+      {
+        "id": "CL04-PAYEE09-HISTORY",
+        "kind": "bank_history_aggregate",
+        "title": "Prior payment history fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T09:59:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "borrowerId": "CL04-BOR",
+          "beneficiaryId": "CL04-PAYEE09",
+          "windowDays": 180,
+          "windowEndsBefore": "2026-09-21T10:00:00+05:30",
+          "paymentCount": 0,
+          "basis": "Synthetic bank history aggregate; underlying historical transactions are not included."
+        },
+        "contentSha256": "2125e29604c65f6c054f845f09d0df89173b3f0e2d000c636ad11ae5f533d0a8"
+      },
+      {
+        "id": "CL04-PAYEE10-HISTORY",
+        "kind": "bank_history_aggregate",
+        "title": "Prior payment history fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T09:59:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "borrowerId": "CL04-BOR",
+          "beneficiaryId": "CL04-PAYEE10",
+          "windowDays": 180,
+          "windowEndsBefore": "2026-09-21T10:00:00+05:30",
+          "paymentCount": 0,
+          "basis": "Synthetic bank history aggregate; underlying historical transactions are not included."
+        },
+        "contentSha256": "3616cf0432e78603e3122dc755fd74f77ffc4e9b2b3460ace6e9c3ff55177e21"
+      }
+    ],
+    "externalChecks": [],
+    "relationships": [],
+    "exceptions": [],
+    "events": [
+      {
+        "id": "CL04-TX01-EV1",
+        "transactionId": "CL04-TX01",
+        "receivedAt": "2026-09-21T10:21:00+05:30"
+      },
+      {
+        "id": "CL04-TX02-EV1",
+        "transactionId": "CL04-TX02",
+        "receivedAt": "2026-09-21T10:26:00+05:30"
+      },
+      {
+        "id": "CL04-TX03-EV1",
+        "transactionId": "CL04-TX03",
+        "receivedAt": "2026-09-21T10:31:00+05:30"
+      },
+      {
+        "id": "CL04-TX04-EV1",
+        "transactionId": "CL04-TX04",
+        "receivedAt": "2026-09-21T10:36:00+05:30"
+      },
+      {
+        "id": "CL04-TX05-EV1",
+        "transactionId": "CL04-TX05",
+        "receivedAt": "2026-09-21T10:41:00+05:30"
+      },
+      {
+        "id": "CL04-TX06-EV1",
+        "transactionId": "CL04-TX06",
+        "receivedAt": "2026-09-21T10:46:00+05:30"
+      },
+      {
+        "id": "CL04-TX07-EV1",
+        "transactionId": "CL04-TX07",
+        "receivedAt": "2026-09-21T10:51:00+05:30"
+      },
+      {
+        "id": "CL04-TX08-EV1",
+        "transactionId": "CL04-TX08",
+        "receivedAt": "2026-09-21T10:56:00+05:30"
+      },
+      {
+        "id": "CL04-TX09-EV1",
+        "transactionId": "CL04-TX09",
+        "receivedAt": "2026-09-21T11:01:00+05:30"
+      },
+      {
+        "id": "CL04-TX10-EV1",
+        "transactionId": "CL04-TX10",
+        "receivedAt": "2026-09-21T11:06:00+05:30"
+      }
+    ],
+    "branch": "KOL",
+    "circle": "East",
+    "profile": "original",
+    "origin": "Scenario pack"
+  },
+  {
+    "id": "CL05",
+    "title": "Observed transfers return to the borrower",
+    "mode": "Synthetic",
+    "asOf": "2026-09-22T10:00:00+05:30",
+    "borrower": {
+      "id": "CL05-BOR",
+      "name": "Example Ridge Construction Demo",
+      "entityType": "company",
+      "cif": "SYN-CIF-CL05"
+    },
+    "facility": {
+      "id": "SYN-LOAN-CL05",
+      "loanType": "Construction term loan",
+      "sanctionedAmountInr": 8000000,
+      "drawdownAmountInr": 8000000,
+      "drawdownId": "SYN-DD-CL05",
+      "drawdownAt": "2026-09-21T10:00:00+05:30",
+      "currency": "INR",
+      "project": "SYN-PROJECT-RIDGE",
+      "purpose": "Construct the sanctioned site",
+      "allowedUseCategories": [
+        "building_materials",
+        "construction_labour"
+      ],
+      "restrictedPayeeIds": [],
+      "sanctionClause": "Clause 5: proceeds must be deployed for the sanctioned site with commercial evidence.",
+      "sanctionEvidenceId": "CL05-SAN",
+      "preDrawdownBalanceInr": 0,
+      "fundAttribution": "Dedicated synthetic account with explicit drawdown reference; this simplification must not be assumed for production."
+    },
+    "entities": [
+      {
+        "id": "CL05-BOR",
+        "name": "Example Ridge Construction Demo",
+        "type": "company",
+        "bankScope": "UCO fixture",
+        "accountToken": "SYN-ACCT-CL05-BOR",
+        "identityStatus": "verified_fixture",
+        "identityEvidenceIds": [
+          "CL05-KYC"
+        ],
+        "activity": "Borrower",
+        "historyPaymentCount180d": 0,
+        "registryIdentifiers": []
+      },
+      {
+        "id": "CL05-INTERMEDIARY",
+        "name": "Example Material Intermediary Demo",
+        "type": "company",
+        "activity": "General wholesaling",
+        "bankScope": "UCO fixture",
+        "accountToken": "SYN-ACCT-CL05-INTERMEDIARY",
+        "identityStatus": "verified_fixture",
+        "identityEvidenceIds": [
+          "CL05-INTERMEDIARY-IDENTITY"
+        ],
+        "historyPaymentCount180d": 0,
+        "registryIdentifiers": [
+          {
+            "type": "GSTIN",
+            "value": "SYN-GST-CL05-INTERMEDIARY",
+            "isValidIdentifier": false
+          },
+          {
+            "type": "CIN",
+            "value": "SYN-CIN-CL05-INTERMEDIARY",
+            "isValidIdentifier": false
+          }
+        ],
+        "historyEvidenceId": "CL05-INTERMEDIARY-HISTORY"
+      },
+      {
+        "id": "CL05-RETURNER",
+        "name": "Example Settlement Services Demo",
+        "type": "company",
+        "activity": "Commercial services",
+        "bankScope": "UCO fixture",
+        "accountToken": "SYN-ACCT-CL05-RETURNER",
+        "identityStatus": "verified_fixture",
+        "identityEvidenceIds": [
+          "CL05-RETURNER-IDENTITY"
+        ],
+        "historyPaymentCount180d": 0,
+        "registryIdentifiers": [
+          {
+            "type": "GSTIN",
+            "value": "SYN-GST-CL05-RETURNER",
+            "isValidIdentifier": false
+          },
+          {
+            "type": "CIN",
+            "value": "SYN-CIN-CL05-RETURNER",
+            "isValidIdentifier": false
+          }
+        ],
+        "historyEvidenceId": "CL05-RETURNER-HISTORY"
+      }
+    ],
+    "transactions": [
+      {
+        "id": "CL05-TX01",
+        "bankTransactionId": "SYN-FIN-CL05-TX01",
+        "paymentReference": "SYN-UTR-CL05-TX01",
+        "from": "CL05-BOR",
+        "to": "CL05-INTERMEDIARY",
+        "amountInr": 2000000,
+        "currency": "INR",
+        "postedAt": "2026-09-21T10:30:00+05:30",
+        "receivedAt": "2026-09-21T10:31:00+05:30",
+        "status": "posted",
+        "kind": "payment",
+        "channel": "NEFT fixture",
+        "reversalOf": null,
+        "observed": true,
+        "recordSource": "Synthetic authorised bank record",
+        "drawdownReference": "SYN-DD-CL05",
+        "documentedUseCategory": "unknown",
+        "useEvidenceId": null,
+        "evidenceId": "CL05-TX01-LEDGER"
+      },
+      {
+        "id": "CL05-TX02",
+        "bankTransactionId": "SYN-FIN-CL05-TX02",
+        "paymentReference": "SYN-UTR-CL05-TX02",
+        "from": "CL05-INTERMEDIARY",
+        "to": "CL05-RETURNER",
+        "amountInr": 1900000,
+        "currency": "INR",
+        "postedAt": "2026-09-21T11:30:00+05:30",
+        "receivedAt": "2026-09-21T11:31:00+05:30",
+        "status": "posted",
+        "kind": "payment",
+        "channel": "NEFT fixture",
+        "reversalOf": null,
+        "observed": true,
+        "recordSource": "Synthetic authorised bank record",
+        "drawdownReference": null,
+        "documentedUseCategory": "unknown",
+        "useEvidenceId": null,
+        "evidenceId": "CL05-TX02-LEDGER"
+      },
+      {
+        "id": "CL05-TX03",
+        "bankTransactionId": "SYN-FIN-CL05-TX03",
+        "paymentReference": "SYN-UTR-CL05-TX03",
+        "from": "CL05-RETURNER",
+        "to": "CL05-BOR",
+        "amountInr": 1800000,
+        "currency": "INR",
+        "postedAt": "2026-09-21T12:30:00+05:30",
+        "receivedAt": "2026-09-21T12:31:00+05:30",
+        "status": "posted",
+        "kind": "payment",
+        "channel": "NEFT fixture",
+        "reversalOf": null,
+        "observed": true,
+        "recordSource": "Synthetic authorised bank record",
+        "drawdownReference": null,
+        "documentedUseCategory": "unknown",
+        "useEvidenceId": null,
+        "evidenceId": "CL05-TX03-LEDGER"
+      }
+    ],
+    "evidence": [
+      {
+        "id": "CL05-SAN",
+        "kind": "sanction",
+        "title": "Approved sanction fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-20T10:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "clause": "Clause 5: proceeds must be deployed for the sanctioned site with commercial evidence.",
+          "project": "SYN-PROJECT-RIDGE",
+          "allowedUseCategories": [
+            "building_materials",
+            "construction_labour"
+          ],
+          "restrictedPayeeIds": []
+        },
+        "contentSha256": "e59b271b4f83bfaa5cf05d140a4aab03e1065407e102b5124409f34f38c1626f"
+      },
+      {
+        "id": "CL05-KYC",
+        "kind": "bank_kyc",
+        "title": "Borrower KYC fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-20T10:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "entityId": "CL05-BOR",
+          "accountToken": "SYN-ACCT-CL05-BOR"
+        },
+        "contentSha256": "309222ac2e01b61a641140742441ad113cf9a615f6aa49fea70980a05ba2b954"
+      },
+      {
+        "id": "CL05-INTERMEDIARY-IDENTITY",
+        "kind": "bank_beneficiary_mapping",
+        "title": "Recipient account ownership fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T09:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "entityId": "CL05-INTERMEDIARY",
+          "accountToken": "SYN-ACCT-CL05-INTERMEDIARY",
+          "legalName": "Example Material Intermediary Demo",
+          "registryToken": "SYN-GST-CL05-INTERMEDIARY"
+        },
+        "contentSha256": "1f64c09f7b2cf7f2fdb6446b2d2fbab06caac3c69e64f27ec60c3d30f00ddfd8"
+      },
+      {
+        "id": "CL05-RETURNER-IDENTITY",
+        "kind": "bank_beneficiary_mapping",
+        "title": "Recipient account ownership fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T09:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "entityId": "CL05-RETURNER",
+          "accountToken": "SYN-ACCT-CL05-RETURNER",
+          "legalName": "Example Settlement Services Demo",
+          "registryToken": "SYN-GST-CL05-RETURNER"
+        },
+        "contentSha256": "6e1c440ee2d66b656eaf5b694c0cf6f3ba26c04689db9c8fcbad4c74d0ca62ad"
+      },
+      {
+        "id": "CL05-TX01-LEDGER",
+        "kind": "bank_transaction",
+        "title": "Posted transaction fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T10:31:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "transactionId": "CL05-TX01",
+          "amountInr": 2000000,
+          "from": "CL05-BOR",
+          "to": "CL05-INTERMEDIARY",
+          "postedAt": "2026-09-21T10:30:00+05:30",
+          "reversalOf": null
+        },
+        "contentSha256": "7000a3c2945343da3972123792e8f92ef3255f9fb76de8f60126941727c55f4d"
+      },
+      {
+        "id": "CL05-TX02-LEDGER",
+        "kind": "bank_transaction",
+        "title": "Posted transaction fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T11:31:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "transactionId": "CL05-TX02",
+          "amountInr": 1900000,
+          "from": "CL05-INTERMEDIARY",
+          "to": "CL05-RETURNER",
+          "postedAt": "2026-09-21T11:30:00+05:30",
+          "reversalOf": null
+        },
+        "contentSha256": "0d6bbcc14ecc1755862ee96efa9fc4f41d16f873858a2c8f2b10fcfe5f7237ae"
+      },
+      {
+        "id": "CL05-TX03-LEDGER",
+        "kind": "bank_transaction",
+        "title": "Posted transaction fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T12:31:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "transactionId": "CL05-TX03",
+          "amountInr": 1800000,
+          "from": "CL05-RETURNER",
+          "to": "CL05-BOR",
+          "postedAt": "2026-09-21T12:30:00+05:30",
+          "reversalOf": null
+        },
+        "contentSha256": "e21fd5aa921e919d24d1fef3e19cf79b421cb608a2484a4cf39bdc6d8af45c8e"
+      },
+      {
+        "id": "CL05-INTERMEDIARY-HISTORY",
+        "kind": "bank_history_aggregate",
+        "title": "Prior payment history fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T09:59:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "borrowerId": "CL05-BOR",
+          "beneficiaryId": "CL05-INTERMEDIARY",
+          "windowDays": 180,
+          "windowEndsBefore": "2026-09-21T10:00:00+05:30",
+          "paymentCount": 0,
+          "basis": "Synthetic bank history aggregate; underlying historical transactions are not included."
+        },
+        "contentSha256": "a6c8e8e23c11488d7f16bb04f21b42dd533d06b18137f859e54f6d02db85b254"
+      },
+      {
+        "id": "CL05-RETURNER-HISTORY",
+        "kind": "bank_history_aggregate",
+        "title": "Prior payment history fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T09:59:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "borrowerId": "CL05-BOR",
+          "beneficiaryId": "CL05-RETURNER",
+          "windowDays": 180,
+          "windowEndsBefore": "2026-09-21T10:00:00+05:30",
+          "paymentCount": 0,
+          "basis": "Synthetic bank history aggregate; underlying historical transactions are not included."
+        },
+        "contentSha256": "743ed8d42982b1e65a9985103d2defe6f3d5379ab4bd5b820ab92f954585baf0"
+      }
+    ],
+    "externalChecks": [],
+    "relationships": [],
+    "exceptions": [],
+    "events": [
+      {
+        "id": "CL05-TX01-EV1",
+        "transactionId": "CL05-TX01",
+        "receivedAt": "2026-09-21T10:31:00+05:30"
+      },
+      {
+        "id": "CL05-TX02-EV1",
+        "transactionId": "CL05-TX02",
+        "receivedAt": "2026-09-21T11:31:00+05:30"
+      },
+      {
+        "id": "CL05-TX03-EV1",
+        "transactionId": "CL05-TX03",
+        "receivedAt": "2026-09-21T12:31:00+05:30"
+      }
+    ],
+    "branch": "KOL",
+    "circle": "East",
+    "profile": "original",
+    "origin": "Scenario pack"
+  },
+  {
+    "id": "DU01",
+    "title": "Ambiguous beneficiary name needs resolution",
+    "mode": "Synthetic",
+    "asOf": "2026-09-22T10:00:00+05:30",
+    "borrower": {
+      "id": "DU01-BOR",
+      "name": "Neha Paul Demo",
+      "entityType": "individual",
+      "cif": "SYN-CIF-DU01"
+    },
+    "facility": {
+      "id": "SYN-LOAN-DU01",
+      "loanType": "Housing self construction",
+      "sanctionedAmountInr": 2000000,
+      "drawdownAmountInr": 2000000,
+      "drawdownId": "SYN-DD-DU01",
+      "drawdownAt": "2026-09-21T10:00:00+05:30",
+      "currency": "INR",
+      "project": "SYN-PROJECT-HOME-D404",
+      "purpose": "Build the sanctioned house",
+      "allowedUseCategories": [
+        "building_materials",
+        "construction_labour"
+      ],
+      "restrictedPayeeIds": [],
+      "sanctionClause": "Clause 3: documented building materials and labour for the property are permitted.",
+      "sanctionEvidenceId": "DU01-SAN",
+      "preDrawdownBalanceInr": 0,
+      "fundAttribution": "Dedicated synthetic account with explicit drawdown reference; this simplification must not be assumed for production."
+    },
+    "entities": [
+      {
+        "id": "DU01-BOR",
+        "name": "Neha Paul Demo",
+        "type": "individual",
+        "bankScope": "UCO fixture",
+        "accountToken": "SYN-ACCT-DU01-BOR",
+        "identityStatus": "verified_fixture",
+        "identityEvidenceIds": [
+          "DU01-KYC"
+        ],
+        "activity": "Borrower",
+        "historyPaymentCount180d": 0,
+        "registryIdentifiers": []
+      },
+      {
+        "id": "DU01-UNKNOWN",
+        "name": "A Kumar Traders Demo",
+        "type": "unknown",
+        "activity": "Unknown",
+        "bankScope": "External bank fixture",
+        "accountToken": "SYN-ACCT-DU01-UNKNOWN",
+        "identityStatus": "unresolved",
+        "identityEvidenceIds": [],
+        "historyPaymentCount180d": 0,
+        "registryIdentifiers": [],
+        "historyEvidenceId": "DU01-UNKNOWN-HISTORY"
+      }
+    ],
+    "transactions": [
+      {
+        "id": "DU01-TX01",
+        "bankTransactionId": "SYN-FIN-DU01-TX01",
+        "paymentReference": "SYN-UTR-DU01-TX01",
+        "from": "DU01-BOR",
+        "to": "DU01-UNKNOWN",
+        "amountInr": 500000,
+        "currency": "INR",
+        "postedAt": "2026-09-21T11:00:00+05:30",
+        "receivedAt": "2026-09-21T11:01:00+05:30",
+        "status": "posted",
+        "kind": "payment",
+        "channel": "NEFT fixture",
+        "reversalOf": null,
+        "observed": true,
+        "recordSource": "Synthetic authorised bank record",
+        "drawdownReference": "SYN-DD-DU01",
+        "documentedUseCategory": "unknown",
+        "useEvidenceId": null,
+        "evidenceId": "DU01-TX01-LEDGER"
+      }
+    ],
+    "evidence": [
+      {
+        "id": "DU01-SAN",
+        "kind": "sanction",
+        "title": "Approved sanction fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-20T10:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "clause": "Clause 3: documented building materials and labour for the property are permitted.",
+          "project": "SYN-PROJECT-HOME-D404",
+          "allowedUseCategories": [
+            "building_materials",
+            "construction_labour"
+          ],
+          "restrictedPayeeIds": []
+        },
+        "contentSha256": "458b4e40ff03be735b5a95c741056734e7130c10b909666e9ae19af57d994f3c"
+      },
+      {
+        "id": "DU01-KYC",
+        "kind": "bank_kyc",
+        "title": "Borrower KYC fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-20T10:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "entityId": "DU01-BOR",
+          "accountToken": "SYN-ACCT-DU01-BOR"
+        },
+        "contentSha256": "f50c705de5ecb827169b0a1a675f130761b29b30a25edb8a120852f971a3ca9b"
+      },
+      {
+        "id": "DU01-TX01-LEDGER",
+        "kind": "bank_transaction",
+        "title": "Posted transaction fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T11:01:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "transactionId": "DU01-TX01",
+          "amountInr": 500000,
+          "from": "DU01-BOR",
+          "to": "DU01-UNKNOWN",
+          "postedAt": "2026-09-21T11:00:00+05:30",
+          "reversalOf": null
+        },
+        "contentSha256": "1b0229872b30fd3b7c6f0b84e2fa2c22b24699c23aec326bea169afc0fb434ef"
+      },
+      {
+        "id": "DU01-CANDIDATES",
+        "kind": "name_search",
+        "title": "Ambiguous search results fixture",
+        "mode": "Synthetic",
+        "status": "inconclusive",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T15:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "query": "A Kumar Traders Demo",
+          "candidates": [
+            {
+              "name": "A Kumar Building Traders Demo",
+              "location": "City A",
+              "business": "Building materials"
+            },
+            {
+              "name": "A Kumar Device Traders Demo",
+              "location": "City B",
+              "business": "Electronics"
+            }
+          ],
+          "accountOwnerEstablished": false
+        },
+        "contentSha256": "35504c622c45df9e7880a6ecff5d2359b8b0399c25b77b84b89b4b1553142310"
+      },
+      {
+        "id": "DU01-CHECK01-EVIDENCE",
+        "kind": "external_research",
+        "title": "Web search lookup fixture",
+        "mode": "Synthetic",
+        "status": "inconclusive",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T15:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "entityId": "DU01-UNKNOWN",
+          "claim": "Two fictional name matches exist; neither is linked to the payment account.",
+          "limitations": "Does not establish delivery, invoice authenticity or actual use of funds."
+        },
+        "contentSha256": "603ad734c847fd410404e7f0c55d50e3ce3152c6980b02e928166a96541ef005"
+      },
+      {
+        "id": "DU01-UNKNOWN-HISTORY",
+        "kind": "bank_history_aggregate",
+        "title": "Prior payment history fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T09:59:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "borrowerId": "DU01-BOR",
+          "beneficiaryId": "DU01-UNKNOWN",
+          "windowDays": 180,
+          "windowEndsBefore": "2026-09-21T10:00:00+05:30",
+          "paymentCount": 0,
+          "basis": "Synthetic bank history aggregate; underlying historical transactions are not included."
+        },
+        "contentSha256": "fc783ea22060e29a066f81d44c5803f57d0d5dd7c0faef52f5c78625ee8af2b1"
+      }
+    ],
+    "externalChecks": [
+      {
+        "id": "DU01-CHECK01",
+        "provider": "Web search",
+        "mode": "Synthetic",
+        "entityId": "DU01-UNKNOWN",
+        "lookupKey": null,
+        "status": "inconclusive",
+        "matchedOn": null,
+        "evidenceId": "DU01-CHECK01-EVIDENCE",
+        "claim": "Two fictional name matches exist; neither is linked to the payment account.",
+        "retrievedAt": "2026-09-21T15:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "liveRequestMade": false
+      }
+    ],
+    "relationships": [],
+    "exceptions": [],
+    "events": [
+      {
+        "id": "DU01-TX01-EV1",
+        "transactionId": "DU01-TX01",
+        "receivedAt": "2026-09-21T11:01:00+05:30"
+      }
+    ],
+    "branch": "KOL",
+    "circle": "East",
+    "profile": "original",
+    "origin": "Scenario pack"
+  },
+  {
+    "id": "DU02",
+    "title": "External research unavailable while bank evidence remains",
+    "mode": "Synthetic",
+    "asOf": "2026-09-22T10:00:00+05:30",
+    "borrower": {
+      "id": "DU02-BOR",
+      "name": "Example Field Construction Demo",
+      "entityType": "company",
+      "cif": "SYN-CIF-DU02"
+    },
+    "facility": {
+      "id": "SYN-LOAN-DU02",
+      "loanType": "Construction term loan",
+      "sanctionedAmountInr": 5000000,
+      "drawdownAmountInr": 5000000,
+      "drawdownId": "SYN-DD-DU02",
+      "drawdownAt": "2026-09-21T10:00:00+05:30",
+      "currency": "INR",
+      "project": "SYN-PROJECT-FIELD",
+      "purpose": "Construct the sanctioned site",
+      "allowedUseCategories": [
+        "building_materials",
+        "construction_labour"
+      ],
+      "restrictedPayeeIds": [],
+      "sanctionClause": "Clause 5: verified project procurement is permitted.",
+      "sanctionEvidenceId": "DU02-SAN",
+      "preDrawdownBalanceInr": 0,
+      "fundAttribution": "Dedicated synthetic account with explicit drawdown reference; this simplification must not be assumed for production."
+    },
+    "entities": [
+      {
+        "id": "DU02-BOR",
+        "name": "Example Field Construction Demo",
+        "type": "company",
+        "bankScope": "UCO fixture",
+        "accountToken": "SYN-ACCT-DU02-BOR",
+        "identityStatus": "verified_fixture",
+        "identityEvidenceIds": [
+          "DU02-KYC"
+        ],
+        "activity": "Borrower",
+        "historyPaymentCount180d": 0,
+        "registryIdentifiers": []
+      },
+      {
+        "id": "DU02-SUPPLIER",
+        "name": "Example Established Supplies Demo",
+        "type": "company",
+        "activity": "Building material supply",
+        "bankScope": "External bank fixture",
+        "accountToken": "SYN-ACCT-DU02-SUPPLIER",
+        "identityStatus": "verified_fixture",
+        "identityEvidenceIds": [
+          "DU02-SUPPLIER-IDENTITY"
+        ],
+        "historyPaymentCount180d": 9,
+        "registryIdentifiers": [
+          {
+            "type": "GSTIN",
+            "value": "SYN-GST-DU02-SUPPLIER",
+            "isValidIdentifier": false
+          },
+          {
+            "type": "CIN",
+            "value": "SYN-CIN-DU02-SUPPLIER",
+            "isValidIdentifier": false
+          }
+        ],
+        "historyEvidenceId": "DU02-SUPPLIER-HISTORY"
+      }
+    ],
+    "transactions": [
+      {
+        "id": "DU02-TX01",
+        "bankTransactionId": "SYN-FIN-DU02-TX01",
+        "paymentReference": "SYN-UTR-DU02-TX01",
+        "from": "DU02-BOR",
+        "to": "DU02-SUPPLIER",
+        "amountInr": 1000000,
+        "currency": "INR",
+        "postedAt": "2026-09-21T11:20:00+05:30",
+        "receivedAt": "2026-09-21T11:21:00+05:30",
+        "status": "posted",
+        "kind": "payment",
+        "channel": "NEFT fixture",
+        "reversalOf": null,
+        "observed": true,
+        "recordSource": "Synthetic authorised bank record",
+        "drawdownReference": "SYN-DD-DU02",
+        "documentedUseCategory": "building_materials",
+        "useEvidenceId": "DU02-INV01",
+        "evidenceId": "DU02-TX01-LEDGER"
+      }
+    ],
+    "evidence": [
+      {
+        "id": "DU02-SAN",
+        "kind": "sanction",
+        "title": "Approved sanction fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-20T10:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "clause": "Clause 5: verified project procurement is permitted.",
+          "project": "SYN-PROJECT-FIELD",
+          "allowedUseCategories": [
+            "building_materials",
+            "construction_labour"
+          ],
+          "restrictedPayeeIds": []
+        },
+        "contentSha256": "436eb105be0f0e5483ff9564f09334a2ad4ae775ad1abe3db30deb48eba83bff"
+      },
+      {
+        "id": "DU02-KYC",
+        "kind": "bank_kyc",
+        "title": "Borrower KYC fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-20T10:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "entityId": "DU02-BOR",
+          "accountToken": "SYN-ACCT-DU02-BOR"
+        },
+        "contentSha256": "6a0fa2354155fc2e1c85ae5927fc0b00c71123dc6e79519a9c633e6c2f78be6c"
+      },
+      {
+        "id": "DU02-SUPPLIER-IDENTITY",
+        "kind": "bank_beneficiary_mapping",
+        "title": "Recipient account ownership fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T09:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "entityId": "DU02-SUPPLIER",
+          "accountToken": "SYN-ACCT-DU02-SUPPLIER",
+          "legalName": "Example Established Supplies Demo",
+          "registryToken": "SYN-GST-DU02-SUPPLIER"
+        },
+        "contentSha256": "9c843433605eb96df495b4a089dca35e1c7509f35426e1a714751ed0708a6d9c"
+      },
+      {
+        "id": "DU02-INV01",
+        "kind": "invoice",
+        "title": "Invoice fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T15:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "sellerEntityId": "DU02-SUPPLIER",
+          "buyerEntityId": "DU02-BOR",
+          "amountInr": 1000000,
+          "items": [
+            "Bricks and cement"
+          ],
+          "useCategory": "building_materials",
+          "project": "SYN-PROJECT-FIELD",
+          "invoiceNumber": "SYN-INVOICE-DU02-INV01",
+          "authenticity": "Fixture accepted for the scenario; production verification required."
+        },
+        "contentSha256": "2d61ca7a116ef772c529698bda4ecff0d6fb209ea5cd4019cdc3d159f01c057f"
+      },
+      {
+        "id": "DU02-INV01-DELIVERY",
+        "kind": "goods_receipt",
+        "title": "Accepted delivery fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T15:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "invoiceId": "DU02-INV01",
+          "project": "SYN-PROJECT-FIELD",
+          "receivedItems": [
+            "Bricks and cement"
+          ],
+          "verifiedBy": "SYN-SITE-OFFICER"
+        },
+        "contentSha256": "586cc5b3e97c543840f5d7327aac4d84fdd28beb1b057f733ec04e80ece7ab0d"
+      },
+      {
+        "id": "DU02-TX01-LEDGER",
+        "kind": "bank_transaction",
+        "title": "Posted transaction fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T11:21:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "transactionId": "DU02-TX01",
+          "amountInr": 1000000,
+          "from": "DU02-BOR",
+          "to": "DU02-SUPPLIER",
+          "postedAt": "2026-09-21T11:20:00+05:30",
+          "reversalOf": null
+        },
+        "contentSha256": "0c735778d48fe17726052648e2b930c3deb3c881fb92a63cbd668ff6a1156b62"
+      },
+      {
+        "id": "DU02-CHECK01-EVIDENCE",
+        "kind": "external_research",
+        "title": "GST lookup fixture",
+        "mode": "Synthetic",
+        "status": "unavailable",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T15:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "entityId": "DU02-SUPPLIER",
+          "claim": null,
+          "limitations": "Does not establish delivery, invoice authenticity or actual use of funds."
+        },
+        "contentSha256": "89280874149e1bec8222280fe0bd1bb7a141a57e671fed3559e96578b8634fa4"
+      },
+      {
+        "id": "DU02-CHECK02-EVIDENCE",
+        "kind": "external_research",
+        "title": "MCA lookup fixture",
+        "mode": "Synthetic",
+        "status": "stale",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T15:00:00+05:30",
+        "effectiveAt": "2026-03-25T10:00:00+05:30",
+        "payload": {
+          "entityId": "DU02-SUPPLIER",
+          "claim": "Historical profile only; current director or status claims are not established.",
+          "limitations": "Does not establish delivery, invoice authenticity or actual use of funds."
+        },
+        "contentSha256": "164b087158f5603c59e1846b6220f1e1e5e50cc4d6c75670fb88f9ad74341559"
+      },
+      {
+        "id": "DU02-SUPPLIER-HISTORY",
+        "kind": "bank_history_aggregate",
+        "title": "Prior payment history fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T09:59:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "borrowerId": "DU02-BOR",
+          "beneficiaryId": "DU02-SUPPLIER",
+          "windowDays": 180,
+          "windowEndsBefore": "2026-09-21T10:00:00+05:30",
+          "paymentCount": 9,
+          "basis": "Synthetic bank history aggregate; underlying historical transactions are not included."
+        },
+        "contentSha256": "7a6329a9e8717faff0c02dffb7a41086e5fe79fc6f9e5b55b41ee1a32e426763"
+      }
+    ],
+    "externalChecks": [
+      {
+        "id": "DU02-CHECK01",
+        "provider": "GST",
+        "mode": "Synthetic",
+        "entityId": "DU02-SUPPLIER",
+        "lookupKey": "SYN-GST-DU02-SUPPLIER",
+        "status": "unavailable",
+        "matchedOn": null,
+        "evidenceId": "DU02-CHECK01-EVIDENCE",
+        "claim": null,
+        "retrievedAt": "2026-09-21T15:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "liveRequestMade": false
+      },
+      {
+        "id": "DU02-CHECK02",
+        "provider": "MCA",
+        "mode": "Synthetic",
+        "entityId": "DU02-SUPPLIER",
+        "lookupKey": "SYN-CIN-DU02-SUPPLIER",
+        "status": "stale",
+        "matchedOn": null,
+        "evidenceId": "DU02-CHECK02-EVIDENCE",
+        "claim": "Historical profile only; current director or status claims are not established.",
+        "retrievedAt": "2026-09-21T15:00:00+05:30",
+        "effectiveAt": "2026-03-25T10:00:00+05:30",
+        "liveRequestMade": false
+      }
+    ],
+    "relationships": [],
+    "exceptions": [],
+    "events": [
+      {
+        "id": "DU02-TX01-EV1",
+        "transactionId": "DU02-TX01",
+        "receivedAt": "2026-09-21T11:21:00+05:30"
+      }
+    ],
+    "branch": "KOL",
+    "circle": "East",
+    "profile": "original",
+    "origin": "Scenario pack"
+  },
+  {
+    "id": "EX01",
+    "title": "Specific approval permits equipment from an electronics supplier",
+    "mode": "Synthetic",
+    "asOf": "2026-09-22T10:00:00+05:30",
+    "borrower": {
+      "id": "EX01-BOR",
+      "name": "Example Solar Construction Demo",
+      "entityType": "company",
+      "cif": "SYN-CIF-EX01"
+    },
+    "facility": {
+      "id": "SYN-LOAN-EX01",
+      "loanType": "Construction term loan",
+      "sanctionedAmountInr": 6000000,
+      "drawdownAmountInr": 6000000,
+      "drawdownId": "SYN-DD-EX01",
+      "drawdownAt": "2026-09-21T10:00:00+05:30",
+      "currency": "INR",
+      "project": "SYN-PROJECT-SOLAR",
+      "purpose": "Construct the sanctioned site",
+      "allowedUseCategories": [
+        "building_materials",
+        "construction_labour"
+      ],
+      "restrictedPayeeIds": [],
+      "sanctionClause": "Clause 5: materials and labour are permitted; other project equipment requires a written exception specifying payee, use, amount and validity.",
+      "sanctionEvidenceId": "EX01-SAN",
+      "preDrawdownBalanceInr": 0,
+      "fundAttribution": "Dedicated synthetic account with explicit drawdown reference; this simplification must not be assumed for production."
+    },
+    "entities": [
+      {
+        "id": "EX01-BOR",
+        "name": "Example Solar Construction Demo",
+        "type": "company",
+        "bankScope": "UCO fixture",
+        "accountToken": "SYN-ACCT-EX01-BOR",
+        "identityStatus": "verified_fixture",
+        "identityEvidenceIds": [
+          "EX01-KYC"
+        ],
+        "activity": "Borrower",
+        "historyPaymentCount180d": 0,
+        "registryIdentifiers": []
+      },
+      {
+        "id": "EX01-SUPPLIER",
+        "name": "Example Power Electronics Demo",
+        "type": "company",
+        "activity": "Industrial electronics and controls",
+        "bankScope": "External bank fixture",
+        "accountToken": "SYN-ACCT-EX01-SUPPLIER",
+        "identityStatus": "verified_fixture",
+        "identityEvidenceIds": [
+          "EX01-SUPPLIER-IDENTITY"
+        ],
+        "historyPaymentCount180d": 0,
+        "registryIdentifiers": [
+          {
+            "type": "GSTIN",
+            "value": "SYN-GST-EX01-SUPPLIER",
+            "isValidIdentifier": false
+          },
+          {
+            "type": "CIN",
+            "value": "SYN-CIN-EX01-SUPPLIER",
+            "isValidIdentifier": false
+          }
+        ],
+        "historyEvidenceId": "EX01-SUPPLIER-HISTORY"
+      }
+    ],
+    "transactions": [
+      {
+        "id": "EX01-TX01",
+        "bankTransactionId": "SYN-FIN-EX01-TX01",
+        "paymentReference": "SYN-UTR-EX01-TX01",
+        "from": "EX01-BOR",
+        "to": "EX01-SUPPLIER",
+        "amountInr": 800000,
+        "currency": "INR",
+        "postedAt": "2026-09-21T11:40:00+05:30",
+        "receivedAt": "2026-09-21T11:41:00+05:30",
+        "status": "posted",
+        "kind": "payment",
+        "channel": "NEFT fixture",
+        "reversalOf": null,
+        "observed": true,
+        "recordSource": "Synthetic authorised bank record",
+        "drawdownReference": "SYN-DD-EX01",
+        "documentedUseCategory": "site_power_equipment",
+        "useEvidenceId": "EX01-INV01",
+        "evidenceId": "EX01-TX01-LEDGER"
+      }
+    ],
+    "evidence": [
+      {
+        "id": "EX01-SAN",
+        "kind": "sanction",
+        "title": "Approved sanction fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-20T10:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "clause": "Clause 5: materials and labour are permitted; other project equipment requires a written exception specifying payee, use, amount and validity.",
+          "project": "SYN-PROJECT-SOLAR",
+          "allowedUseCategories": [
+            "building_materials",
+            "construction_labour"
+          ],
+          "restrictedPayeeIds": []
+        },
+        "contentSha256": "fc40168b72fc0934876dd87f49899e3048ecb65ff20b86604d676d168338cca0"
+      },
+      {
+        "id": "EX01-KYC",
+        "kind": "bank_kyc",
+        "title": "Borrower KYC fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-20T10:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "entityId": "EX01-BOR",
+          "accountToken": "SYN-ACCT-EX01-BOR"
+        },
+        "contentSha256": "47987e1a26fd61b41491c8b12d022d5aa24dc87eaf0ea717fe46b3911832d7e8"
+      },
+      {
+        "id": "EX01-SUPPLIER-IDENTITY",
+        "kind": "bank_beneficiary_mapping",
+        "title": "Recipient account ownership fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T09:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "entityId": "EX01-SUPPLIER",
+          "accountToken": "SYN-ACCT-EX01-SUPPLIER",
+          "legalName": "Example Power Electronics Demo",
+          "registryToken": "SYN-GST-EX01-SUPPLIER"
+        },
+        "contentSha256": "a205c64385b64a8de6769d47ba5ff9f9d95fa42089c86439c2b884815f8a883b"
+      },
+      {
+        "id": "EX01-INV01",
+        "kind": "invoice",
+        "title": "Invoice fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T15:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "sellerEntityId": "EX01-SUPPLIER",
+          "buyerEntityId": "EX01-BOR",
+          "amountInr": 800000,
+          "items": [
+            "Solar pump controller and site power panel"
+          ],
+          "useCategory": "site_power_equipment",
+          "project": "SYN-PROJECT-SOLAR",
+          "invoiceNumber": "SYN-INVOICE-EX01-INV01",
+          "authenticity": "Fixture accepted for the scenario; production verification required."
+        },
+        "contentSha256": "2157b0d949e0d72affdac14514679a08189672ca6b7202f5d0e5077f5512c217"
+      },
+      {
+        "id": "EX01-INV01-DELIVERY",
+        "kind": "goods_receipt",
+        "title": "Accepted delivery fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T15:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "invoiceId": "EX01-INV01",
+          "project": "SYN-PROJECT-SOLAR",
+          "receivedItems": [
+            "Solar pump controller and site power panel"
+          ],
+          "verifiedBy": "SYN-SITE-OFFICER"
+        },
+        "contentSha256": "fb7904b66488bac017c83202709103b380d63af600d5a38c2154cd19c332d689"
+      },
+      {
+        "id": "EX01-APPROVAL",
+        "kind": "approval",
+        "title": "Scoped equipment approval fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T15:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "payeeId": "EX01-SUPPLIER",
+          "category": "site_power_equipment",
+          "project": "SYN-PROJECT-SOLAR",
+          "maxAmountInr": 800000,
+          "validFrom": "2026-09-20T10:00:00+05:30",
+          "validTo": "2026-09-22T10:00:00+05:30",
+          "approvedBy": "SYN-CREDIT-REVIEWER",
+          "decision": "approved"
+        },
+        "contentSha256": "8df1eced57533a58b0390b0a3776b0d63b53c931ffc3dcce13cbfb27f15ad5a5"
+      },
+      {
+        "id": "EX01-TX01-LEDGER",
+        "kind": "bank_transaction",
+        "title": "Posted transaction fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T11:41:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "transactionId": "EX01-TX01",
+          "amountInr": 800000,
+          "from": "EX01-BOR",
+          "to": "EX01-SUPPLIER",
+          "postedAt": "2026-09-21T11:40:00+05:30",
+          "reversalOf": null
+        },
+        "contentSha256": "e0d68cea330c842833eea894c29098b5969f9e06a9e8b945a1df68693dce0ea3"
+      },
+      {
+        "id": "EX01-SUPPLIER-HISTORY",
+        "kind": "bank_history_aggregate",
+        "title": "Prior payment history fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T09:59:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "borrowerId": "EX01-BOR",
+          "beneficiaryId": "EX01-SUPPLIER",
+          "windowDays": 180,
+          "windowEndsBefore": "2026-09-21T10:00:00+05:30",
+          "paymentCount": 0,
+          "basis": "Synthetic bank history aggregate; underlying historical transactions are not included."
+        },
+        "contentSha256": "7db825a908cbd1ef49685409ac61cbc0ea6fa37e11296d7456ae2a5a8f1a3863"
+      }
+    ],
+    "externalChecks": [],
+    "relationships": [],
+    "exceptions": [
+      {
+        "id": "EX01-EXCEPTION",
+        "payeeId": "EX01-SUPPLIER",
+        "category": "site_power_equipment",
+        "project": "SYN-PROJECT-SOLAR",
+        "maxAmountInr": 800000,
+        "validFrom": "2026-09-20T10:00:00+05:30",
+        "validTo": "2026-09-22T10:00:00+05:30",
+        "evidenceId": "EX01-APPROVAL",
+        "status": "approved"
+      }
+    ],
+    "events": [
+      {
+        "id": "EX01-TX01-EV1",
+        "transactionId": "EX01-TX01",
+        "receivedAt": "2026-09-21T11:41:00+05:30"
+      }
+    ],
+    "branch": "KOL",
+    "circle": "East",
+    "profile": "original",
+    "origin": "Scenario pack"
+  },
+  {
+    "id": "OP01",
+    "title": "Wrong payment reversed and corrected without duplicate counting",
+    "mode": "Synthetic",
+    "asOf": "2026-09-22T10:00:00+05:30",
+    "borrower": {
+      "id": "OP01-BOR",
+      "name": "Kabir Bose Demo",
+      "entityType": "individual",
+      "cif": "SYN-CIF-OP01"
+    },
+    "facility": {
+      "id": "SYN-LOAN-OP01",
+      "loanType": "Housing purchase",
+      "sanctionedAmountInr": 4000000,
+      "drawdownAmountInr": 4000000,
+      "drawdownId": "SYN-DD-OP01",
+      "drawdownAt": "2026-09-21T10:00:00+05:30",
+      "currency": "INR",
+      "project": "SYN-PROJECT-HOME-E505",
+      "purpose": "Purchase Flat E505",
+      "allowedUseCategories": [
+        "builder_payment"
+      ],
+      "restrictedPayeeIds": [
+        "OP01-BUILDER"
+      ],
+      "sanctionClause": "Clause 4: pay the named builder for Flat E505; preserve any correction and reversal references.",
+      "sanctionEvidenceId": "OP01-SAN",
+      "preDrawdownBalanceInr": 0,
+      "fundAttribution": "Dedicated synthetic account with explicit drawdown reference; this simplification must not be assumed for production."
+    },
+    "entities": [
+      {
+        "id": "OP01-BOR",
+        "name": "Kabir Bose Demo",
+        "type": "individual",
+        "bankScope": "UCO fixture",
+        "accountToken": "SYN-ACCT-OP01-BOR",
+        "identityStatus": "verified_fixture",
+        "identityEvidenceIds": [
+          "OP01-KYC"
+        ],
+        "activity": "Borrower",
+        "historyPaymentCount180d": 0,
+        "registryIdentifiers": []
+      },
+      {
+        "id": "OP01-WRONG",
+        "name": "Example Wrong Recipient Demo",
+        "type": "company",
+        "activity": "General trading",
+        "bankScope": "UCO fixture",
+        "accountToken": "SYN-ACCT-OP01-WRONG",
+        "identityStatus": "verified_fixture",
+        "identityEvidenceIds": [
+          "OP01-WRONG-IDENTITY"
+        ],
+        "historyPaymentCount180d": 0,
+        "registryIdentifiers": [
+          {
+            "type": "GSTIN",
+            "value": "SYN-GST-OP01-WRONG",
+            "isValidIdentifier": false
+          },
+          {
+            "type": "CIN",
+            "value": "SYN-CIN-OP01-WRONG",
+            "isValidIdentifier": false
+          }
+        ],
+        "historyEvidenceId": "OP01-WRONG-HISTORY"
+      },
+      {
+        "id": "OP01-BUILDER",
+        "name": "Example Correct Builder Demo",
+        "type": "company",
+        "activity": "Residential development",
+        "bankScope": "UCO fixture",
+        "accountToken": "SYN-ACCT-OP01-BUILDER",
+        "identityStatus": "verified_fixture",
+        "identityEvidenceIds": [
+          "OP01-BUILDER-IDENTITY"
+        ],
+        "historyPaymentCount180d": 0,
+        "registryIdentifiers": [
+          {
+            "type": "GSTIN",
+            "value": "SYN-GST-OP01-BUILDER",
+            "isValidIdentifier": false
+          },
+          {
+            "type": "CIN",
+            "value": "SYN-CIN-OP01-BUILDER",
+            "isValidIdentifier": false
+          }
+        ],
+        "historyEvidenceId": "OP01-BUILDER-HISTORY"
+      }
+    ],
+    "transactions": [
+      {
+        "id": "OP01-TX01",
+        "bankTransactionId": "SYN-FIN-OP01-TX01",
+        "paymentReference": "SYN-UTR-OP01-TX01",
+        "from": "OP01-BOR",
+        "to": "OP01-WRONG",
+        "amountInr": 1200000,
+        "currency": "INR",
+        "postedAt": "2026-09-21T10:30:00+05:30",
+        "receivedAt": "2026-09-21T10:31:00+05:30",
+        "status": "posted",
+        "kind": "payment",
+        "channel": "NEFT fixture",
+        "reversalOf": null,
+        "observed": true,
+        "recordSource": "Synthetic authorised bank record",
+        "drawdownReference": "SYN-DD-OP01",
+        "documentedUseCategory": "unknown",
+        "useEvidenceId": null,
+        "evidenceId": "OP01-TX01-LEDGER"
+      },
+      {
+        "id": "OP01-TX02",
+        "bankTransactionId": "SYN-FIN-OP01-TX02",
+        "paymentReference": "SYN-UTR-OP01-TX02",
+        "from": "OP01-WRONG",
+        "to": "OP01-BOR",
+        "amountInr": 1200000,
+        "currency": "INR",
+        "postedAt": "2026-09-21T11:00:00+05:30",
+        "receivedAt": "2026-09-21T11:01:00+05:30",
+        "status": "posted",
+        "kind": "reversal",
+        "channel": "NEFT fixture",
+        "reversalOf": "OP01-TX01",
+        "observed": true,
+        "recordSource": "Synthetic authorised bank record",
+        "drawdownReference": null,
+        "documentedUseCategory": "unknown",
+        "useEvidenceId": null,
+        "evidenceId": "OP01-TX02-LEDGER"
+      },
+      {
+        "id": "OP01-TX03",
+        "bankTransactionId": "SYN-FIN-OP01-TX03",
+        "paymentReference": "SYN-UTR-OP01-TX03",
+        "from": "OP01-BOR",
+        "to": "OP01-BUILDER",
+        "amountInr": 1200000,
+        "currency": "INR",
+        "postedAt": "2026-09-21T11:30:00+05:30",
+        "receivedAt": "2026-09-21T11:31:00+05:30",
+        "status": "posted",
+        "kind": "payment",
+        "channel": "NEFT fixture",
+        "reversalOf": null,
+        "observed": true,
+        "recordSource": "Synthetic authorised bank record",
+        "drawdownReference": "SYN-DD-OP01",
+        "documentedUseCategory": "builder_payment",
+        "useEvidenceId": "OP01-INV01",
+        "evidenceId": "OP01-TX03-LEDGER"
+      }
+    ],
+    "evidence": [
+      {
+        "id": "OP01-SAN",
+        "kind": "sanction",
+        "title": "Approved sanction fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-20T10:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "clause": "Clause 4: pay the named builder for Flat E505; preserve any correction and reversal references.",
+          "project": "SYN-PROJECT-HOME-E505",
+          "allowedUseCategories": [
+            "builder_payment"
+          ],
+          "restrictedPayeeIds": [
+            "OP01-BUILDER"
+          ]
+        },
+        "contentSha256": "5469680c8894f6e0d61fe90927551811fe72762242895643fe44830c67edb239"
+      },
+      {
+        "id": "OP01-KYC",
+        "kind": "bank_kyc",
+        "title": "Borrower KYC fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-20T10:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "entityId": "OP01-BOR",
+          "accountToken": "SYN-ACCT-OP01-BOR"
+        },
+        "contentSha256": "8906eda5fdd2b648812ad06a339914044257af7600272664d4a13402d638d038"
+      },
+      {
+        "id": "OP01-WRONG-IDENTITY",
+        "kind": "bank_beneficiary_mapping",
+        "title": "Recipient account ownership fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T09:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "entityId": "OP01-WRONG",
+          "accountToken": "SYN-ACCT-OP01-WRONG",
+          "legalName": "Example Wrong Recipient Demo",
+          "registryToken": "SYN-GST-OP01-WRONG"
+        },
+        "contentSha256": "57ac22f28d350fc70b386794a90bb31754b051897f2e20692f7f722c3e09ec1d"
+      },
+      {
+        "id": "OP01-BUILDER-IDENTITY",
+        "kind": "bank_beneficiary_mapping",
+        "title": "Recipient account ownership fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T09:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "entityId": "OP01-BUILDER",
+          "accountToken": "SYN-ACCT-OP01-BUILDER",
+          "legalName": "Example Correct Builder Demo",
+          "registryToken": "SYN-GST-OP01-BUILDER"
+        },
+        "contentSha256": "88c09c653fceb4f2d594948d050d3300ac215a7e873331ca505d4ce3c7aeb0b8"
+      },
+      {
+        "id": "OP01-TX01-LEDGER",
+        "kind": "bank_transaction",
+        "title": "Posted transaction fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T10:31:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "transactionId": "OP01-TX01",
+          "amountInr": 1200000,
+          "from": "OP01-BOR",
+          "to": "OP01-WRONG",
+          "postedAt": "2026-09-21T10:30:00+05:30",
+          "reversalOf": null
+        },
+        "contentSha256": "95ae90eb12ba7ffe68bedf5aaa08afb021d19cd8eee8d0a5a206e95bf791aed9"
+      },
+      {
+        "id": "OP01-TX02-LEDGER",
+        "kind": "bank_transaction",
+        "title": "Posted transaction fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T11:01:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "transactionId": "OP01-TX02",
+          "amountInr": 1200000,
+          "from": "OP01-WRONG",
+          "to": "OP01-BOR",
+          "postedAt": "2026-09-21T11:00:00+05:30",
+          "reversalOf": "OP01-TX01"
+        },
+        "contentSha256": "d1db379c8ec7e5d5f9d2f547055121d87308415884ef8bebbbc7d43a912a2374"
+      },
+      {
+        "id": "OP01-INV01",
+        "kind": "invoice",
+        "title": "Invoice fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T15:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "sellerEntityId": "OP01-BUILDER",
+          "buyerEntityId": "OP01-BOR",
+          "amountInr": 1200000,
+          "items": [
+            "Flat E505 purchase instalment"
+          ],
+          "useCategory": "builder_payment",
+          "project": "SYN-PROJECT-HOME-E505",
+          "invoiceNumber": "SYN-INVOICE-OP01-INV01",
+          "authenticity": "Fixture accepted for the scenario; production verification required."
+        },
+        "contentSha256": "f10814249973bb33b5b1553aa854c7eb995a91189754326105539d541084af84"
+      },
+      {
+        "id": "OP01-TX03-LEDGER",
+        "kind": "bank_transaction",
+        "title": "Posted transaction fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T11:31:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "transactionId": "OP01-TX03",
+          "amountInr": 1200000,
+          "from": "OP01-BOR",
+          "to": "OP01-BUILDER",
+          "postedAt": "2026-09-21T11:30:00+05:30",
+          "reversalOf": null
+        },
+        "contentSha256": "f1c9fb6137f31cd5c32d8b5a4aaed6bd71004ea259cf16453f877627016d50db"
+      },
+      {
+        "id": "OP01-REVERSAL",
+        "kind": "bank_reversal_confirmation",
+        "title": "Verified reversal and correction fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T15:00:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "originalTransactionId": "OP01-TX01",
+          "reversalTransactionId": "OP01-TX02",
+          "correctedTransactionId": "OP01-TX03",
+          "reason": "Wrong beneficiary corrected",
+          "sameAmount": true,
+          "confirmedBy": "SYN-BANK-OPERATIONS"
+        },
+        "contentSha256": "ae2b20ed70a55a402c6fda1f7fc9ea4933c68e24849389cd924c0a080f5e7e89"
+      },
+      {
+        "id": "OP01-WRONG-HISTORY",
+        "kind": "bank_history_aggregate",
+        "title": "Prior payment history fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T09:59:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "borrowerId": "OP01-BOR",
+          "beneficiaryId": "OP01-WRONG",
+          "windowDays": 180,
+          "windowEndsBefore": "2026-09-21T10:00:00+05:30",
+          "paymentCount": 0,
+          "basis": "Synthetic bank history aggregate; underlying historical transactions are not included."
+        },
+        "contentSha256": "93f949e7a15feee4a680f3d674be2ae8b21ac537c5c8952790cb3f1a6a11cb93"
+      },
+      {
+        "id": "OP01-BUILDER-HISTORY",
+        "kind": "bank_history_aggregate",
+        "title": "Prior payment history fixture",
+        "mode": "Synthetic",
+        "status": "verified_fixture",
+        "source": "Embedded demonstration fixture",
+        "sourceUrl": null,
+        "capturedAt": "2026-09-21T09:59:00+05:30",
+        "effectiveAt": "2026-09-21T10:00:00+05:30",
+        "payload": {
+          "borrowerId": "OP01-BOR",
+          "beneficiaryId": "OP01-BUILDER",
+          "windowDays": 180,
+          "windowEndsBefore": "2026-09-21T10:00:00+05:30",
+          "paymentCount": 0,
+          "basis": "Synthetic bank history aggregate; underlying historical transactions are not included."
+        },
+        "contentSha256": "1eb528322fba67967d03224e8786f56b7e24ea4ba3993c6d467a52996b151375"
+      }
+    ],
+    "externalChecks": [],
+    "relationships": [],
+    "exceptions": [],
+    "events": [
+      {
+        "id": "OP01-TX01-EV1",
+        "transactionId": "OP01-TX01",
+        "receivedAt": "2026-09-21T10:31:00+05:30"
+      },
+      {
+        "id": "OP01-TX02-EV1",
+        "transactionId": "OP01-TX02",
+        "receivedAt": "2026-09-21T11:01:00+05:30"
+      },
+      {
+        "id": "OP01-TX03-EV1",
+        "transactionId": "OP01-TX03",
+        "receivedAt": "2026-09-21T11:31:00+05:30"
+      },
+      {
+        "id": "OP01-TX03-EV2",
+        "transactionId": "OP01-TX03",
+        "receivedAt": "2026-09-21T11:35:00+05:30"
+      }
+    ],
+    "branch": "KOL",
+    "circle": "East",
+    "profile": "original",
+    "origin": "Scenario pack"
+  }
+]

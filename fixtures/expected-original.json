@@ -1,0 +1,436 @@
+{
+  "HL01": {
+    "outcome": "potential_diversion_review",
+    "priority": "High",
+    "triggeredRuleIds": [
+      "EU01",
+      "EU02"
+    ],
+    "flaggedTransactionIds": [
+      "HL01-TX01"
+    ],
+    "reviewOutflowInr": 1200000,
+    "confirmedFraudLossInr": null,
+    "reason": "The verified payee is outside the sanction restriction; the submitted invoice describes resale electronics unrelated to the flat purchase.",
+    "nextAction": "Check written exceptions and invoice authenticity; request the builder payment instruction; refer an unexplained mismatch to the credit officer.",
+    "missingEvidence": [
+      "Written payee exception or builder payment instruction"
+    ],
+    "officerDecisionRequired": true,
+    "sampleQuestion": "Why is this housing payment flagged?",
+    "sampleAnswer": {
+      "text": "Payment HL01-TX01 of INR 12 lakh went to an unapproved recipient. The sanction names the builder, while the supplied invoice describes resale electronics. This supports review for possible end-use mismatch; it does not establish fraud.",
+      "evidenceIds": [
+        "HL01-SAN",
+        "HL01-TX01-LEDGER",
+        "HL01-INV01",
+        "HL01-CHECK01-EVIDENCE"
+      ],
+      "mode": "Scripted synthetic answer"
+    },
+    "mustNot": [
+      "Do not label the borrower or beneficiary fraudulent.",
+      "Do not invent downstream transactions or external search results."
+    ]
+  },
+  "HL02": {
+    "outcome": "consistent_with_documented_purpose",
+    "priority": "None",
+    "triggeredRuleIds": [],
+    "flaggedTransactionIds": [],
+    "reviewOutflowInr": 0,
+    "confirmedFraudLossInr": null,
+    "reason": "The sanction allows materials; invoice, recipient and accepted delivery all match the house project.",
+    "nextAction": "Retain the evidence and continue monitoring.",
+    "missingEvidence": [],
+    "officerDecisionRequired": false,
+    "sampleQuestion": "Why is a trading company payment acceptable here?",
+    "sampleAnswer": {
+      "text": "The loan permits building materials. The INR 8 lakh cement invoice and accepted delivery match the sanctioned project and verified beneficiary. The word Trading in the supplier name is not an adverse signal.",
+      "evidenceIds": [
+        "HL02-SAN",
+        "HL02-TX01-LEDGER",
+        "HL02-INV01",
+        "HL02-INV01-DELIVERY",
+        "HL02-CHECK01-EVIDENCE"
+      ],
+      "mode": "Scripted synthetic answer"
+    },
+    "mustNot": [
+      "Do not label the borrower or beneficiary fraudulent.",
+      "Do not invent downstream transactions or external search results."
+    ]
+  },
+  "HL03": {
+    "outcome": "consistent_with_documented_purpose",
+    "priority": "None",
+    "triggeredRuleIds": [],
+    "flaggedTransactionIds": [],
+    "reviewOutflowInr": 0,
+    "confirmedFraudLossInr": null,
+    "reason": "The personal beneficiary name resolves to the proprietor of the invoicing business; the bank mapping and project delivery agree.",
+    "nextAction": "Accept the supported identity match and retain the commercial documents.",
+    "missingEvidence": [],
+    "officerDecisionRequired": false,
+    "sampleQuestion": "Is this payment to an individual suspicious?",
+    "sampleAnswer": {
+      "text": "The recipient is a verified sole proprietor in this fixture. The legal name, trade name, payment account, invoice and site delivery are linked. No mismatch is established by the personal name alone.",
+      "evidenceIds": [
+        "HL03-SAN",
+        "HL03-PROPRIETOR-IDENTITY",
+        "HL03-INV01",
+        "HL03-INV01-DELIVERY",
+        "HL03-CHECK01-EVIDENCE"
+      ],
+      "mode": "Scripted synthetic answer"
+    },
+    "mustNot": [
+      "Do not label the borrower or beneficiary fraudulent.",
+      "Do not invent downstream transactions or external search results."
+    ]
+  },
+  "CL01": {
+    "outcome": "consistent_with_documented_purpose",
+    "priority": "None",
+    "triggeredRuleIds": [],
+    "flaggedTransactionIds": [],
+    "reviewOutflowInr": 0,
+    "confirmedFraudLossInr": null,
+    "reason": "The steel purchase matches the sanction, purchase order, invoice and site receipt. The supplier has 14 prior payments in 180 days.",
+    "nextAction": "Continue monitoring; prior supplier history must not suppress later mismatches.",
+    "missingEvidence": [],
+    "officerDecisionRequired": false,
+    "sampleQuestion": "Why is this construction payment not flagged?",
+    "sampleAnswer": {
+      "text": "The INR 35 lakh payment is supported by project-specific steel procurement and delivery. Supplier history provides context, while the documents establish the permitted purpose.",
+      "evidenceIds": [
+        "CL01-SAN",
+        "CL01-TX01-LEDGER",
+        "CL01-PO",
+        "CL01-INV01",
+        "CL01-INV01-DELIVERY",
+        "CL01-CHECK01-EVIDENCE",
+        "CL01-SUPPLIER-HISTORY"
+      ],
+      "mode": "Scripted synthetic answer"
+    },
+    "mustNot": [
+      "Do not label the borrower or beneficiary fraudulent.",
+      "Do not invent downstream transactions or external search results."
+    ]
+  },
+  "CL02": {
+    "outcome": "potential_diversion_review",
+    "priority": "High",
+    "triggeredRuleIds": [
+      "EU02"
+    ],
+    "flaggedTransactionIds": [
+      "CL02-TX01"
+    ],
+    "reviewOutflowInr": 2500000,
+    "confirmedFraudLossInr": null,
+    "reason": "The invoice describes mobile phone inventory for resale, outside the construction sanction. Prior payments to this vendor do not explain this use.",
+    "nextAction": "Validate the invoice and commercial explanation; check any sanction amendment; escalate if the mismatch remains unexplained.",
+    "missingEvidence": [
+      "Approved sanction amendment or a supported explanation for the purchase"
+    ],
+    "officerDecisionRequired": true,
+    "sampleQuestion": "What makes this an end-use discrepancy?",
+    "sampleAnswer": {
+      "text": "The invoice items, not just the supplier industry, conflict with the permitted construction purpose. INR 25 lakh is the direct amount for review, not a confirmed loss.",
+      "evidenceIds": [
+        "CL02-SAN",
+        "CL02-TX01-LEDGER",
+        "CL02-INV01",
+        "CL02-CHECK01-EVIDENCE",
+        "CL02-TRADER-HISTORY"
+      ],
+      "mode": "Scripted synthetic answer"
+    },
+    "mustNot": [
+      "Do not label the borrower or beneficiary fraudulent.",
+      "Do not invent downstream transactions or external search results."
+    ]
+  },
+  "CL03": {
+    "outcome": "potential_diversion_review",
+    "priority": "Medium",
+    "triggeredRuleIds": [
+      "EU04"
+    ],
+    "flaggedTransactionIds": [
+      "CL03-TX01"
+    ],
+    "reviewOutflowInr": 3000000,
+    "confirmedFraudLossInr": null,
+    "reason": "A verified common director links the new recipient to the borrower, while the supplied pack lacks the required related-party approval and project invoice.",
+    "nextAction": "Request related-party approval, purchase order, invoice and site delivery evidence; retain an open review until assessed.",
+    "missingEvidence": [
+      "Project invoice",
+      "Related-party approval",
+      "Delivery confirmation"
+    ],
+    "officerDecisionRequired": true,
+    "sampleQuestion": "Does a common director prove diversion?",
+    "sampleAnswer": {
+      "text": "No. The verified relationship explains why approval and commercial evidence are needed. INR 30 lakh requires review because those transaction-specific records are missing; the relationship itself does not prove diversion.",
+      "evidenceIds": [
+        "CL03-SAN",
+        "CL03-TX01-LEDGER",
+        "CL03-REL",
+        "CL03-CHECK01-EVIDENCE"
+      ],
+      "mode": "Scripted synthetic answer"
+    },
+    "mustNot": [
+      "Do not label the borrower or beneficiary fraudulent.",
+      "Do not invent downstream transactions or external search results."
+    ]
+  },
+  "CL04": {
+    "outcome": "potential_diversion_review",
+    "priority": "High",
+    "triggeredRuleIds": [
+      "EU06"
+    ],
+    "flaggedTransactionIds": [
+      "CL04-TX01",
+      "CL04-TX02",
+      "CL04-TX03",
+      "CL04-TX04",
+      "CL04-TX05",
+      "CL04-TX06",
+      "CL04-TX07",
+      "CL04-TX08",
+      "CL04-TX09",
+      "CL04-TX10"
+    ],
+    "reviewOutflowInr": 4800000,
+    "confirmedFraudLossInr": null,
+    "reason": "Ten previously unseen beneficiaries receive INR 4.8 lakh each in 45 minutes. The INR 48 lakh batch has no supplied procurement, wage or delivery support.",
+    "nextAction": "Request the batch purpose, beneficiary identities and supporting invoices or wage roster; investigate unexplained recipients.",
+    "missingEvidence": [
+      "Batch purpose",
+      "Invoices or approved wage roster",
+      "Beneficiary commercial context"
+    ],
+    "officerDecisionRequired": true,
+    "sampleQuestion": "Is splitting money across ten accounts enough to prove fraud?",
+    "sampleAnswer": {
+      "text": "No. Ten unique payments total INR 48 lakh in 45 minutes and meet the illustrative monitoring threshold. New beneficiaries and absent batch documentation justify review. A supported supplier or wage batch could explain the pattern.",
+      "evidenceIds": [
+        "CL04-SAN",
+        "CL04-TX01-LEDGER",
+        "CL04-TX02-LEDGER",
+        "CL04-TX03-LEDGER",
+        "CL04-TX04-LEDGER",
+        "CL04-TX05-LEDGER",
+        "CL04-TX06-LEDGER",
+        "CL04-TX07-LEDGER",
+        "CL04-TX08-LEDGER",
+        "CL04-TX09-LEDGER",
+        "CL04-TX10-LEDGER",
+        "CL04-PAYEE01-HISTORY",
+        "CL04-PAYEE02-HISTORY",
+        "CL04-PAYEE03-HISTORY",
+        "CL04-PAYEE04-HISTORY",
+        "CL04-PAYEE05-HISTORY",
+        "CL04-PAYEE06-HISTORY",
+        "CL04-PAYEE07-HISTORY",
+        "CL04-PAYEE08-HISTORY",
+        "CL04-PAYEE09-HISTORY",
+        "CL04-PAYEE10-HISTORY"
+      ],
+      "mode": "Scripted synthetic answer"
+    },
+    "mustNot": [
+      "Do not label the borrower or beneficiary fraudulent.",
+      "Do not invent downstream transactions or external search results."
+    ],
+    "fanout": {
+      "distinctBeneficiaries": 10,
+      "paymentCount": 10,
+      "aggregateInr": 4800000,
+      "elapsedMinutes": 45,
+      "thresholdIsBankPolicy": false
+    }
+  },
+  "CL05": {
+    "outcome": "potential_diversion_review",
+    "priority": "High",
+    "triggeredRuleIds": [
+      "EU07"
+    ],
+    "flaggedTransactionIds": [
+      "CL05-TX01",
+      "CL05-TX02",
+      "CL05-TX03"
+    ],
+    "reviewOutflowInr": 2000000,
+    "confirmedFraudLossInr": null,
+    "reason": "Three observed chronological legs return INR 18 lakh to the borrower. No refund or commercial settlement explanation has been supplied.",
+    "nextAction": "Check refund and settlement references, invoice cancellation and relationships; ask the credit officer to review the unexplained circular flow.",
+    "missingEvidence": [
+      "Refund or settlement explanation",
+      "Invoices and cancellation records"
+    ],
+    "officerDecisionRequired": true,
+    "sampleQuestion": "How much money should the graph show as at risk?",
+    "sampleAnswer": {
+      "text": "The first direct outflow is INR 20 lakh. The three legs total INR 57 lakh, INR 18 lakh returns, and the borrower balance is reduced by INR 2 lakh. These are different measures; INR 57 lakh must not be presented as unique funds or loss.",
+      "evidenceIds": [
+        "CL05-SAN",
+        "CL05-TX01-LEDGER",
+        "CL05-TX02-LEDGER",
+        "CL05-TX03-LEDGER"
+      ],
+      "mode": "Scripted synthetic answer"
+    },
+    "mustNot": [
+      "Do not label the borrower or beneficiary fraudulent.",
+      "Do not invent downstream transactions or external search results."
+    ],
+    "flowMetrics": {
+      "initialDirectOutflowInr": 2000000,
+      "grossObservedLegsInr": 5700000,
+      "observedReturnInr": 1800000,
+      "netBorrowerOutflowInr": 200000,
+      "confirmedLossInr": null
+    }
+  },
+  "DU01": {
+    "outcome": "evidence_gap",
+    "priority": "Medium",
+    "triggeredRuleIds": [
+      "EU10"
+    ],
+    "flaggedTransactionIds": [
+      "DU01-TX01"
+    ],
+    "reviewOutflowInr": 0,
+    "confirmedFraudLossInr": null,
+    "reason": "The payment name has two possible business matches. No authorised account-to-entity link is available.",
+    "nextAction": "Obtain recipient account ownership confirmation and a matching invoice or identifier before assessing business purpose.",
+    "missingEvidence": [
+      "Verified beneficiary legal identity",
+      "Invoice with a usable supplier identifier"
+    ],
+    "officerDecisionRequired": true,
+    "sampleQuestion": "Which company received this payment?",
+    "sampleAnswer": {
+      "text": "The identity is unresolved. Two name matches exist, but neither is tied to the recipient account. The INR 5 lakh payment needs identity evidence; an adverse conclusion about either company would be unsupported.",
+      "evidenceIds": [
+        "DU01-SAN",
+        "DU01-TX01-LEDGER",
+        "DU01-CANDIDATES"
+      ],
+      "mode": "Scripted synthetic answer"
+    },
+    "mustNot": [
+      "Do not attach allegations about a similarly named entity.",
+      "Do not classify the recipient as a company or individual from the name alone."
+    ]
+  },
+  "DU02": {
+    "outcome": "evidence_gap",
+    "priority": "Low",
+    "triggeredRuleIds": [
+      "EU11"
+    ],
+    "flaggedTransactionIds": [
+      "DU02-TX01"
+    ],
+    "reviewOutflowInr": 0,
+    "confirmedFraudLossInr": null,
+    "reason": "Available bank identity and project records are consistent. GST research timed out and the MCA profile is historical, leaving the external check incomplete.",
+    "nextAction": "Retry the authorised source or use an officer-assisted check; preserve the evidence gap without adding a fraud signal.",
+    "missingEvidence": [
+      "Current authorised external profile check"
+    ],
+    "officerDecisionRequired": true,
+    "sampleQuestion": "Did the failed GST lookup make this supplier suspicious?",
+    "sampleAnswer": {
+      "text": "No. A source timeout is an evidence gap. The supplied invoice and delivery records support the project purchase, while the external profile check remains incomplete.",
+      "evidenceIds": [
+        "DU02-SAN",
+        "DU02-SUPPLIER-IDENTITY",
+        "DU02-INV01",
+        "DU02-INV01-DELIVERY",
+        "DU02-CHECK01-EVIDENCE",
+        "DU02-CHECK02-EVIDENCE"
+      ],
+      "mode": "Scripted synthetic answer"
+    },
+    "mustNot": [
+      "Do not convert a timeout or stale profile into adverse evidence.",
+      "Do not display the research as live or completed."
+    ]
+  },
+  "EX01": {
+    "outcome": "consistent_with_documented_purpose",
+    "priority": "None",
+    "triggeredRuleIds": [],
+    "flaggedTransactionIds": [],
+    "reviewOutflowInr": 0,
+    "confirmedFraudLossInr": null,
+    "reason": "A valid written exception covers this payee, project, equipment category and INR 8 lakh amount; invoice and delivery match.",
+    "nextAction": "Retain the scoped approval. Reassess any payment outside its payee, purpose, amount or validity.",
+    "missingEvidence": [],
+    "officerDecisionRequired": false,
+    "sampleQuestion": "Why is the electronics supplier allowed in this case?",
+    "sampleAnswer": {
+      "text": "This payment is for specified site power equipment covered by a valid INR 8 lakh exception. The approval applies to this scope only and must not suppress other unrelated transactions.",
+      "evidenceIds": [
+        "EX01-SAN",
+        "EX01-TX01-LEDGER",
+        "EX01-INV01",
+        "EX01-INV01-DELIVERY",
+        "EX01-APPROVAL"
+      ],
+      "mode": "Scripted synthetic answer"
+    },
+    "mustNot": [
+      "Do not label the borrower or beneficiary fraudulent.",
+      "Do not invent downstream transactions or external search results."
+    ]
+  },
+  "OP01": {
+    "outcome": "reversed_no_active_exception",
+    "priority": "None",
+    "triggeredRuleIds": [],
+    "flaggedTransactionIds": [],
+    "reviewOutflowInr": 0,
+    "confirmedFraudLossInr": null,
+    "reason": "The wrong payment is fully reversed with an explicit bank reference; the corrected payment reaches the sanctioned builder. A replayed event repeats the same transaction ID.",
+    "nextAction": "Retain the historical alert and correction audit; show no active mismatch after verified reversal and review.",
+    "missingEvidence": [],
+    "officerDecisionRequired": false,
+    "sampleQuestion": "Why is this not a circular diversion case?",
+    "sampleAnswer": {
+      "text": "The bank records explicitly link the full reversal to the original error and show the corrected builder payment. Four events represent three unique transactions. Gross borrower debits are INR 24 lakh; the reversal is INR 12 lakh; net outward payment is INR 12 lakh.",
+      "evidenceIds": [
+        "OP01-SAN",
+        "OP01-TX01-LEDGER",
+        "OP01-TX02-LEDGER",
+        "OP01-TX03-LEDGER",
+        "OP01-REVERSAL",
+        "OP01-INV01"
+      ],
+      "mode": "Scripted synthetic answer"
+    },
+    "mustNot": [
+      "Do not erase the original event or investigation history.",
+      "Do not count the duplicate ingestion event as another payment.",
+      "Do not call every return transfer a verified reversal without a bank reference."
+    ],
+    "operationsMetrics": {
+      "receivedEvents": 4,
+      "uniqueTransactions": 3,
+      "duplicatesIgnored": 1,
+      "grossBorrowerDebitsInr": 2400000,
+      "reversedInr": 1200000,
+      "netBorrowerOutflowInr": 1200000
+    }
+  }
+}

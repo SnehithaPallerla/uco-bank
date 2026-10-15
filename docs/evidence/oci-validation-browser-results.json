@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "checks": [
+    "Prepared Bluefin review with case citations",
+    "Documented comparison remains supported",
+    "Controlled OCI response saves and displays provenance",
+    "Review download",
+    "Provider failure preserves prior review",
+    "Prepared history survives reload",
+    "390px layout without page overflow",
+    "Self-contained offline prepared review"
+  ],
+  "pageErrors": [],
+  "limitations": "Synthetic cases and controlled provider response. No live OCI invocation or model-quality validation."
+}

@@ -1,0 +1,83 @@
+{
+  "id": "EVAL-58fbc287-2fc5-4a25-9fb1-23f3177ae09e",
+  "userId": "asha",
+  "mode": "Live OCI model test",
+  "status": "Completed",
+  "recordIds": [
+    "LAB-001",
+    "LAB-003"
+  ],
+  "repeats": 1,
+  "total": 2,
+  "createdAt": "2026-10-12T15:20:00.193Z",
+  "rows": [
+    {
+      "recordId": "LAB-001",
+      "borrower": "Eastern Freight Services",
+      "repeat": 1,
+      "expected": {
+        "recordId": "LAB-001",
+        "pack": "quick",
+        "ruleOutcome": "Review required",
+        "acceptableDispositions": [
+          "Review required",
+          "Evidence needed"
+        ],
+        "focus": "Explain repeated payments and request commercial support.",
+        "concepts": [
+          {
+            "name": "Commercial support",
+            "terms": [
+              "invoice",
+              "delivery",
+              "commercial",
+              "purchase order"
+            ]
+          }
+        ]
+      },
+      "ruleOutcome": "Review required",
+      "error": "OCI rejected the model request. Check the region, on-demand model ID and chat format."
+    },
+    {
+      "recordId": "LAB-003",
+      "borrower": "Seabrook Engineering",
+      "repeat": 1,
+      "expected": {
+        "recordId": "LAB-003",
+        "pack": "quick",
+        "ruleOutcome": "Review required",
+        "acceptableDispositions": [
+          "Review required",
+          "Evidence needed"
+        ],
+        "focus": "Explain CC/OD investment-use concern without declaring fraud.",
+        "concepts": [
+          {
+            "name": "Investment use",
+            "terms": [
+              "investment",
+              "securities",
+              "capital market",
+              "broker"
+            ]
+          }
+        ]
+      },
+      "ruleOutcome": "Review required",
+      "error": "OCI rejected the model request. Check the region, on-demand model ID and chat format."
+    }
+  ],
+  "totals": {
+    "attempted": 2,
+    "completed": 0,
+    "errors": 2,
+    "checksPassed": 0,
+    "needsReview": 0,
+    "agreement": null,
+    "unstableCases": []
+  },
+  "limitations": "Authored synthetic test cases, not independent bank labels. Checks measure disposition agreement, citation validity and mention of expected topics. They do not verify source truth, detect all hallucinations or establish fraud accuracy. Review each answer yourself.",
+  "currentRecordId": null,
+  "finishedAt": "2026-10-12T15:20:00.707Z"
+}

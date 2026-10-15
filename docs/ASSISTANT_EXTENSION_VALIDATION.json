@@ -1,0 +1,16 @@
+{
+  "originalArchive": "Archive(1).zip",
+  "baselineVersion": "4.1.0",
+  "unchangedWorkspaceRenders": 405,
+  "originalAssistantRendersPreserved": 81,
+  "newFeatureRenders": 170,
+  "records": 81,
+  "originalStylesMeetingRulesAndRuntimePreserved": true,
+  "browserInteractionTesting": "Not run: Chromium is not available in this environment",
+  "liveProviderTesting": "Not run: Google credentials and Bloomberg entitlements were not supplied",
+  "automatedTests": 130,
+  "passed": 130,
+  "failed": 0,
+  "originalTests": 121,
+  "additionalTests": 9
+}

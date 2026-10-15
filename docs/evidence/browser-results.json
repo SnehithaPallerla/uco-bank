@@ -1,0 +1,28 @@
+{
+  "status": "passed",
+  "browser": "Chromium headless",
+  "viewports": [
+    "1440x1000",
+    "390x844"
+  ],
+  "checks": [
+    "Original profile totals rendered",
+    "Transaction source modal and keyboard Escape",
+    "Case-specific assistant with exact payment references",
+    "UI self-approval is rejected",
+    "Independent reviewer closure",
+    "All ten source-backed graph edges and amount filter",
+    "Circular gross, return and net amounts",
+    "Sourced director, account ownership and project views",
+    "Identity evidence reassesses with history retained",
+    "Downloadable evidence packet",
+    "Proprietor mapping and sanction assistant",
+    "All seven administration workspaces render",
+    "Branch-restricted portfolio and server-denied export",
+    "Pause, queued replay and resume through UI",
+    "Persisted case survives browser reload",
+    "390px responsive layout without page overflow"
+  ],
+  "pageErrors": [],
+  "limitations": "Generated local records; no Oracle/Finacle/registry/model connection or bank-scale performance test."
+}

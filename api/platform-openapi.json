@@ -1,0 +1,517 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "UCO Credit Intelligence local API",
+    "version": "4.2.0",
+    "description": "Local session personas are evaluation-only. Replace with validated bank SSO. No formal fraud/account/customer-send endpoints. Unknown tools fail closed."
+  },
+  "servers": [
+    {
+      "url": "http://localhost:4173"
+    }
+  ],
+  "paths": {
+    "/api/assistant/evaluation": {
+      "get": {"operationId": "list_model_tests", "summary": "List model-test reports owned by the current officer", "security": [{"localSession": []}], "responses": {"200": {"description": "In-memory reports retained until server restart"}, "401": {"description": "Session missing or expired"}}},
+      "post": {
+        "operationId": "start_model_test", "summary": "Start a bounded sequential OCI test on generated samples", "description": "Makes chargeable inference calls. Expected labels are not sent to the model. One batch runs at a time; only investigation roles can start it.", "security": [{"localSession": []}],
+        "requestBody": {"required": true, "content": {"application/json": {"schema": {"type": "object", "additionalProperties": false, "required": ["recordIds"], "properties": {"recordIds": {"type": "array", "minItems": 1, "maxItems": 20, "uniqueItems": true, "items": {"type": "string"}}, "repeats": {"type": "integer", "enum": [1, 2], "default": 1}}}}}},
+        "responses": {"202": {"description": "Started job; poll the job endpoint for progress"}, "400": {"description": "Invalid selection or unexpected fields"}, "401": {"description": "Session missing or expired"}, "403": {"description": "Role or branch denied"}, "409": {"description": "Another model test is running"}, "503": {"description": "OCI is not configured"}}
+      }
+    },
+    "/api/assistant/evaluation/{jobId}": {
+      "get": {"operationId": "read_model_test", "summary": "Read progress and case-level results for an owned test", "security": [{"localSession": []}], "parameters": [{"name": "jobId", "in": "path", "required": true, "schema": {"type": "string"}}], "responses": {"200": {"description": "Job status, completed rows, errors, automated checks and model snapshots"}, "401": {"description": "Session missing or expired"}, "404": {"description": "Job unavailable to this officer"}}}
+    },
+    "/api/assistant/evaluation/{jobId}/stop": {
+      "post": {"operationId": "stop_model_test", "summary": "Stop an owned test after the current inference finishes", "security": [{"localSession": []}], "parameters": [{"name": "jobId", "in": "path", "required": true, "schema": {"type": "string"}}], "responses": {"200": {"description": "Stop requested; the in-flight call is not cancelled"}, "401": {"description": "Session missing or expired"}, "404": {"description": "Job unavailable to this officer"}}}
+    },
+    "/api/assistant/validation/status": {
+      "get": {
+        "operationId": "read_oci_validation_status",
+        "summary": "Inspect OCI configuration without making an inference request",
+        "security": [{"localSession": []}],
+        "responses": {
+          "200": {"description": "Configuration completeness, selected model, region and missing settings; not proof of connectivity"},
+          "401": {"description": "Session missing or expired"}
+        }
+      }
+    },
+    "/api/assistant/validation": {
+      "post": {
+        "operationId": "validate_case_with_oci",
+        "summary": "Generate and persist a cited advisory OCI review of an authorised case",
+        "description": "The server constructs the case packet. No client prompt or model response is accepted. The review leaves rules and case outcomes unchanged. Inference can incur OCI usage charges.",
+        "security": [{"localSession": []}],
+        "requestBody": {"required": true, "content": {"application/json": {"schema": {"type": "object", "additionalProperties": false, "required": ["recordId", "expectedRevision"], "properties": {"recordId": {"type": "string"}, "expectedRevision": {"type": "integer", "minimum": 0}}}}}},
+        "responses": {
+          "200": {"description": "Scoped updated workspace and saved advisory result with citations, input snapshot, model and response provenance"},
+          "400": {"description": "Invalid packet or uncited/malformed model output; no review saved"},
+          "401": {"description": "Session missing or expired"},
+          "403": {"description": "Branch or investigation role denied"},
+          "404": {"description": "Record unavailable"},
+          "409": {"description": "Workspace revision changed before or during inference"},
+          "429": {"description": "Local validation attempt limit reached"},
+          "502": {"description": "OCI request failed"},
+          "503": {"description": "OCI settings are incomplete"}
+        }
+      }
+    },
+    "/api/state": {
+      "get": {
+        "operationId": "read_workspace",
+        "summary": "read workspace",
+        "security": [
+          {
+            "localSession": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Scoped result"
+          },
+          "401": {
+            "description": "Session missing or expired"
+          },
+          "403": {
+            "description": "Access denied"
+          },
+          "404": {
+            "description": "Record or tool unavailable"
+          }
+        }
+      }
+    },
+    "/api/records/{recordId}": {
+      "get": {
+        "operationId": "read_loan_context",
+        "summary": "read loan context",
+        "security": [
+          {
+            "localSession": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Scoped result"
+          },
+          "401": {
+            "description": "Session missing or expired"
+          },
+          "403": {
+            "description": "Access denied"
+          },
+          "404": {
+            "description": "Record or tool unavailable"
+          }
+        },
+        "parameters": [
+          {
+            "name": "recordId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/records/{recordId}/graph": {
+      "get": {
+        "operationId": "trace_observed_payments",
+        "summary": "Query the authorized funds and relationships graph",
+        "security": [
+          {
+            "localSession": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Case-scoped entities, payments, verified relationships, chronological paths, metrics, source, graph name and workspace revision"
+          },
+          "401": {
+            "description": "Session missing or expired"
+          },
+          "403": {
+            "description": "Access denied"
+          },
+          "404": {
+            "description": "Record or tool unavailable"
+          },
+          "409": {
+            "description": "Workspace revision or graph projections are out of date"
+          },
+          "422": {
+            "description": "Graph or return-path limit exceeded"
+          },
+          "502": {
+            "description": "Oracle graph query failed; no silent local fallback"
+          }
+        },
+        "parameters": [
+          {
+            "name": "recordId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "revision",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "description": "Current workspace revision; an outdated revision returns 409"
+          }
+        ],
+        "description": "Uses live UCO_FLOW GRAPH_TABLE queries with Oracle storage; file-backed mode returns an explicitly labelled local demonstration. Server authorizes branch access before querying."
+      }
+    },
+    "/api/records/{recordId}/export": {
+      "get": {
+        "operationId": "export_evidence_packet",
+        "summary": "export evidence packet",
+        "security": [
+          {
+            "localSession": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Scoped result"
+          },
+          "401": {
+            "description": "Session missing or expired"
+          },
+          "403": {
+            "description": "Access denied"
+          },
+          "404": {
+            "description": "Record or tool unavailable"
+          }
+        },
+        "parameters": [
+          {
+            "name": "recordId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/records/{recordId}/evidence/{evidenceId}": {
+      "get": {
+        "operationId": "read_case_evidence",
+        "summary": "read case evidence",
+        "security": [
+          {
+            "localSession": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Scoped result"
+          },
+          "401": {
+            "description": "Session missing or expired"
+          },
+          "403": {
+            "description": "Access denied"
+          },
+          "404": {
+            "description": "Record or tool unavailable"
+          }
+        },
+        "parameters": [
+          {
+            "name": "recordId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "evidenceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/records/{recordId}/search": {
+      "get": {
+        "operationId": "retrieve_case_evidence",
+        "summary": "retrieve case evidence",
+        "security": [
+          {
+            "localSession": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Scoped result"
+          },
+          "401": {
+            "description": "Session missing or expired"
+          },
+          "403": {
+            "description": "Access denied"
+          },
+          "404": {
+            "description": "Record or tool unavailable"
+          }
+        },
+        "parameters": [
+          {
+            "name": "recordId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "maxLength": 2000
+            }
+          }
+        ]
+      }
+    },
+    "/api/assistant": {
+      "post": {
+        "operationId": "ask_case_assistant",
+        "summary": "ask case assistant",
+        "security": [
+          {
+            "localSession": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Scoped result"
+          },
+          "401": {
+            "description": "Session missing or expired"
+          },
+          "403": {
+            "description": "Access denied"
+          },
+          "404": {
+            "description": "Record or tool unavailable"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "recordId",
+                  "question"
+                ],
+                "properties": {
+                  "recordId": {
+                    "type": "string"
+                  },
+                  "question": {
+                    "type": "string",
+                    "maxLength": 2000
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/verify": {
+      "post": {
+        "operationId": "verify_beneficiary_context",
+        "summary": "verify beneficiary context",
+        "security": [
+          {
+            "localSession": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Scoped result"
+          },
+          "401": {
+            "description": "Session missing or expired"
+          },
+          "403": {
+            "description": "Access denied"
+          },
+          "404": {
+            "description": "Record or tool unavailable"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "recordId",
+                  "provider"
+                ],
+                "properties": {
+                  "recordId": {
+                    "type": "string"
+                  },
+                  "provider": {
+                    "type": "string",
+                    "enum": [
+                      "GST",
+                      "MCA",
+                      "Search"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/providers/status": {
+      "get": {
+        "operationId": "read_provider_status",
+        "summary": "read provider status",
+        "security": [
+          {
+            "localSession": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Scoped result"
+          },
+          "401": {
+            "description": "Session missing or expired"
+          },
+          "403": {
+            "description": "Access denied"
+          },
+          "404": {
+            "description": "Record or tool unavailable"
+          }
+        }
+      }
+    },
+    "/api/command": {
+      "post": {
+        "operationId": "apply_review_action",
+        "summary": "apply review action",
+        "security": [
+          {
+            "localSession": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Scoped result"
+          },
+          "401": {
+            "description": "Session missing or expired"
+          },
+          "403": {
+            "description": "Access denied"
+          },
+          "404": {
+            "description": "Record or tool unavailable"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "type"
+                ],
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "enum": [
+                      "openCase",
+                      "note",
+                      "request",
+                      "response",
+                      "assign",
+                      "submit",
+                      "approve",
+                      "reopen",
+                      "resolveEvidence",
+                      "policyPropose",
+                      "policyApprove",
+                      "target",
+                      "pause",
+                      "ingest",
+                      "replay",
+                      "pilot"
+                    ]
+                  },
+                  "recordId": {
+                    "type": "string"
+                  },
+                  "expectedRevision": {
+                    "type": "integer"
+                  },
+                  "note": {
+                    "type": "string"
+                  },
+                  "evidenceIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "outcome": {
+                    "type": "string",
+                    "enum": [
+                      "Explained transaction",
+                      "Evidence still required",
+                      "Refer suspected diversion"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "localSession": {
+        "type": "apiKey",
+        "in": "cookie",
+        "name": "uco_session"
+      }
+    }
+  }
+}

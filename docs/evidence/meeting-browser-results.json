@@ -1,0 +1,26 @@
+{
+  "status": "passed",
+  "checks": [
+    "Five triggers and 12 meeting cases are the default",
+    "All five trigger cards filter to matching review tasks",
+    "Bluefin payment references, ledger evidence and exact ₹45 lakh aggregate",
+    "Research replay, identity alternatives, dated source captures and cited passage",
+    "Unavailable live provider retains existing research",
+    "Case-scoped assistant uses completed company research and citations",
+    "One-click transaction-specific document request remains a draft",
+    "Independent officer decision completes the prepared investigation",
+    "Documented comparator clears repeated-payment concern",
+    "Credit-only review displays each receipt with zero loan-diversion amount",
+    "Account-history trigger exposes the closure and reopening evidence",
+    "Finacle / 19c / GoldenGate / Oracle 26ai / OCI / APEX architecture",
+    "Research persists across page reload",
+    "Dashboard and completed research remain within a 390px mobile viewport",
+    "Downloaded HTML works offline through research and document-request preparation"
+  ],
+  "pageErrors": [],
+  "viewports": [
+    "1440x1000",
+    "390x844"
+  ],
+  "execution": "Local Chromium browser, server and offline HTML; no live bank/provider connections"
+}

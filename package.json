@@ -1,0 +1,36 @@
+{
+  "name": "uco-bank-credit-monitoring-demo",
+  "version": "4.2.0",
+  "private": true,
+  "type": "module",
+  "description": "UCO Credit Intelligence: evidence-led end-use monitoring evaluation platform",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "dev": "node scripts/dev.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "check:render": "node scripts/check-render.mjs",
+    "check:platform": "node scripts/check-platform.mjs",
+    "check:meeting": "node scripts/check-meeting-browser.mjs",
+    "start": "node scripts/serve.mjs",
+    "check:oci": "node scripts/check-oci-browser.mjs",
+    "test:model": "node scripts/run-model-test.mjs",
+    "test:assistant": "node scripts/test-independent-assistant.mjs",
+    "test:assistant-grounded": "node scripts/test-grounded-assistant.mjs",
+    "test:assistant-verified": "node scripts/test-verified-assistant.mjs",
+    "check:model-testing": "node scripts/check-model-testing-browser.mjs"
+  },
+  "dependencies": {
+    "lucide-react": "1.31.0",
+    "oci-common": "2.139.2",
+    "oci-generativeaiinference": "2.139.2",
+    "oracledb": "^26.0.0",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

@@ -1,0 +1,13 @@
+Measure,Bank owner,Proposed target,Agreed target,Measured result,Test environment,Status
+"Monitored accounts",Unassigned,Not specified,Pending bank agreement,Not measured,None,Bank input required
+"Daily transactions",Unassigned,Not specified,Pending bank agreement,Not measured,None,Bank input required
+"Peak transactions per second",Unassigned,Not specified,Pending bank agreement,Not measured,None,Bank input required
+"Concurrent analysts",Unassigned,Not specified,Pending bank agreement,Not measured,None,Bank input required
+"Ingestion delay p95",Unassigned,Not specified,Pending bank agreement,Not measured,None,Bank input required
+"Event-to-persisted-alert p95",Unassigned,Not specified,Pending bank agreement,Not measured,None,Bank input required
+"Dashboard latency p95",Unassigned,Not specified,Pending bank agreement,Not measured,None,Bank input required
+"Availability",Unassigned,Not specified,Pending bank agreement,Not measured,None,Bank input required
+"Recovery time (RTO)",Unassigned,Not specified,Pending bank agreement,Not measured,None,Bank input required
+"Recovery point (RPO)",Unassigned,Not specified,Pending bank agreement,Not measured,None,Bank input required
+"Source retention",Unassigned,Not specified,Pending bank agreement,Not measured,None,Bank input required
+"Monthly operating cost",Unassigned,Not specified,Pending bank agreement,Not measured,None,Bank input required

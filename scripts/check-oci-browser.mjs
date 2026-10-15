@@ -1,0 +1,33 @@
+import {mkdtemp,rm,mkdir,writeFile} from 'node:fs/promises';
+import path from 'node:path';
+import {pathToFileURL} from 'node:url';
+import assert from 'node:assert/strict';
+import {Store,createPlatformServer} from '../server/platform.mjs';
+import {validateWithOCI} from '../server/oci-validation.mjs';
+import {preparedValidation} from '../src/platform/assistant/validation.js';
+const {chromium}=await import(process.env.PLAYWRIGHT_MODULE||'playwright');
+await mkdir('test-output',{recursive:true});await mkdir('docs/evidence',{recursive:true});
+const dir=await mkdtemp(path.resolve('test-output','oci-browser-')),store=await new Store(dir).init();
+const env={OCI_REGION:'us-chicago-1',OCI_MODEL_ID:'browser-test-model',OCI_COMPARTMENT_ID:'ocid1.compartment.oc1..test'};
+let unavailable=false;
+const server=createPlatformServer({store,ociStatus:()=>({configured:true,status:'Configured · browser test provider',model:env.OCI_MODEL_ID,region:env.OCI_REGION}),ociValidate:async packet=>{if(unavailable)throw Object.assign(Error('Controlled provider unavailable'),{status:502});return validateWithOCI(packet,{env,config:()=>({configured:true,model:env.OCI_MODEL_ID,region:env.OCI_REGION}),invoke:async()=>({chatResult:{chatResponse:{text:JSON.stringify(preparedValidation(packet))}},opcRequestId:'browser-test-request'})});}});
+await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
+let browser;
+try{
+ browser=await chromium.launch({headless:true,executablePath:process.env.CHROMIUM_EXECUTABLE||undefined});
+ const page=await browser.newPage({viewport:{width:1440,height:1000}}),errors=[],checks=[];page.on('pageerror',e=>errors.push(e.message));
+ const idle=()=>page.waitForFunction(()=>!document.querySelector('select[aria-label="Officer persona"]').disabled);
+ const nav=()=>page.locator('.sidebar nav').getByRole('button',{name:'AI Assistant',exact:true}).click();
+ const panel=page.getByRole('tabpanel',{name:'OCI validation'});
+ await page.goto('http://127.0.0.1:'+server.address().port);await idle();await nav();await page.getByRole('tab',{name:'OCI validation',exact:true}).click();
+ await panel.getByRole('button',{name:'Show prepared review'}).click();await idle();await panel.getByText('Prepared example',{exact:false}).first().waitFor();
+ assert.ok((await panel.innerText()).includes('Review required'));await page.screenshot({path:'docs/evidence/oci-validation-desktop.png',fullPage:true});checks.push('Prepared Bluefin review with case citations');
+ await panel.getByRole('button',{name:'Documented procurement',exact:true}).click();await panel.getByRole('button',{name:'Show prepared review'}).click();await idle();assert.equal(store.state.records.find(r=>r.id==='MT-BLUEFIN-OK').llmValidations[0].review.disposition,'Supported');checks.push('Documented comparison remains supported');
+ await panel.getByRole('button',{name:'Validate with OCI model'}).click();await idle();assert.ok((await panel.innerText()).includes('Live OCI model'));assert.ok((await panel.innerText()).includes('Connected · last review succeeded'));checks.push('Controlled OCI response saves and displays provenance');
+ const dl=page.waitForEvent('download');await panel.getByRole('button',{name:'Download review'}).click();assert.match((await dl).suggestedFilename(),/Validation\.json$/);checks.push('Review download');
+ const before=store.state.records.find(r=>r.id==='MT-BLUEFIN-OK').llmValidations.length;unavailable=true;await panel.getByRole('button',{name:'Validate with OCI model'}).click();await idle();await panel.getByRole('alert').waitFor();assert.equal(store.state.records.find(r=>r.id==='MT-BLUEFIN-OK').llmValidations.length,before);checks.push('Provider failure preserves prior review');
+ await page.reload();await idle();await nav();await page.getByRole('tab',{name:'OCI validation',exact:true}).click();assert.ok((await panel.innerText()).includes('Prepared example'));checks.push('Prepared history survives reload');
+ await page.setViewportSize({width:390,height:844});assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));await page.screenshot({path:'docs/evidence/oci-validation-mobile.png',fullPage:true});checks.push('390px layout without page overflow');
+ const offline=await browser.newPage();offline.on('pageerror',e=>errors.push(e.message));await offline.goto(pathToFileURL(path.resolve('dist/index.html')).href);await offline.locator('.sidebar nav').getByRole('button',{name:'AI Assistant',exact:true}).click();await offline.getByRole('tab',{name:'OCI validation',exact:true}).click();const off=offline.getByRole('tabpanel',{name:'OCI validation'});await off.getByRole('button',{name:'Show prepared review'}).click();await off.getByText('Prepared example',{exact:false}).first().waitFor();assert.ok(await off.getByRole('button',{name:'Validate with OCI model'}).isDisabled());checks.push('Self-contained offline prepared review');
+ assert.deepEqual(errors,[]);await writeFile('docs/evidence/oci-validation-browser-results.json',JSON.stringify({status:'passed',checks,pageErrors:errors,limitations:'Synthetic cases and controlled provider response. No live OCI invocation or model-quality validation.'},null,2));console.log('PASS',checks.length,'OCI demo browser checks; zero page errors.');
+}finally{if(browser)await browser.close();await new Promise(resolve=>server.close(resolve));await rm(dir,{recursive:true,force:true});}
