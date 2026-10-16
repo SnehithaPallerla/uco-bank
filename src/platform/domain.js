@@ -124,7 +124,7 @@ export function command(state,user,cmd,context={}){
   r.llmValidations.unshift(result);log('llm_validation',result.mode+' · '+result.id+' · advisory '+result.review.disposition);break;
  }
  case 'assistantWebWalkthrough':case 'assistantBloombergRun':case 'assistantSaveRun':case 'assistantAttachResearch':{
- if(cmd.type==='assistantAttachResearch'&&!c){const next=command(s,user,{type:'openCase',recordId:cmd.recordId});return command(next,user,cmd,context);}
+ if(cmd.type==='assistantAttachResearch'&&!c){const next=command(s,user,{type:'openCase',recordId:cmd.recordId},context);return command(next,user,cmd,context);}
  applyEnrichment({s,r,c,user,cmd,now,log,trustedResearch:context.trustedResearch===true});break;
  }
  case 'researchReplay':{
@@ -139,14 +139,14 @@ export function command(state,user,cmd,context={}){
  if(!r.research?.completed)throw Error('Review the counterparty research before preparing a request');
  const transactions=r.transactions.filter(t=>t.from===r.borrower.id&&t.to===r.research.entityId);
  const draft=`For ${r.borrower.name}, please provide the commercial explanation and documents for ${transactions.map(t=>t.id+' ('+money(t.amountInr)+')').join(', ')}. ${r.research.nextAction} This is a request for clarification, not a finding of diversion.`;
- const next=c&&c.status!=='Closed'?s:command(s,user,{type:'openCase',recordId:r.id});
+ const next=c&&c.status!=='Closed'?s:command(s,user,{type:'openCase',recordId:r.id},context);
  return command(next,user,{type:'request',recordId:r.id,note:draft});
  }
  case 'accessEvidence':{if(!r.evidence.some(e=>e.id===cmd.evidenceId))throw Error('Evidence unavailable in this case');log('evidence_accessed',cmd.evidenceId);break;}
- case 'openCase':{if(c&&c.status!=='Closed')return s;const a=assess(r,s.policy);s.cases.push({id:'CASE-'+r.id+'-'+(s.cases.length+1),recordId:r.id,owner:user.id,maker:user.id,branch:r.branch,priority:a.priority,dueAt:new Date(Date.now()+48*3600000).toISOString(),escalation:'East circle credit manager',status:'Open concern',createdAt:now,history:[],notes:[],drafts:[],evidenceIds:[],assessment:clone(a),evidenceSnapshot:clone(r.evidence),policySnapshot:clone(s.policy),assignmentHistory:[{owner:user.id,at:now}]});log('case_opened','Frozen assessment, evidence and policy');break;}
+ case 'openCase':{if(c&&c.status!=='Closed')return s;const a=assess(r,s.policy);s.cases.push({id:'CASE-'+r.id+'-'+(s.cases.length+1),recordId:r.id,owner:user.id,maker:user.id,branch:r.branch,priority:context.mlPrediction?(context.mlPrediction.flagged===true?'ML review':context.mlPrediction.flagged===false?'Routine':'Unscored'):'Unscored',mlPrediction:context.mlPrediction?clone(context.mlPrediction):null,dueAt:new Date(Date.now()+48*3600000).toISOString(),escalation:'East circle credit manager',status:'Open concern',createdAt:now,history:[],notes:[],drafts:[],evidenceIds:[],assessment:clone(a),evidenceSnapshot:clone(r.evidence),policySnapshot:clone(s.policy),assignmentHistory:[{owner:user.id,at:now}]});log('case_opened','Frozen assessment, evidence and policy');break;}
  case 'note':case 'request':case 'response':case 'assign':case 'submit':case 'approve':case 'reopen':{
  if(!c)throw Error('Open a case first');requireNote();if(cmd.type!=='reopen'&&c.status==='Closed')throw Error('Reopen the closed case before changes');
- if(cmd.type==='approve'){authorize(user,r,'approve');if(c.maker===user.id||c.submittedBy===user.id)throw Error('Maker cannot approve own case');if(c.status!=='Awaiting independent review')throw Error('Case is not awaiting review');c.status='Closed';c.reviewer=user.id;c.closedAt=now;c.outcome=c.proposedOutcome;}
+ if(cmd.type==='approve'){authorize(user,r,'approve');if(c.maker===user.id||c.submittedBy===user.id)throw Error('Maker cannot approve own case');if(c.status!=='Awaiting independent review')throw Error('Case is not awaiting review');c.status='Closed';c.reviewer=user.id;c.closedAt=now;c.outcome=c.proposedOutcome;c.mlDecisionSnapshot=context.mlPrediction?clone(context.mlPrediction):c.mlPrediction||null;c.mlDecisionSourceDigest=context.mlSourceRecordDigest||null;}
  else if(cmd.type==='submit'){if(c.status==='Awaiting independent review')throw Error('Case is already awaiting review');if(!['Explained transaction','Evidence still required','Refer suspected diversion'].includes(cmd.outcome))throw Error('Select an allowed investigation outcome');if(!cmd.evidenceIds?.length||cmd.evidenceIds.some(id=>!r.evidence.some(e=>e.id===id)))throw Error('Select evidence from this case');c.proposedOutcome=cmd.outcome;c.evidenceIds=cmd.evidenceIds;c.status='Awaiting independent review';c.submittedBy=user.id;c.assessment=assess(r,s.policy);c.evidenceSnapshot=clone(r.evidence);c.policySnapshot=clone(s.policy);}
  else if(cmd.type==='reopen'){if(c.status!=='Closed')throw Error('Only a closed case can be reopened');c.status='Open concern';c.maker=user.id;delete c.outcome;}
  else if(cmd.type==='assign'){const owner=personas.find(p=>p.id===cmd.owner&&p.branches.includes(r.branch)&&['Analyst','Reviewer'].includes(p.role));if(!owner)throw Error('Assignee must have branch access');c.owner=owner.id;c.assignmentHistory.push({owner:owner.id,at:now,reason:note});}

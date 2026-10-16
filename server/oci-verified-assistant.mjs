@@ -16,7 +16,7 @@ export function verifiedPacket(record,user,policy){
  authorize(user,record);const a=assess(record,policy),ids=new Set(record.evidence.map(e=>e.id));
  const refs=xs=>[...new Set(xs.flat().filter(id=>ids.has(id)))];
  const blocks=[];const add=(id,topic,text,evidenceIds=[])=>blocks.push({id,topic,text,evidenceIds:refs(evidenceIds)});
- add('assessment','assessment',`Current assessment: ${a.outcome}. Loan-linked amount requiring review: ${money(a.reviewInr)}. This is an amount for investigation, not a confirmed loss.`,[record.facility.sanctionEvidenceId,...a.findings.flatMap(f=>f.evidenceIds)]);
+ add('assessment','assessment',`Rule reference checks: ${a.outcome}. Loan-linked amount identified by those checks: ${money(a.reviewInr)}. These checks do not determine the ML case flag. This is an amount for investigation, not a confirmed loss.`,[record.facility.sanctionEvidenceId,...a.findings.flatMap(f=>f.evidenceIds)]);
  a.findings.forEach((f,i)=>add('finding_'+i,'assessment',`${f.rule}: ${f.detail}`,f.evidenceIds));
  a.gaps.forEach((f,i)=>add('gap_'+i,'missing',`${f.rule}: ${f.detail}`,f.evidenceIds));
  a.contexts.forEach((f,i)=>add('context_'+i,'assessment',`${f.rule}: ${f.detail}`,f.evidenceIds));

@@ -12,27 +12,167 @@
   ],
   "paths": {
     "/api/assistant/evaluation": {
-      "get": {"operationId": "list_model_tests", "summary": "List model-test reports owned by the current officer", "security": [{"localSession": []}], "responses": {"200": {"description": "In-memory reports retained until server restart"}, "401": {"description": "Session missing or expired"}}},
+      "get": {
+        "operationId": "list_model_tests",
+        "summary": "List model-test reports owned by the current officer",
+        "security": [
+          {
+            "localSession": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "In-memory reports retained until server restart"
+          },
+          "401": {
+            "description": "Session missing or expired"
+          }
+        }
+      },
       "post": {
-        "operationId": "start_model_test", "summary": "Start a bounded sequential OCI test on generated samples", "description": "Makes chargeable inference calls. Expected labels are not sent to the model. One batch runs at a time; only investigation roles can start it.", "security": [{"localSession": []}],
-        "requestBody": {"required": true, "content": {"application/json": {"schema": {"type": "object", "additionalProperties": false, "required": ["recordIds"], "properties": {"recordIds": {"type": "array", "minItems": 1, "maxItems": 20, "uniqueItems": true, "items": {"type": "string"}}, "repeats": {"type": "integer", "enum": [1, 2], "default": 1}}}}}},
-        "responses": {"202": {"description": "Started job; poll the job endpoint for progress"}, "400": {"description": "Invalid selection or unexpected fields"}, "401": {"description": "Session missing or expired"}, "403": {"description": "Role or branch denied"}, "409": {"description": "Another model test is running"}, "503": {"description": "OCI is not configured"}}
+        "operationId": "start_model_test",
+        "summary": "Start a bounded sequential OCI test on generated samples",
+        "description": "Makes chargeable inference calls. Expected labels are not sent to the model. One batch runs at a time; only investigation roles can start it.",
+        "security": [
+          {
+            "localSession": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "recordIds"
+                ],
+                "properties": {
+                  "recordIds": {
+                    "type": "array",
+                    "minItems": 1,
+                    "maxItems": 20,
+                    "uniqueItems": true,
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "repeats": {
+                    "type": "integer",
+                    "enum": [
+                      1,
+                      2
+                    ],
+                    "default": 1
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Started job; poll the job endpoint for progress"
+          },
+          "400": {
+            "description": "Invalid selection or unexpected fields"
+          },
+          "401": {
+            "description": "Session missing or expired"
+          },
+          "403": {
+            "description": "Role or branch denied"
+          },
+          "409": {
+            "description": "Another model test is running"
+          },
+          "503": {
+            "description": "OCI is not configured"
+          }
+        }
       }
     },
     "/api/assistant/evaluation/{jobId}": {
-      "get": {"operationId": "read_model_test", "summary": "Read progress and case-level results for an owned test", "security": [{"localSession": []}], "parameters": [{"name": "jobId", "in": "path", "required": true, "schema": {"type": "string"}}], "responses": {"200": {"description": "Job status, completed rows, errors, automated checks and model snapshots"}, "401": {"description": "Session missing or expired"}, "404": {"description": "Job unavailable to this officer"}}}
+      "get": {
+        "operationId": "read_model_test",
+        "summary": "Read progress and case-level results for an owned test",
+        "security": [
+          {
+            "localSession": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "jobId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Job status, completed rows, errors, automated checks and model snapshots"
+          },
+          "401": {
+            "description": "Session missing or expired"
+          },
+          "404": {
+            "description": "Job unavailable to this officer"
+          }
+        }
+      }
     },
     "/api/assistant/evaluation/{jobId}/stop": {
-      "post": {"operationId": "stop_model_test", "summary": "Stop an owned test after the current inference finishes", "security": [{"localSession": []}], "parameters": [{"name": "jobId", "in": "path", "required": true, "schema": {"type": "string"}}], "responses": {"200": {"description": "Stop requested; the in-flight call is not cancelled"}, "401": {"description": "Session missing or expired"}, "404": {"description": "Job unavailable to this officer"}}}
+      "post": {
+        "operationId": "stop_model_test",
+        "summary": "Stop an owned test after the current inference finishes",
+        "security": [
+          {
+            "localSession": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "jobId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Stop requested; the in-flight call is not cancelled"
+          },
+          "401": {
+            "description": "Session missing or expired"
+          },
+          "404": {
+            "description": "Job unavailable to this officer"
+          }
+        }
+      }
     },
     "/api/assistant/validation/status": {
       "get": {
         "operationId": "read_oci_validation_status",
         "summary": "Inspect OCI configuration without making an inference request",
-        "security": [{"localSession": []}],
+        "security": [
+          {
+            "localSession": []
+          }
+        ],
         "responses": {
-          "200": {"description": "Configuration completeness, selected model, region and missing settings; not proof of connectivity"},
-          "401": {"description": "Session missing or expired"}
+          "200": {
+            "description": "Configuration completeness, selected model, region and missing settings; not proof of connectivity"
+          },
+          "401": {
+            "description": "Session missing or expired"
+          }
         }
       }
     },
@@ -41,18 +181,63 @@
         "operationId": "validate_case_with_oci",
         "summary": "Generate and persist a cited advisory OCI review of an authorised case",
         "description": "The server constructs the case packet. No client prompt or model response is accepted. The review leaves rules and case outcomes unchanged. Inference can incur OCI usage charges.",
-        "security": [{"localSession": []}],
-        "requestBody": {"required": true, "content": {"application/json": {"schema": {"type": "object", "additionalProperties": false, "required": ["recordId", "expectedRevision"], "properties": {"recordId": {"type": "string"}, "expectedRevision": {"type": "integer", "minimum": 0}}}}}},
+        "security": [
+          {
+            "localSession": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "recordId",
+                  "expectedRevision"
+                ],
+                "properties": {
+                  "recordId": {
+                    "type": "string"
+                  },
+                  "expectedRevision": {
+                    "type": "integer",
+                    "minimum": 0
+                  }
+                }
+              }
+            }
+          }
+        },
         "responses": {
-          "200": {"description": "Scoped updated workspace and saved advisory result with citations, input snapshot, model and response provenance"},
-          "400": {"description": "Invalid packet or uncited/malformed model output; no review saved"},
-          "401": {"description": "Session missing or expired"},
-          "403": {"description": "Branch or investigation role denied"},
-          "404": {"description": "Record unavailable"},
-          "409": {"description": "Workspace revision changed before or during inference"},
-          "429": {"description": "Local validation attempt limit reached"},
-          "502": {"description": "OCI request failed"},
-          "503": {"description": "OCI settings are incomplete"}
+          "200": {
+            "description": "Scoped updated workspace and saved advisory result with citations, input snapshot, model and response provenance"
+          },
+          "400": {
+            "description": "Invalid packet or uncited/malformed model output; no review saved"
+          },
+          "401": {
+            "description": "Session missing or expired"
+          },
+          "403": {
+            "description": "Branch or investigation role denied"
+          },
+          "404": {
+            "description": "Record unavailable"
+          },
+          "409": {
+            "description": "Workspace revision changed before or during inference"
+          },
+          "429": {
+            "description": "Local validation attempt limit reached"
+          },
+          "502": {
+            "description": "OCI request failed"
+          },
+          "503": {
+            "description": "OCI settings are incomplete"
+          }
         }
       }
     },
@@ -496,6 +681,165 @@
                       "Evidence still required",
                       "Refer suspected diversion"
                     ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ml/status": {
+      "get": {
+        "operationId": "ml_status",
+        "summary": "Read the weakly supervised review classifier and proxy-target agreement metrics",
+        "security": [
+          {
+            "localSession": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Classifier result with separate current flag and officer-review hold; review scores are not fraud probabilities"
+          },
+          "401": {
+            "description": "Session required"
+          },
+          "403": {
+            "description": "Role or branch denied"
+          },
+          "409": {
+            "description": "Workspace changed"
+          },
+          "503": {
+            "description": "Model unavailable; no rule-based fallback"
+          }
+        }
+      }
+    },
+    "/api/ml/predictions": {
+      "get": {
+        "operationId": "ml_predictions",
+        "summary": "Score authorized cases and persist versioned feature snapshots and ML predictions",
+        "security": [
+          {
+            "localSession": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Classifier result with separate current flag and officer-review hold; review scores are not fraud probabilities"
+          },
+          "401": {
+            "description": "Session required"
+          },
+          "403": {
+            "description": "Role or branch denied"
+          },
+          "409": {
+            "description": "Workspace changed"
+          },
+          "503": {
+            "description": "Model unavailable; no rule-based fallback"
+          }
+        },
+        "parameters": [
+          {
+            "name": "recordId",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "revision",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ]
+      }
+    },
+    "/api/ml/labels": {
+      "get": {
+        "operationId": "ml_labels",
+        "summary": "Read independently reviewed outcomes for an authorized case",
+        "security": [
+          {
+            "localSession": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Classifier result with separate current flag and officer-review hold; review scores are not fraud probabilities"
+          },
+          "401": {
+            "description": "Session required"
+          },
+          "403": {
+            "description": "Role or branch denied"
+          },
+          "409": {
+            "description": "Workspace changed"
+          },
+          "503": {
+            "description": "Model unavailable; no rule-based fallback"
+          }
+        },
+        "parameters": [
+          {
+            "name": "recordId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "post": {
+        "operationId": "ml_save_reviewed_outcome",
+        "summary": "Save the outcome of a case independently closed by the current reviewer",
+        "security": [
+          {
+            "localSession": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Classifier result with separate current flag and officer-review hold; review scores are not fraud probabilities"
+          },
+          "401": {
+            "description": "Session required"
+          },
+          "403": {
+            "description": "Role or branch denied"
+          },
+          "409": {
+            "description": "Workspace changed"
+          },
+          "503": {
+            "description": "Model unavailable; no rule-based fallback"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "recordId",
+                  "expectedRevision"
+                ],
+                "properties": {
+                  "recordId": {
+                    "type": "string"
+                  },
+                  "expectedRevision": {
+                    "type": "integer"
                   }
                 }
               }

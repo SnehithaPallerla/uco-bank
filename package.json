@@ -17,7 +17,11 @@
     "test:assistant": "node scripts/test-independent-assistant.mjs",
     "test:assistant-grounded": "node scripts/test-grounded-assistant.mjs",
     "test:assistant-verified": "node scripts/test-verified-assistant.mjs",
-    "check:model-testing": "node scripts/check-model-testing-browser.mjs"
+    "check:model-testing": "node scripts/check-model-testing-browser.mjs",
+    "ml:train": "node scripts/train-ml.mjs",
+    "ml:train:oracle": "node scripts/train-ml.mjs --oracle",
+    "ml:check": "node scripts/check-ml.mjs",
+    "ml:check:holdout": "node scripts/check-ml-holdout.mjs"
   },
   "dependencies": {
     "lucide-react": "1.31.0",

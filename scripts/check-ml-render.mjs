@@ -1,0 +1,28 @@
+import {build} from 'esbuild';
+import {mkdir,readFile} from 'node:fs/promises';
+import React from 'react';
+import {renderToStaticMarkup} from 'react-dom/server';
+import assert from 'node:assert/strict';
+import {initialState} from '../src/platform/domain.js';
+import {personas} from '../src/platform/catalogue.js';
+import {MLService} from '../server/ml-service.mjs';
+import {ML_DIR} from '../server/ml-worker.mjs';
+import {runMLWorker} from '../server/ml-worker.mjs';
+import {extractFeatures,FEATURE_VERSION,FEATURES} from '../server/ml-features.mjs';
+import path from 'node:path';
+await mkdir('test-output',{recursive:true});
+await build({stdin:{contents:"export {default as MLPanel} from './src/platform/ml/MLPanel.jsx'; export {default as MLPortfolio} from './src/platform/ml/MLPortfolio.jsx';",resolveDir:process.cwd()},bundle:true,platform:'node',format:'esm',outfile:'test-output/ml-components.mjs',external:['react','react-dom','lucide-react']});
+const {MLPanel,MLPortfolio}=await import('../test-output/ml-components.mjs'),state=initialState(),manifest=JSON.parse(await readFile(path.join(ML_DIR,'active.json'),'utf8')),model=JSON.parse(await readFile(path.join(ML_DIR,manifest.file),'utf8'));
+const raw=await runMLWorker('score',{featureVersion:FEATURE_VERSION,rows:state.records.map(r=>extractFeatures(r))},path.join(ML_DIR,manifest.file));
+const ml={data:{model,features:FEATURES.map(([key,label,group])=>({key,label,group})),predictions:raw.map(p=>({...p,assessmentCutoff:state.records.find(r=>r.id===p.recordId).asOf,graphSource:'Oracle SQL Property Graph',directOutflowInr:0})),storage:'Oracle ML tables'},reload:()=>{}};
+let count=0;
+for(const r of state.records){const html=renderToStaticMarkup(React.createElement(MLPanel,{ml,r,user:personas[0],s:state}));assert.ok(html.includes('ML case flag'));assert.ok(html.includes('Independent suspicious-activity accuracy is not measured'));assert.ok(!/\bNaN\b|>undefined</.test(html));count++;}
+const common={s:state,user:personas[0],records:state.records,open:()=>{},query:'',profile:'all',setProfile:()=>{},ml};
+const queue=renderToStaticMarkup(React.createElement(MLPortfolio,common));assert.ok(queue.includes('ML review queue'));assert.ok(queue.includes('Flagged for review'));assert.ok(!queue.includes('Unsupervised'));assert.ok(queue.includes('ML details'));assert.ok(!queue.includes('ML case flag'));
+assert.ok(queue.includes('Reserved test agreement'));assert.ok(queue.includes((model.evaluation.holdoutEvaluation.allScoreableCases.agreement*100).toFixed(1)+'%'));assert.ok(!queue.includes('refitted on'));
+assert.ok(queue.includes('>'+model.evaluation.trainingCases+'<')&&queue.includes('>'+model.evaluation.testCases+'<'));assert.ok(queue.includes('previously used development data'));
+const unavailable=renderToStaticMarkup(React.createElement(MLPortfolio,{...common,ml:{error:'Model is unavailable. No rule fallback.',reload:()=>{}}}));assert.ok(unavailable.includes('Unavailable'));assert.ok(!unavailable.includes('Not flagged by model</span>'));
+const heldML={...ml,data:{...ml.data,predictions:ml.data.predictions.map(p=>p.recordId==='MT-BLUEFIN'?{...p,flagged:false,score:.05,status:'Review pending officer decision',modelStatus:'Not flagged by model',reviewRequired:true,reviewHeld:true}:p)}};
+const heldPanel=renderToStaticMarkup(React.createElement(MLPanel,{ml:heldML,r:state.records.find(r=>r.id==='MT-BLUEFIN'),user:personas[0],s:state}));assert.ok(heldPanel.includes('Review remains open'));assert.ok(heldPanel.includes('Not flagged by model'));assert.ok(heldPanel.includes('Review pending officer decision'));
+const app=await readFile('src/platform/App.jsx','utf8');assert.ok(!app.includes('<MLPanel'));assert.ok(!app.includes('prediction?.reviewRequired'));
+console.log('PASS: '+count+' ML case panels, classifier queue, unavailable state and no rule flag substitution.');
